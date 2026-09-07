@@ -16,6 +16,8 @@ use App\Http\Controllers\ProfilController;
 Route::get('/internship/dashboard', [DashboardController::class, 'internship']);
 
 Route::get('/internship/absensi', [AbsensiController::class, 'index']);
+Route::post('/internship/tambah/absensi', [AbsensiController::class, 'store']);
+Route::put('/internship/absensi/{id}/pulang', [AbsensiController::class, 'pulang']);
 
 Route::get('/internship/nilai', [NilaiController::class, 'index']);
 

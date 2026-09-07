@@ -144,7 +144,7 @@
                         </p>
                         <h2 class="font-serif text-xl md:text-2xl text-slate-900 mt-0.5">
                             Halo,
-                            {{ explode(' ', auth()->user()->name ?? 'User')[0] }} 
+                            {{ explode(' ', auth()->user()->name ?? 'User')[0] }}
                         </h2>
 
                         <p class="text-xs md:text-sm text-slate-400 mt-1">
@@ -410,13 +410,6 @@
                                             text-slate-500 uppercase tracking-wider">
                                             Status
                                         </th>
-
-                                        <th
-                                            class="px-5 py-4 text-center text-xs font-semibold
-                                            text-slate-500 uppercase tracking-wider">
-                                            Aksi
-                                        </th>
-
                                     </tr>
                                 </thead>
 
@@ -500,19 +493,6 @@
                                                     </span>
                                                 @endif
                                             </td>
-
-                                            <td class="px-5 py-4 text-center">
-                                                <button type="button"
-                                                    class="inline-flex items-center gap-1.5
-                                                    px-3 py-2 rounded-lg
-                                                    bg-slate-100 text-slate-600
-                                                    text-xs font-medium
-                                                    hover:bg-slate-200 transition">
-
-                                                    Detail
-
-                                                </button>
-                                            </td>
                                         </tr>
                                     @empty
                                         <tr>
@@ -562,60 +542,58 @@
                         </p>
                     </div>
 
+                    <div class="grid grid-cols-2 gap-4 lg:grid-cols-4">
 
-                    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
                         {{-- Hadir --}}
                         <div
-                            class="bg-white rounded-2xl border border-slate-200 p-5
-                            shadow-sm hover:shadow-md transition">
+                            class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:shadow-md">
+
                             <div class="flex items-center justify-between">
+
                                 <div>
-                                    <p class="text-xs text-slate-400 font-medium">
+                                    <p class="text-xs font-medium text-slate-400">
                                         Hadir
                                     </p>
 
-                                    <p class="text-3xl font-serif text-emerald-600 mt-2">
-                                        0
+                                    <p class="mt-2 font-serif text-3xl text-emerald-600">
+                                        {{ $jumlahHadir }}
                                     </p>
                                 </div>
 
-                                <div
-                                    class="w-11 h-11 rounded-xl bg-emerald-50
-                                    flex items-center justify-center">
+                                <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-50">
 
-                                    <svg class="w-5 h-5 text-emerald-500" fill="none" stroke="currentColor"
+                                    <svg class="h-5 w-5 text-emerald-500" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
 
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M5 13l4 4L19 7" />
+
                                     </svg>
                                 </div>
+
                             </div>
                         </div>
 
 
                         {{-- Sakit --}}
                         <div
-                            class="bg-white rounded-2xl border border-slate-200 p-5
-                            shadow-sm hover:shadow-md transition">
+                            class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:shadow-md">
 
                             <div class="flex items-center justify-between">
 
                                 <div>
-                                    <p class="text-xs text-slate-400 font-medium">
+                                    <p class="text-xs font-medium text-slate-400">
                                         Sakit
                                     </p>
 
-                                    <p class="text-3xl font-serif text-amber-500 mt-2">
-                                        0
+                                    <p class="mt-2 font-serif text-3xl text-amber-500">
+                                        {{ $jumlahSakit }}
                                     </p>
                                 </div>
 
-                                <div
-                                    class="w-11 h-11 rounded-xl bg-amber-50
-                                    flex items-center justify-center">
+                                <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-amber-50">
 
-                                    <svg class="w-5 h-5 text-amber-500" fill="none" stroke="currentColor"
+                                    <svg class="h-5 w-5 text-amber-500" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
 
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -623,30 +601,30 @@
 
                                     </svg>
                                 </div>
+
                             </div>
                         </div>
 
+
                         {{-- Izin --}}
                         <div
-                            class="bg-white rounded-2xl border border-slate-200 p-5
-                            shadow-sm hover:shadow-md transition">
+                            class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:shadow-md">
 
                             <div class="flex items-center justify-between">
+
                                 <div>
-                                    <p class="text-xs text-slate-400 font-medium">
+                                    <p class="text-xs font-medium text-slate-400">
                                         Izin
                                     </p>
 
-                                    <p class="text-3xl font-serif text-blue-500 mt-2">
-                                        0
+                                    <p class="mt-2 font-serif text-3xl text-blue-500">
+                                        {{ $jumlahIzin }}
                                     </p>
                                 </div>
 
-                                <div
-                                    class="w-11 h-11 rounded-xl bg-blue-50
-                                    flex items-center justify-center">
+                                <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-blue-50">
 
-                                    <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor"
+                                    <svg class="h-5 w-5 text-blue-500" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
 
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -654,30 +632,30 @@
 
                                     </svg>
                                 </div>
+
                             </div>
                         </div>
 
+
                         {{-- Alfa --}}
                         <div
-                            class="bg-white rounded-2xl border border-slate-200 p-5
-                            shadow-sm hover:shadow-md transition">
+                            class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:shadow-md">
+
                             <div class="flex items-center justify-between">
 
                                 <div>
-                                    <p class="text-xs text-slate-400 font-medium">
+                                    <p class="text-xs font-medium text-slate-400">
                                         Alfa
                                     </p>
 
-                                    <p class="text-3xl font-serif text-red-500 mt-2">
-                                        0
+                                    <p class="mt-2 font-serif text-3xl text-red-500">
+                                        {{ $jumlahAlfa }}
                                     </p>
                                 </div>
 
-                                <div
-                                    class="w-11 h-11 rounded-xl bg-red-50
-                                    flex items-center justify-center">
+                                <div class="flex h-11 w-11 items-center justify-center rounded-xl bg-red-50">
 
-                                    <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor"
+                                    <svg class="h-5 w-5 text-red-500" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
 
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -685,8 +663,10 @@
 
                                     </svg>
                                 </div>
+
                             </div>
                         </div>
+
                     </div>
                 </section>
 
