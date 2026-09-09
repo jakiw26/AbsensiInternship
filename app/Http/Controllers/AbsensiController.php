@@ -10,7 +10,8 @@ class AbsensiController extends Controller
 {
     public function index()
     {
-        $userId = auth()->id();
+        $user = auth()->user();
+        $userId = $user->id;
 
         $tanggalKemarin = today()->subDay();
 
@@ -19,6 +20,7 @@ class AbsensiController extends Controller
             ->exists();
 
         if (
+            $user->role === 'internship' &&
             !$sudahAbsenKemarin &&
             !$tanggalKemarin->isWeekend()
         ) {
@@ -51,7 +53,6 @@ class AbsensiController extends Controller
             'jumlahAlfa'
         ));
     }
-
     public function store(Request $request)
     {
         $request->validate([
@@ -107,5 +108,11 @@ class AbsensiController extends Controller
         ]);
 
         return redirect('/internship/absensi')->with('success', 'Absensi pulang berhasil disimpan.');
+    }
+
+    public function admin()
+    {
+        $absensis = Absensi::all();
+        return view('admin.absensi.index', compact('absensis'));
     }
 }

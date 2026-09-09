@@ -10,4 +10,9 @@ class ProfilController extends Controller
     {
         return view('internship.profil.internship');
     }
+
+    public function admin()
+    {
+        return view('admin.profil.index');
+    }
 }

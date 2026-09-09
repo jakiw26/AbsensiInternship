@@ -8,6 +8,7 @@ use App\Http\Controllers\AbsensiController;
 use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\ProfilController;
+use App\Http\Controllers\InternshipController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -24,8 +25,25 @@ Route::get('/internship/nilai', [NilaiController::class, 'index']);
 Route::get('/internship/laporan', [LaporanController::class, 'index']);
 
 Route::get('/internship/profil', [ProfilController::class, 'internship']);
+Route::get('/internship/laporan/pdf', [LaporanController::class, 'PdfInternship']);
 
 
+
+Route::get('/admin/dashboard', [DashboardController::class, 'admin']);
+
+Route::get('/admin/internship', [InternshipController::class, 'index']);
+Route::delete('/admin/delete/internship/{id}', [InternshipController::class, 'destroy']);
+Route::put('/admin/status/internship/{id}', [InternshipController::class, 'update']);
+
+Route::get('/admin/absensi', [AbsensiController::class, 'admin']);
+
+Route::get('/admin/nilai', [NilaiController::class, 'admin']);
+Route::put('/admin/nilai/{id}', [NilaiController::class, 'update']);
+
+Route::get('/admin/laporan', [LaporanController::class, 'admin']);
+Route::get('/admin/laporan/{id}/pdf', [LaporanController::class, 'PdfAdmin'])->name('admin.laporan.pdf');
+
+Route::get('/admin/profil', [ProfilController::class, 'admin']);
 
 Route::get('/', [AuthController::class, 'login']);
 Route::post('/login', [AuthController::class, 'authenticate']);

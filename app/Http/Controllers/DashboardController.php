@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Absensi;
+use App\Models\User;
+use App\Models\Nilai;
+use App\Models\Laporan;
+use App\Models\Profil;
 
 use Illuminate\Http\Request;
 
@@ -10,17 +14,82 @@ class DashboardController extends Controller
 {
     public function internship()
     {
-        $absensis = Absensi::where('user_id', auth()->id())
+
+        $userId = auth()->id();
+
+        $absensis = Absensi::where('user_id', $userId)
+            ->whereDate('tanggal', today())
             ->orderBy('tanggal', 'desc')
             ->get();
 
-        $jumlahHadir = $absensis->where('status', 'hadir')->count();
-        $jumlahSakit = $absensis->where('status', 'sakit')->count();
-        $jumlahIzin = $absensis->where('status', 'izin')->count();
-        $jumlahAlfa = $absensis->where('status', 'alfa')->count();
+        $semuaAbsensi = Absensi::where('user_id', $userId)
+            ->get();
 
-        $sudahAbsenHariIni = Absensi::where('user_id', auth()->id())->whereDate('tanggal', today())->exists();
+        $jumlahHadir = $semuaAbsensi
+            ->where('status', 'hadir')
+            ->count();
 
-        return view('internship.dashboard', compact( 'absensis', 'jumlahHadir', 'jumlahSakit', 'jumlahIzin', 'jumlahAlfa', 'sudahAbsenHariIni' ));
+        $jumlahSakit = $semuaAbsensi
+            ->where('status', 'sakit')
+            ->count();
+
+        $jumlahIzin = $semuaAbsensi
+            ->where('status', 'izin')
+            ->count();
+
+        $jumlahAlfa = $semuaAbsensi
+            ->where('status', 'alfa')
+            ->count();
+
+        $sudahAbsenHariIni = Absensi::where('user_id', $userId)
+            ->whereDate('tanggal', today())
+            ->exists();
+
+        return view('internship.dashboard', compact('absensis', 'jumlahHadir', 'jumlahSakit', 'jumlahIzin', 'jumlahAlfa', 'sudahAbsenHariIni', 'userId'));
+    }
+
+    public function admin()
+    {
+        $absensisHariIni = Absensi::with('user')
+            ->whereDate('tanggal', today())
+            ->orderBy('jam_masuk', 'asc')
+            ->get();
+
+        $totalInternship = User::where('role', 'internship')->count();
+
+        $hadirHariIni = Absensi::whereDate('tanggal', today())
+            ->where('status', 'hadir')
+            ->count();
+
+        $sakitHariIni = Absensi::whereDate('tanggal', today())
+            ->where('status', 'sakit')
+            ->count();
+
+        $izinHariIni = Absensi::whereDate('tanggal', today())
+            ->where('status', 'izin')
+            ->count();
+
+        $alfaHariIni = Absensi::whereDate('tanggal', today())
+            ->where('status', 'alfa')
+            ->count();
+
+        $internshipAktif = User::where('role', 'internship')
+            ->where('is_active', true)
+            ->count();
+
+        $internshipTidakAktif = User::where('role', 'internship')
+            ->where('is_active', false)
+            ->count();
+
+        return view('admin.dashboard', compact(
+            'totalInternship',
+            'hadirHariIni',
+            'sakitHariIni',
+            'izinHariIni',
+            'alfaHariIni',
+            'absensisHariIni',
+            'internshipAktif',
+            'internshipTidakAktif'
+        ));
     }
 }

@@ -426,8 +426,7 @@
                                             <td class="px-5 py-4 whitespace-nowrap">
                                                 @if ($absensi->jam_masuk)
                                                     <span
-                                                        class="inline-flex items-center gap-2
-                                                        font-medium text-emerald-600">
+                                                        class="inline-flex items-center gap-2 font-medium text-emerald-600">
 
                                                         <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
 
@@ -451,44 +450,39 @@
                                                         -
                                                     </span>
                                                 @endif
-
                                             </td>
-
 
                                             <td class="px-5 py-4 whitespace-nowrap">
                                                 @if ($absensi->status === 'hadir')
                                                     <span
-                                                        class="inline-flex items-center gap-1.5
-                                                        px-3 py-1.5 rounded-full text-xs font-medium
-                                                        bg-emerald-50 text-emerald-600">
+                                                        class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-600">
 
                                                         <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
 
                                                         Hadir
-
                                                     </span>
                                                 @elseif ($absensi->status === 'sakit')
                                                     <span
-                                                        class="inline-flex items-center gap-1.5
-                                                        px-3 py-1.5 rounded-full text-xs font-medium
-                                                        bg-amber-50 text-amber-600">
+                                                        class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-amber-50 text-amber-600">
+
                                                         <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+
                                                         Sakit
                                                     </span>
                                                 @elseif ($absensi->status === 'izin')
                                                     <span
-                                                        class="inline-flex items-center gap-1.5
-                                                        px-3 py-1.5 rounded-full text-xs font-medium
-                                                        bg-blue-50 text-blue-600">
+                                                        class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-blue-50 text-blue-600">
+
                                                         <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+
                                                         Izin
                                                     </span>
                                                 @elseif ($absensi->status === 'alfa')
                                                     <span
-                                                        class="inline-flex items-center gap-1.5
-                                                        px-3 py-1.5 rounded-full text-xs font-medium
-                                                        bg-red-50 text-red-600">
+                                                        class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium bg-red-50 text-red-600">
+
                                                         <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+
                                                         Alfa
                                                     </span>
                                                 @endif
@@ -496,11 +490,11 @@
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="5" class="px-5 py-14 text-center">
+                                            <td colspan="4" class="px-5 py-14 text-center">
                                                 <div class="flex flex-col items-center">
+
                                                     <div
-                                                        class="w-14 h-14 rounded-2xl bg-slate-100
-                                                        flex items-center justify-center mb-4">
+                                                        class="w-14 h-14 rounded-2xl bg-slate-100 flex items-center justify-center mb-4">
 
                                                         <svg class="w-7 h-7 text-slate-300" fill="none"
                                                             stroke="currentColor" viewBox="0 0 24 24">
@@ -508,15 +502,16 @@
                                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                                 stroke-width="1.5"
                                                                 d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+
                                                         </svg>
                                                     </div>
 
                                                     <p class="text-sm font-semibold text-slate-600">
-                                                        Belum ada data absensi
+                                                        Belum melakukan absensi hari ini
                                                     </p>
 
                                                     <p class="text-xs text-slate-400 mt-1">
-                                                        Data absensi kamu akan muncul di sini.
+                                                        Silakan lakukan absensi untuk hari ini.
                                                     </p>
 
                                                 </div>
@@ -528,7 +523,6 @@
                         </div>
                     </div>
                 </section>
-
 
                 {{-- ================= RINGKASAN ================= --}}
                 <section>

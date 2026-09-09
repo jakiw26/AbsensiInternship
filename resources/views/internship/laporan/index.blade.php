@@ -74,9 +74,7 @@
                 <div class="h-10 w-10 flex-shrink-0 overflow-hidden
                     rounded-xl bg-white shadow-sm">
 
-                    <img src="{{ asset('images/bts.png') }}"
-                        alt="Logo"
-                        class="h-full w-full object-contain">
+                    <img src="{{ asset('images/bts.png') }}" alt="Logo" class="h-full w-full object-contain">
 
                 </div>
 
@@ -102,20 +100,12 @@
                     text-sm transition
                     {{ request()->is('internship/dashboard') ? 'bg-white font-semibold text-[#111827] shadow-sm' : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
 
-                    <svg class="h-5 w-5 flex-shrink-0"
-                        viewBox="0 0 20 20"
-                        fill="none">
+                    <svg class="h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="none">
 
-                        <path d="M3 10.5 10 4l7 6.5"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
+                        <path d="M3 10.5 10 4l7 6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                             stroke-linejoin="round" />
 
-                        <path d="M5 9v7h10V9"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
+                        <path d="M5 9v7h10V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                             stroke-linejoin="round" />
 
                     </svg>
@@ -131,20 +121,11 @@
                     text-sm transition
                     {{ request()->is('internship/absensi*') ? 'bg-white font-semibold text-[#111827] shadow-sm' : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
 
-                    <svg class="h-5 w-5 flex-shrink-0"
-                        viewBox="0 0 20 20"
-                        fill="none">
+                    <svg class="h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="none">
 
-                        <circle cx="10"
-                            cy="10"
-                            r="7"
-                            stroke="currentColor"
-                            stroke-width="1.5" />
+                        <circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5" />
 
-                        <path d="M10 6v4l2.5 1.5"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                            stroke-linecap="round" />
+                        <path d="M10 6v4l2.5 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
 
                     </svg>
 
@@ -159,18 +140,12 @@
                     text-sm transition
                     {{ request()->is('internship/nilai*') ? 'bg-white font-semibold text-[#111827] shadow-sm' : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
 
-                    <svg class="h-5 w-5 flex-shrink-0"
-                        viewBox="0 0 20 20"
-                        fill="none">
+                    <svg class="h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="none">
 
-                        <path d="M6 3h8l2 2v12H4V5l2-2Z"
-                            stroke="currentColor"
-                            stroke-width="1.5"
+                        <path d="M6 3h8l2 2v12H4V5l2-2Z" stroke="currentColor" stroke-width="1.5"
                             stroke-linejoin="round" />
 
-                        <path d="M7 8h6M7 11h6M7 14h4"
-                            stroke="currentColor"
-                            stroke-width="1.5"
+                        <path d="M7 8h6M7 11h6M7 14h4" stroke="currentColor" stroke-width="1.5"
                             stroke-linecap="round" />
 
                     </svg>
@@ -186,19 +161,12 @@
                     text-sm transition
                     {{ request()->is('internship/laporan*') ? 'bg-white font-semibold text-[#111827] shadow-sm' : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
 
-                    <svg class="h-5 w-5 flex-shrink-0"
-                        viewBox="0 0 20 20"
-                        fill="none">
+                    <svg class="h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="none">
 
-                        <path d="M4 4h12v13l-3-2-3 2-3-2-3 2V4Z"
-                            stroke="currentColor"
-                            stroke-width="1.5"
+                        <path d="M4 4h12v13l-3-2-3 2-3-2-3 2V4Z" stroke="currentColor" stroke-width="1.5"
                             stroke-linejoin="round" />
 
-                        <path d="M7 8h6M7 11h6"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                            stroke-linecap="round" />
+                        <path d="M7 8h6M7 11h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
 
                     </svg>
 
@@ -270,20 +238,15 @@
                 <div class="flex items-center gap-4">
 
                     {{-- Mobile Button --}}
-                    <button id="btn-toggle-sidebar"
-                        type="button"
+                    <button id="btn-toggle-sidebar" type="button"
                         class="flex h-10 w-10 items-center
                         justify-center rounded-xl bg-slate-100
                         text-slate-700 transition hover:bg-slate-200
                         md:hidden">
 
-                        <svg class="h-5 w-5"
-                            viewBox="0 0 24 24"
-                            fill="none">
+                        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none">
 
-                            <path d="M4 6h16M4 12h16M4 18h16"
-                                stroke="currentColor"
-                                stroke-width="1.5"
+                            <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.5"
                                 stroke-linecap="round" />
 
                         </svg>
@@ -294,7 +257,8 @@
                     {{-- Title --}}
                     <div>
 
-                        <p class="text-xs font-medium uppercase
+                        <p
+                            class="text-xs font-medium uppercase
                             tracking-wider text-slate-400">
 
                             Internship Panel
@@ -322,8 +286,7 @@
                 {{-- Profile --}}
                 <div class="relative">
 
-                    <button type="button"
-                        id="profile-menu-button"
+                    <button type="button" id="profile-menu-button"
                         class="flex h-10 w-10 items-center
                         justify-center rounded-full
                         bg-gradient-to-br from-amber-400 to-yellow-600
@@ -365,14 +328,10 @@
                                 class="flex h-8 w-8 items-center
                                 justify-center rounded-lg bg-slate-100">
 
-                                <svg class="h-4 w-4 text-slate-500"
-                                    fill="none"
-                                    stroke="currentColor"
+                                <svg class="h-4 w-4 text-slate-500" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
 
-                                    <path stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M5.121 17.804A9 9 0 0112 15a9 9 0 016.879 2.804M15 9a3 3 0 11-6 0 3 3 0 016 0zm6 3a9 9 0 11-18 0 9 9 0 0118 0z" />
 
                                 </svg>
@@ -397,14 +356,9 @@
                                     class="flex h-8 w-8 items-center
                                     justify-center rounded-lg bg-red-50">
 
-                                    <svg class="h-4 w-4"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        viewBox="0 0 24 24">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 
-                                        <path stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
 
                                     </svg>
@@ -448,8 +402,7 @@
 
                                 <div class="mb-2 flex items-center gap-2">
 
-                                    <span
-                                        class="h-2 w-2 rounded-full bg-amber-400">
+                                    <span class="h-2 w-2 rounded-full bg-amber-400">
                                     </span>
 
                                     <p
@@ -482,30 +435,19 @@
 
 
                             {{-- Print Button --}}
-                            <button type="button"
-                                onclick="window.print()"
-                                class="inline-flex items-center
-                                justify-center gap-2 rounded-xl
-                                bg-[#111827] px-5 py-3
-                                text-sm font-semibold text-white
-                                shadow-sm transition
-                                hover:bg-slate-800">
+                            <a href="/internship/laporan/pdf" target="_blank" rel="noopener noreferrer"
+                                class="inline-flex items-center justify-center gap-2 rounded-xl
+                    bg-[#111827] px-5 py-3 text-sm font-semibold text-white
+                    shadow-sm transition hover:bg-slate-800">
 
-                                <svg class="h-4 w-4"
-                                    fill="none"
-                                    stroke="currentColor"
-                                    viewBox="0 0 24 24">
-
-                                    <path stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="1.8"
-                                        d="M6 9V3h12v6M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v7H6v-7Z" />
-
+                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                                        d="M6 9V3h12v6M6 18H4a2 2 0 01-2-2v-5a2 2 0 012 2v5h2M6 14h12v7H6v-7Z" />
                                 </svg>
 
                                 Cetak Laporan
 
-                            </button>
+                            </a>
 
                         </div>
 
@@ -525,15 +467,15 @@
 
                             <div class="h-16 w-16 overflow-hidden">
 
-                                <img src="{{ asset('images/bts.png') }}"
-                                    alt="Logo"
+                                <img src="{{ asset('images/bts.png') }}" alt="Logo"
                                     class="h-full w-full object-contain">
 
                             </div>
 
                             <div>
 
-                                <h1 class="text-xl font-bold uppercase
+                                <h1
+                                    class="text-xl font-bold uppercase
                                     tracking-wide text-slate-900">
 
                                     Laporan Internship
@@ -558,12 +500,12 @@
                 {{-- ====================================================
                     IDENTITAS PESERTA
                 ===================================================== --}}
-                <section class="print-card avoid-break overflow-hidden
+                <section
+                    class="print-card avoid-break overflow-hidden
                     rounded-2xl border border-slate-200
                     bg-white shadow-sm">
 
-                    <div
-                        class="border-b border-slate-100
+                    <div class="border-b border-slate-100
                         px-5 py-5 md:px-6">
 
                         <div class="flex items-center gap-3">
@@ -573,14 +515,10 @@
                                 justify-center rounded-xl
                                 bg-amber-50">
 
-                                <svg class="h-5 w-5 text-amber-500"
-                                    fill="none"
-                                    stroke="currentColor"
+                                <svg class="h-5 w-5 text-amber-500" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
 
-                                    <path stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="1.5"
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                         d="M15 19a6 6 0 00-12 0M9 10a4 4 0 110-8 4 4 0 010 8Zm7-6v6m3-3h-6" />
 
                                 </svg>
@@ -608,7 +546,8 @@
 
                         <div>
 
-                            <p class="text-xs font-medium uppercase
+                            <p
+                                class="text-xs font-medium uppercase
                                 tracking-wider text-slate-400">
 
                                 Nama Peserta
@@ -626,7 +565,8 @@
 
                         <div>
 
-                            <p class="text-xs font-medium uppercase
+                            <p
+                                class="text-xs font-medium uppercase
                                 tracking-wider text-slate-400">
 
                                 Email
@@ -644,7 +584,8 @@
 
                         <div>
 
-                            <p class="text-xs font-medium uppercase
+                            <p
+                                class="text-xs font-medium uppercase
                                 tracking-wider text-slate-400">
 
                                 Periode Laporan
@@ -662,7 +603,8 @@
 
                         <div>
 
-                            <p class="text-xs font-medium uppercase
+                            <p
+                                class="text-xs font-medium uppercase
                                 tracking-wider text-slate-400">
 
                                 Tanggal Cetak
@@ -708,7 +650,8 @@
                             class="print-card rounded-2xl border
                             border-slate-200 bg-white p-5 shadow-sm">
 
-                            <p class="text-xs font-medium uppercase
+                            <p
+                                class="text-xs font-medium uppercase
                                 tracking-wider text-slate-400">
 
                                 Hadir
@@ -733,7 +676,8 @@
                             class="print-card rounded-2xl border
                             border-slate-200 bg-white p-5 shadow-sm">
 
-                            <p class="text-xs font-medium uppercase
+                            <p
+                                class="text-xs font-medium uppercase
                                 tracking-wider text-slate-400">
 
                                 Sakit
@@ -758,7 +702,8 @@
                             class="print-card rounded-2xl border
                             border-slate-200 bg-white p-5 shadow-sm">
 
-                            <p class="text-xs font-medium uppercase
+                            <p
+                                class="text-xs font-medium uppercase
                                 tracking-wider text-slate-400">
 
                                 Izin
@@ -783,7 +728,8 @@
                             class="print-card rounded-2xl border
                             border-slate-200 bg-white p-5 shadow-sm">
 
-                            <p class="text-xs font-medium uppercase
+                            <p
+                                class="text-xs font-medium uppercase
                                 tracking-wider text-slate-400">
 
                                 Alfa
@@ -814,8 +760,7 @@
                     class="print-card overflow-hidden rounded-2xl
                     border border-slate-200 bg-white shadow-sm">
 
-                    <div
-                        class="border-b border-slate-100
+                    <div class="border-b border-slate-100
                         px-5 py-5 md:px-6">
 
                         <h2 class="text-base font-semibold text-slate-800">
@@ -890,7 +835,6 @@
                             <tbody class="divide-y divide-slate-100">
 
                                 @forelse ($absensis ?? [] as $absensi)
-
                                     <tr class="transition hover:bg-slate-50">
 
                                         <td class="px-5 py-4 text-slate-500">
@@ -924,7 +868,6 @@
                                         <td class="px-5 py-4 text-center">
 
                                             @if ($absensi->status === 'hadir')
-
                                                 <span
                                                     class="inline-flex items-center
                                                     rounded-full bg-emerald-50
@@ -934,9 +877,7 @@
                                                     Hadir
 
                                                 </span>
-
                                             @elseif ($absensi->status === 'sakit')
-
                                                 <span
                                                     class="inline-flex items-center
                                                     rounded-full bg-amber-50
@@ -946,9 +887,7 @@
                                                     Sakit
 
                                                 </span>
-
                                             @elseif ($absensi->status === 'izin')
-
                                                 <span
                                                     class="inline-flex items-center
                                                     rounded-full bg-blue-50
@@ -958,9 +897,7 @@
                                                     Izin
 
                                                 </span>
-
                                             @else
-
                                                 <span
                                                     class="inline-flex items-center
                                                     rounded-full bg-red-50
@@ -970,7 +907,6 @@
                                                     Alfa
 
                                                 </span>
-
                                             @endif
 
                                         </td>
@@ -981,10 +917,10 @@
 
                                     <tr>
 
-                                        <td colspan="5"
-                                            class="px-5 py-12 text-center">
+                                        <td colspan="5" class="px-5 py-12 text-center">
 
-                                            <div class="flex flex-col
+                                            <div
+                                                class="flex flex-col
                                                 items-center">
 
                                                 <div
@@ -992,14 +928,10 @@
                                                     items-center justify-center
                                                     rounded-2xl bg-slate-100">
 
-                                                    <svg class="h-7 w-7 text-slate-300"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        viewBox="0 0 24 24">
+                                                    <svg class="h-7 w-7 text-slate-300" fill="none"
+                                                        stroke="currentColor" viewBox="0 0 24 24">
 
-                                                        <path
-                                                            stroke-linecap="round"
-                                                            stroke-linejoin="round"
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
                                                             stroke-width="1.5"
                                                             d="M9 12h6m-6 4h4m-6 5h10a2 2 0 002-2V7.828a2 2 0 00-.586-1.414l-3.828-3.828A2 2 0 0013.172 2H7a2 2 0 00-2 2v15a2 2 0 002 2Z" />
 
@@ -1020,7 +952,6 @@
                                         </td>
 
                                     </tr>
-
                                 @endforelse
 
                             </tbody>
@@ -1063,7 +994,8 @@
 
                                 <div>
 
-                                    <p class="text-xs font-medium uppercase
+                                    <p
+                                        class="text-xs font-medium uppercase
                                         tracking-wider text-slate-400">
 
                                         Kedisiplinan
@@ -1082,15 +1014,10 @@
                                     class="flex h-10 w-10 items-center
                                     justify-center rounded-xl bg-amber-50">
 
-                                    <svg class="h-5 w-5 text-amber-500"
-                                        fill="none"
-                                        stroke="currentColor"
+                                    <svg class="h-5 w-5 text-amber-500" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
 
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="1.5"
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                             d="M12 3l2.09 4.26L19 8l-3.5 3.41L16.18 16 12 13.77 7.82 16l.68-4.59L5 8l4.91-.74L12 3Z" />
 
                                     </svg>
@@ -1112,7 +1039,8 @@
 
                                 <div>
 
-                                    <p class="text-xs font-medium uppercase
+                                    <p
+                                        class="text-xs font-medium uppercase
                                         tracking-wider text-slate-400">
 
                                         Keterampilan
@@ -1131,15 +1059,10 @@
                                     class="flex h-10 w-10 items-center
                                     justify-center rounded-xl bg-blue-50">
 
-                                    <svg class="h-5 w-5 text-blue-500"
-                                        fill="none"
-                                        stroke="currentColor"
+                                    <svg class="h-5 w-5 text-blue-500" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
 
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="1.5"
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                             d="M9 6h6M9 10h6M9 14h4M5 3h10l4 4v14H5V3Z" />
 
                                     </svg>
@@ -1161,7 +1084,8 @@
 
                                 <div>
 
-                                    <p class="text-xs font-medium uppercase
+                                    <p
+                                        class="text-xs font-medium uppercase
                                         tracking-wider text-slate-400">
 
                                         Skill
@@ -1180,15 +1104,10 @@
                                     class="flex h-10 w-10 items-center
                                     justify-center rounded-xl bg-emerald-50">
 
-                                    <svg class="h-5 w-5 text-emerald-500"
-                                        fill="none"
-                                        stroke="currentColor"
+                                    <svg class="h-5 w-5 text-emerald-500" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
 
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="1.5"
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                             d="M12 3l2.09 4.26L19 8l-3.5 3.41L16.18 16 12 13.77 7.82 16l.68-4.59L5 8l-4.91-.74L12 3Z" />
 
                                     </svg>
@@ -1233,52 +1152,10 @@
 
 
                 {{-- ====================================================
-                    TANDA TANGAN
-                ===================================================== --}}
-                <section class="hidden print:block">
-
-                    <div class="mt-10 grid grid-cols-2 gap-16">
-
-                        <div class="text-center">
-
-                            <p class="text-sm text-slate-600">
-                                Peserta Internship
-                            </p>
-
-                            <div class="h-24"></div>
-
-                            <p class="text-sm font-semibold text-slate-800">
-
-                                {{ auth()->user()->name ?? '-' }}
-
-                            </p>
-
-                        </div>
-
-
-                        <div class="text-center">
-
-                            <p class="text-sm text-slate-600">
-                                Pembimbing / Admin
-                            </p>
-
-                            <div class="h-24"></div>
-
-                            <p class="text-sm font-semibold text-slate-800">
-                                ______________________
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                </section>
-
-
-                {{-- ====================================================
                     FOOTER
                 ===================================================== --}}
-                <div class="no-print flex flex-col gap-2
+                <div
+                    class="no-print flex flex-col gap-2
                     border-t border-slate-200 pt-5
                     sm:flex-row sm:items-center
                     sm:justify-between">
@@ -1386,4 +1263,3 @@
 </body>
 
 </html>
-

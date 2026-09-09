@@ -1026,25 +1026,16 @@
 
 
         function openSidebar() {
-
             sidebar.classList.remove('-translate-x-full');
-
             overlay.classList.remove('hidden');
-
         }
-
 
         function closeSidebar() {
-
             sidebar.classList.add('-translate-x-full');
-
             overlay.classList.add('hidden');
-
         }
 
-
         btnToggle.addEventListener('click', openSidebar);
-
         overlay.addEventListener('click', closeSidebar);
     </script>
 
