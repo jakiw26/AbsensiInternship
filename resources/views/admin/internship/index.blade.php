@@ -339,12 +339,77 @@
             ================================================== --}}
             <main class="p-4 md:p-8 space-y-8">
 
-                {{-- Flash message --}}
                 @if (session('success'))
-                    <div
-                        class="rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-700 text-sm px-5 py-3">
-                        {{ session('success') }}
+                    <div id="success-alert"
+                        class="fixed top-6 right-6 z-50 w-[380px] max-w-[calc(100%-2rem)]
+                        rounded-2xl border border-emerald-100 bg-white
+                        p-4 shadow-2xl shadow-emerald-100/50
+                        transition-all duration-500 ease-in-out">
+
+                        <div class="flex items-start gap-4">
+                            <div
+                                class="flex h-11 w-11 shrink-0 items-center justify-center
+                                rounded-full bg-emerald-100">
+                                <svg class="h-6 w-6 text-emerald-600" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+
+
+                            <div class="flex-1">
+                                <h3 class="text-sm font-bold text-slate-900">
+                                    Berhasil!
+                                </h3>
+                                <p class="mt-1 text-sm text-slate-500">
+                                    {{ session('success') }}
+                                </p>
+                            </div>
+
+                            <button type="button" onclick="closeAlert()"
+                                class="text-slate-300 hover:text-slate-500 transition">
+                                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        <div class="mt-4 h-1 overflow-hidden rounded-full bg-slate-100">
+                            <div id="progress-bar" class="h-full rounded-full bg-emerald-500"
+                                style="width: 100%; transition: width 4s linear;">
+                            </div>
+                        </div>
                     </div>
+
+                    <script>
+                        const alertBox = document.getElementById('success-alert');
+                        const progressBar = document.getElementById('progress-bar');
+
+                        function closeAlert() {
+                            if (!alertBox) return;
+
+                            alertBox.classList.add(
+                                'translate-x-[120%]',
+                                'opacity-0'
+                            );
+
+                            setTimeout(() => {
+                                alertBox.remove();
+                            }, 500);
+                        }
+
+                        setTimeout(() => {
+                            if (progressBar) {
+                                progressBar.style.width = '0%';
+                            }
+                        }, 100);
+
+                        setTimeout(() => {
+                            closeAlert();
+                        }, 4000);
+                    </script>
                 @endif
 
 

@@ -19,7 +19,7 @@
         <aside id="sidebar"
             class="fixed inset-y-0 left-0 z-40 flex w-64
         -translate-x-full transform flex-col
-        bg-[#111827] text-white shadow-2xl
+        bg-slate-900 text-white shadow-2xl
         transition-transform duration-200
         md:translate-x-0">
 
@@ -50,7 +50,7 @@
                 <a href="/internship/dashboard"
                     class="flex items-center gap-3 rounded-xl px-3 py-3 text-sm transition
                 {{ request()->is('internship/dashboard')
-                    ? 'bg-white font-semibold text-[#111827] shadow-sm'
+                    ? 'bg-white font-semibold text-slate-900 shadow-sm'
                     : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
 
                     <svg class="h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="none">
@@ -72,7 +72,7 @@
                 <a href="/internship/absensi"
                     class="flex items-center gap-3 rounded-xl px-3 py-3 text-sm transition
                 {{ request()->is('internship/absensi*')
-                    ? 'bg-white font-semibold text-[#111827] shadow-sm'
+                    ? 'bg-white font-semibold text-slate-900 shadow-sm'
                     : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
 
                     <svg class="h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="none">
@@ -92,7 +92,7 @@
                 <a href="/internship/nilai"
                     class="flex items-center gap-3 rounded-xl px-3 py-3 text-sm transition
                 {{ request()->is('internship/nilai*')
-                    ? 'bg-white font-semibold text-[#111827] shadow-sm'
+                    ? 'bg-white font-semibold text-slate-900 shadow-sm'
                     : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
 
                     <svg class="h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="none">
@@ -114,7 +114,7 @@
                 <a href="/internship/laporan"
                     class="flex items-center gap-3 rounded-xl px-3 py-3 text-sm transition
                 {{ request()->is('internship/laporan*')
-                    ? 'bg-white font-semibold text-[#111827] shadow-sm'
+                    ? 'bg-white font-semibold text-slate-900 shadow-sm'
                     : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
 
                     <svg class="h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="none">
@@ -142,8 +142,8 @@
                         class="flex h-10 w-10 flex-shrink-0
                     items-center justify-center overflow-hidden
                     rounded-full
-                    bg-gradient-to-br from-amber-400 to-yellow-600
-                    text-sm font-semibold text-white shadow-lg">
+                    bg-slate-700
+                    text-sm font-semibold text-white shadow-sm">
 
                         @if (auth()->user()->profil?->foto)
                             <img src="{{ asset('storage/' . auth()->user()->profil->foto) }}" alt="Foto Profil"
@@ -232,6 +232,56 @@
 
                 </div>
 
+                {{-- ============================================================
+    SUCCESS ALERT (toast, muncul kalau ada session('success'))
+============================================================= --}}
+                @if (session('success'))
+                    <div id="success-alert"
+                        class="fixed right-4 top-4 z-[60] w-80 overflow-hidden
+        rounded-2xl border border-slate-200 bg-white
+        shadow-xl shadow-slate-200/70
+        transition-all duration-500">
+
+                        <div class="flex items-start gap-3 px-4 py-4">
+
+                            {{-- Icon --}}
+                            <div
+                                class="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg bg-emerald-50">
+                                <svg class="h-5 w-5 text-emerald-500" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+
+                            {{-- Message --}}
+                            <div class="min-w-0 flex-1">
+                                <p class="text-sm font-semibold text-slate-800">Berhasil</p>
+                                <p class="mt-0.5 text-xs text-slate-500">{{ session('success') }}</p>
+                            </div>
+
+                            {{-- Close Button --}}
+                            <button type="button" onclick="closeAlert()"
+                                class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-md text-slate-400 transition hover:bg-slate-100 hover:text-slate-600">
+                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M6 6l12 12M6 18L18 6" />
+                                </svg>
+                            </button>
+
+                        </div>
+
+                        {{-- Progress Bar --}}
+                        <div class="h-1 w-full bg-slate-100">
+                            <div id="progress-bar"
+                                class="h-full bg-emerald-500 transition-all duration-[4000ms] ease-linear"
+                                style="width: 100%;">
+                            </div>
+                        </div>
+
+                    </div>
+                @endif
+
 
                 {{-- Profile Dropdown --}}
                 <div class="relative">
@@ -239,7 +289,7 @@
                     <button type="button" id="profile-menu-button"
                         class="flex h-10 w-10 items-center
                     justify-center overflow-hidden rounded-full
-                    bg-gradient-to-br from-amber-400 to-yellow-600
+                    bg-slate-700
                     text-sm font-semibold text-white shadow-sm
                     transition hover:scale-105">
 
@@ -344,24 +394,23 @@
             ===================================================== --}}
                 <section>
 
-                    <div
-                        class="rounded-2xl border border-slate-200
-                    bg-white px-5 py-5 shadow-sm md:px-6 md:py-5">
+                    <div class="rounded-2xl border border-slate-200
+    bg-white px-5 py-5 shadow-sm md:px-6 md:py-5">
 
                         <div
                             class="flex flex-col gap-4
-                        sm:flex-row sm:items-center
-                        sm:justify-between">
+        sm:flex-row sm:items-center
+        sm:justify-between">
 
                             <div>
 
                                 <div class="mb-1.5 flex items-center gap-2">
 
-                                    <span class="h-2 w-2 rounded-full bg-amber-400"></span>
+                                    <span class="h-2 w-2 rounded-full bg-slate-300"></span>
 
                                     <p
                                         class="text-xs font-medium uppercase
-                                    tracking-wider text-slate-400">
+                    tracking-wider text-slate-400">
 
                                         Profile
 
@@ -384,13 +433,13 @@
                             </div>
 
 
-                            {{-- Edit Button --}}
-                            <a href="/internship/profil/edit"
+                            {{-- Edit Button (trigger modal) --}}
+                            <button type="button" id="btn-open-edit-profil"
                                 class="inline-flex w-fit items-center
-                            justify-center gap-2 rounded-xl
-                            bg-[#111827] px-5 py-2.5
-                            text-sm font-semibold text-white
-                            shadow-sm transition hover:bg-slate-800">
+            justify-center gap-2 rounded-xl
+            bg-[#111827] px-5 py-2.5
+            text-sm font-semibold text-white
+            shadow-sm transition hover:bg-slate-800">
 
                                 <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 
@@ -401,7 +450,7 @@
 
                                 Edit Profil
 
-                            </a>
+                            </button>
 
                         </div>
 
@@ -410,131 +459,191 @@
                 </section>
 
 
+                {{-- ============================================================
+    MODAL EDIT PROFIL
+============================================================= --}}
+                <div id="modal-edit-profil" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+
+                    {{-- Overlay --}}
+                    <div id="modal-edit-profil-overlay" class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
+
+                    {{-- Modal Box --}}
+                    <div class="relative w-full max-w-lg overflow-hidden rounded-2xl bg-white shadow-xl">
+
+                        {{-- Header --}}
+                        <div class="flex items-center justify-between border-b border-slate-100 px-6 py-4">
+                            <h3 class="font-serif text-lg text-slate-900">Edit Profil</h3>
+
+                            <button type="button" id="btn-close-edit-profil"
+                                class="flex h-8 w-8 items-center justify-center rounded-lg text-slate-400 transition hover:bg-slate-100 hover:text-slate-600">
+                                <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                                        d="M6 6l12 12M6 18L18 6" />
+                                </svg>
+                            </button>
+                        </div>
+
+                        {{-- Form --}}
+                        <form action="/internship/profil/edit" method="POST" enctype="multipart/form-data"
+                            class="px-6 py-5">
+                            @csrf
+                            @method('PUT')
+
+                            <div class="space-y-4">
+
+                                {{-- Foto Profil --}}
+                                <div class="flex items-center gap-4">
+
+                                    <div id="preview-foto-wrapper"
+                                        class="flex h-16 w-16 flex-shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 text-xl font-bold text-slate-500">
+
+                                        @if (auth()->user()->profil?->foto)
+                                            <img id="preview-foto"
+                                                src="{{ asset('storage/' . auth()->user()->profil->foto) }}"
+                                                alt="Foto Profil" class="h-full w-full object-cover">
+                                        @else
+                                            <img id="preview-foto" src="" alt="Foto Profil"
+                                                class="hidden h-full w-full object-cover">
+                                            <span
+                                                id="preview-foto-placeholder">{{ strtoupper(substr(auth()->user()->name ?? 'U', 0, 1)) }}</span>
+                                        @endif
+
+                                    </div>
+
+                                    <div>
+                                        <label for="input-foto"
+                                            class="inline-flex cursor-pointer items-center rounded-xl border border-slate-200 px-4 py-2 text-xs font-semibold text-slate-600 transition hover:bg-slate-50">
+                                            Ganti Foto
+                                        </label>
+                                        <input type="file" name="foto" id="input-foto" accept="image/*"
+                                            class="hidden">
+                                        <p class="mt-1 text-xs text-slate-400">JPG atau PNG, maks 2MB.</p>
+                                    </div>
+
+                                </div>
+
+                                <div>
+                                    <label
+                                        class="mb-1.5 block text-xs font-medium uppercase tracking-wider text-slate-400">
+                                        Nama Lengkap
+                                    </label>
+                                    <input type="text" name="name" value="{{ auth()->user()->name }}"
+                                        class="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm text-slate-800 focus:border-slate-400 focus:outline-none">
+                                </div>
+
+                                <div>
+                                    <label
+                                        class="mb-1.5 block text-xs font-medium uppercase tracking-wider text-slate-400">
+                                        Email
+                                    </label>
+                                    <input type="email" name="email" value="{{ auth()->user()->email }}"
+                                        class="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm text-slate-800 focus:border-slate-400 focus:outline-none">
+                                </div>
+
+                                <div>
+                                    <label
+                                        class="mb-1.5 block text-xs font-medium uppercase tracking-wider text-slate-400">
+                                        Nomor HP
+                                    </label>
+                                    <input type="text" name="no_hp"
+                                        value="{{ auth()->user()->profil?->no_hp }}"
+                                        class="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm text-slate-800 focus:border-slate-400 focus:outline-none">
+                                </div>
+
+                                <div>
+                                    <label
+                                        class="mb-1.5 block text-xs font-medium uppercase tracking-wider text-slate-400">
+                                        Alamat
+                                    </label>
+                                    <textarea name="alamat" rows="3"
+                                        class="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm text-slate-800 focus:border-slate-400 focus:outline-none">{{ auth()->user()->profil?->alamat }}</textarea>
+                                </div>
+
+                            </div>
+
+                            {{-- Footer --}}
+                            <div class="mt-6 flex justify-end gap-2">
+                                <button type="button" id="btn-cancel-edit-profil"
+                                    class="rounded-xl border border-slate-200 px-5 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-50">
+                                    Batal
+                                </button>
+
+                                <button type="submit"
+                                    class="rounded-xl bg-[#111827] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-800">
+                                    Simpan
+                                </button>
+                            </div>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+
                 {{-- ====================================================
                 PROFILE CARD
             ===================================================== --}}
                 <section>
-
-                    <div
-                        class="overflow-hidden rounded-2xl
-                    border border-slate-200 bg-white
-                    shadow-sm">
-
-                        {{-- Profile Cover --}}
-                        <div class="relative h-24 overflow-hidden
-                        bg-[#111827] md:h-28">
-
-                            <div
-                                class="absolute -right-8 -top-14
-                            h-40 w-40 rounded-full
-                            bg-amber-400/10">
-                            </div>
-
-                            <div
-                                class="absolute -bottom-16 right-24
-                            h-32 w-32 rounded-full
-                            bg-amber-400/5">
-                            </div>
-
-                        </div>
-
+                    <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
 
                         {{-- Profile Information --}}
-                        <div class="px-5 pb-5 md:px-7 md:pb-6">
-
-                            <div
-                                class="-mt-12 flex flex-col gap-4
-                                sm:flex-row sm:items-end">
+                        <div class="px-5 pt-6 pb-5 md:px-7 md:pb-6">
+                            <div class="flex flex-col gap-4 sm:flex-row sm:items-center">
 
                                 {{-- Avatar --}}
                                 <div
-                                    class="flex h-24 w-24 flex-shrink-0
-                                items-center justify-center
-                                overflow-hidden rounded-2xl
-                                border-4 border-white
-                                bg-gradient-to-br from-amber-400
-                                to-yellow-600
-                                text-2xl font-bold text-white
-                                shadow-lg md:h-26 md:w-26">
-
+                                    class="flex h-20 w-20 flex-shrink-0 items-center justify-center
+                            overflow-hidden rounded-2xl border border-slate-200
+                            bg-slate-100 text-2xl font-bold text-slate-500
+                            md:h-24 md:w-24">
                                     @if (auth()->user()->profil?->foto)
                                         <img src="{{ asset('storage/' . auth()->user()->profil->foto) }}"
                                             alt="Foto Profil" class="h-full w-full object-cover">
                                     @else
                                         {{ strtoupper(substr(auth()->user()->name ?? 'U', 0, 1)) }}
                                     @endif
-
                                 </div>
 
-
                                 {{-- Identity --}}
-                                <div class="min-w-0 pb-1">
-
+                                <div class="min-w-0">
                                     <h2 class="truncate text-xl font-bold text-slate-800 md:text-2xl">
-
                                         {{ auth()->user()->name ?? 'User' }}
-
                                     </h2>
-
                                     <p class="mt-1 truncate text-sm text-slate-400">
-
                                         {{ auth()->user()->email ?? '-' }}
-
                                     </p>
-
                                 </div>
 
                             </div>
-
 
                             {{-- Status --}}
                             <div class="mt-4 flex flex-wrap items-center gap-2">
-
                                 @if (auth()->user()->is_active)
                                     <span
-                                        class="inline-flex items-center gap-2
-                                    rounded-full bg-emerald-50
-                                    px-3 py-1.5 text-xs font-medium
-                                    text-emerald-600">
-
-                                        <span class="h-1.5 w-1.5 rounded-full bg-emerald-500">
-                                        </span>
-
+                                        class="inline-flex items-center gap-2 rounded-full bg-emerald-50
+                                 px-3 py-1.5 text-xs font-medium text-emerald-600">
+                                        <span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span>
                                         Akun Aktif
-
                                     </span>
                                 @else
                                     <span
-                                        class="inline-flex items-center gap-2
-                                    rounded-full bg-red-50
-                                    px-3 py-1.5 text-xs font-medium
-                                    text-red-600">
-
-                                        <span class="h-1.5 w-1.5 rounded-full bg-red-500">
-                                        </span>
-
+                                        class="inline-flex items-center gap-2 rounded-full bg-red-50
+                                 px-3 py-1.5 text-xs font-medium text-red-600">
+                                        <span class="h-1.5 w-1.5 rounded-full bg-red-500"></span>
                                         Tidak Aktif
-
                                     </span>
                                 @endif
 
-
                                 <span
-                                    class="inline-flex items-center gap-2
-                                rounded-full bg-slate-100
-                                px-3 py-1.5 text-xs font-medium
-                                capitalize text-slate-500">
-
+                                    class="inline-flex items-center gap-2 rounded-full bg-slate-100
+                             px-3 py-1.5 text-xs font-medium capitalize text-slate-500">
                                     {{ auth()->user()->role ?? 'Internship' }}
-
                                 </span>
-
                             </div>
 
                         </div>
-
                     </div>
-
                 </section>
 
 
@@ -560,9 +669,9 @@
                                     <div
                                         class="flex h-10 w-10
                                     items-center justify-center
-                                    rounded-xl bg-amber-50">
+                                    rounded-xl bg-slate-100">
 
-                                        <svg class="h-5 w-5 text-amber-500" fill="none" stroke="currentColor"
+                                        <svg class="h-5 w-5 text-slate-500" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
 
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
@@ -775,9 +884,9 @@
                                     <div
                                         class="flex h-10 w-10
                                     items-center justify-center
-                                    rounded-xl bg-emerald-50">
+                                    rounded-xl bg-slate-100">
 
-                                        <svg class="h-5 w-5 text-emerald-500" fill="none" stroke="currentColor"
+                                        <svg class="h-5 w-5 text-slate-500" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
 
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
@@ -1017,6 +1126,75 @@
         overlay.addEventListener('click', closeSidebar);
     </script>
 
+    <script>
+        const editProfilModal = document.getElementById('modal-edit-profil');
+        const btnOpenEditProfil = document.getElementById('btn-open-edit-profil');
+        const btnCloseEditProfil = document.getElementById('btn-close-edit-profil');
+        const btnCancelEditProfil = document.getElementById('btn-cancel-edit-profil');
+        const editProfilOverlay = document.getElementById('modal-edit-profil-overlay');
+
+        function openEditProfilModal() {
+            editProfilModal.classList.remove('hidden');
+            editProfilModal.classList.add('flex');
+        }
+
+        function closeEditProfilModal() {
+            editProfilModal.classList.add('hidden');
+            editProfilModal.classList.remove('flex');
+        }
+
+        btnOpenEditProfil.addEventListener('click', openEditProfilModal);
+        btnCloseEditProfil.addEventListener('click', closeEditProfilModal);
+        btnCancelEditProfil.addEventListener('click', closeEditProfilModal);
+        editProfilOverlay.addEventListener('click', closeEditProfilModal);
+    </script>
+
+    <script>
+        const inputFoto = document.getElementById('input-foto');
+        const previewFoto = document.getElementById('preview-foto');
+        const previewPlaceholder = document.getElementById('preview-foto-placeholder');
+
+        inputFoto.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                previewFoto.src = e.target.result;
+                previewFoto.classList.remove('hidden');
+                if (previewPlaceholder) previewPlaceholder.classList.add('hidden');
+            };
+            reader.readAsDataURL(file);
+        });
+    </script>
+
+    <script>
+        const alertBox = document.getElementById('success-alert');
+        const progressBar = document.getElementById('progress-bar');
+
+        function closeAlert() {
+            if (!alertBox) return;
+
+            alertBox.classList.add(
+                'translate-x-[120%]',
+                'opacity-0'
+            );
+
+            setTimeout(() => {
+                alertBox.remove();
+            }, 500);
+        }
+
+        setTimeout(() => {
+            if (progressBar) {
+                progressBar.style.width = '0%';
+            }
+        }, 100);
+
+        setTimeout(() => {
+            closeAlert();
+        }, 4000);
+    </script>
 </body>
 
 </html>

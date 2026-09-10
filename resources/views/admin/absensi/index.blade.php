@@ -523,8 +523,13 @@
                                     </th>
 
                                     <th
-                                        class="rounded-tr-xl px-5 py-4 text-left text-xs font-semibold text-white uppercase tracking-wider whitespace-nowrap">
+                                        class="px-5 py-4 text-left text-xs font-semibold text-white uppercase tracking-wider whitespace-nowrap">
                                         Status
+                                    </th>
+
+                                    <th
+                                        class="rounded-tr-xl px-5 py-4 text-left text-xs font-semibold text-white uppercase tracking-wider whitespace-nowrap">
+                                        Aksi
                                     </th>
 
                                 </tr>
@@ -535,14 +540,12 @@
                                 @forelse ($absensis as $absensi)
                                     <tr class="group hover:bg-slate-50 transition">
 
-                                        {{-- KOLOM BARU: Nama --}}
+                                        {{-- Nama --}}
                                         <td class="px-5 py-4 whitespace-nowrap">
-
                                             <div class="flex items-center gap-3">
-
                                                 <div
                                                     class="w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center
-                                                    flex-shrink-0 text-xs font-semibold text-slate-500 group-hover:bg-slate-200 transition">
+                                flex-shrink-0 text-xs font-semibold text-slate-500 group-hover:bg-slate-200 transition">
                                                     {{ strtoupper(substr($absensi->user->name ?? 'U', 0, 1)) }}
                                                 </div>
 
@@ -550,21 +553,16 @@
                                                     <p class="font-semibold text-slate-700">
                                                         {{ $absensi->user->name ?? '-' }}
                                                     </p>
-
                                                     <p class="text-[11px] text-slate-400 mt-0.5">
                                                         {{ $absensi->user->email ?? '-' }}
                                                     </p>
                                                 </div>
-
                                             </div>
-
                                         </td>
 
-
+                                        {{-- Tanggal --}}
                                         <td class="px-5 py-4 whitespace-nowrap">
-
                                             <div class="flex items-center gap-3">
-
                                                 <div
                                                     class="w-9 h-9 rounded-lg bg-slate-100 flex items-center justify-center flex-shrink-0 group-hover:bg-slate-200 transition">
                                                     <svg class="w-4 h-4 text-slate-500" fill="none"
@@ -579,7 +577,6 @@
                                                     <p class="font-semibold text-slate-700">
                                                         {{ $absensi->tanggal->format('d F Y') }}
                                                     </p>
-
                                                     <p class="text-[11px] text-slate-400 mt-0.5">
                                                         {{ $absensi->tanggal->translatedFormat('l') }}
                                                     </p>
@@ -587,132 +584,142 @@
                                             </div>
                                         </td>
 
+                                        {{-- Jam Masuk --}}
                                         <td class="px-5 py-4 whitespace-nowrap">
-
                                             @if ($absensi->jam_masuk)
                                                 <div class="flex items-center gap-2">
-                                                    <span class="w-2 h-2 rounded-full bg-emerald-500">
-                                                    </span>
-
+                                                    <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
                                                     <span class="font-semibold text-emerald-700">
                                                         {{ $absensi->jam_masuk }}
                                                     </span>
-
                                                 </div>
                                             @else
-                                                <span class="text-slate-300">
-                                                    -
-                                                </span>
+                                                <span class="text-slate-300">-</span>
                                             @endif
                                         </td>
 
+                                        {{-- Foto Masuk --}}
                                         <td class="px-5 py-4 whitespace-nowrap">
-
                                             @if ($absensi->foto_masuk)
                                                 <a href="{{ asset('storage/' . $absensi->foto_masuk) }}"
                                                     target="_blank" title="Lihat foto masuk">
-
                                                     <img src="{{ asset('storage/' . $absensi->foto_masuk) }}"
                                                         alt="Foto Masuk"
                                                         class="w-12 h-12 rounded-lg object-cover border border-slate-200
-                                                     hover:scale-105 transition duration-200 cursor-pointer">
-
+                                    hover:scale-105 transition duration-200 cursor-pointer">
                                                 </a>
                                             @else
-                                                <span class="text-slate-300">
-                                                    -
-                                                </span>
+                                                <span class="text-slate-300">-</span>
                                             @endif
-
                                         </td>
 
+                                        {{-- Jam Pulang --}}
                                         <td class="px-5 py-4 whitespace-nowrap">
                                             @if ($absensi->jam_pulang)
                                                 <div class="flex items-center gap-2">
-                                                    <span class="w-2 h-2 rounded-full bg-slate-400">
-                                                    </span>
+                                                    <span class="w-2 h-2 rounded-full bg-slate-400"></span>
                                                     <span class="font-semibold text-slate-600">
                                                         {{ $absensi->jam_pulang }}
                                                     </span>
                                                 </div>
                                             @else
-                                                <span class="text-slate-300">
-                                                    -
-                                                </span>
+                                                <span class="text-slate-300">-</span>
                                             @endif
-
                                         </td>
 
+                                        {{-- Foto Pulang --}}
                                         <td class="px-5 py-4 whitespace-nowrap">
-
                                             @if ($absensi->foto_pulang)
                                                 <a href="{{ asset('storage/' . $absensi->foto_pulang) }}"
                                                     target="_blank" title="Lihat foto pulang">
-
                                                     <img src="{{ asset('storage/' . $absensi->foto_pulang) }}"
                                                         alt="Foto Pulang"
                                                         class="w-12 h-12 rounded-lg object-cover border border-slate-200
-                       hover:scale-105 transition duration-200 cursor-pointer">
-
+                                    hover:scale-105 transition duration-200 cursor-pointer">
                                                 </a>
                                             @else
-                                                <span class="text-slate-300">
-                                                    -
-                                                </span>
+                                                <span class="text-slate-300">-</span>
                                             @endif
-
                                         </td>
 
+                                        {{-- Status --}}
                                         <td class="px-5 py-4 whitespace-nowrap">
                                             @if ($absensi->status === 'hadir')
                                                 <span
                                                     class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700">
-                                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500">
-                                                    </span>
+                                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                                                     Hadir
                                                 </span>
                                             @elseif ($absensi->status === 'sakit')
                                                 <span
                                                     class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-amber-50 text-amber-700">
-                                                    <span class="w-1.5 h-1.5 rounded-full bg-amber-500">
-                                                    </span>
+                                                    <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
                                                     Sakit
                                                 </span>
                                             @elseif ($absensi->status === 'izin')
                                                 <span
                                                     class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-blue-50 text-blue-700">
-                                                    <span class="w-1.5 h-1.5 rounded-full bg-blue-500">
-                                                    </span>
+                                                    <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
                                                     Izin
                                                 </span>
                                             @elseif ($absensi->status === 'alfa')
                                                 <span
                                                     class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-red-50 text-red-700">
-                                                    <span class="w-1.5 h-1.5 rounded-full bg-red-500">
-                                                    </span>
+                                                    <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
                                                     Alfa
                                                 </span>
                                             @endif
                                         </td>
+
+                                        {{-- Aksi --}}
+                                        <td class="px-5 py-4 whitespace-nowrap">
+                                            <div class="flex items-center gap-2">
+
+                                                <button type="button" title="Edit Status"
+                                                    class="btn-edit-status flex h-8 w-8 items-center justify-center rounded-lg border border-slate-200 text-slate-500 transition hover:bg-slate-50"
+                                                    data-id="{{ $absensi->id }}"
+                                                    data-status="{{ $absensi->status }}"
+                                                    data-nama="{{ $absensi->user->name ?? '-' }}">
+
+                                                    <svg class="h-4 w-4" fill="none" stroke="currentColor"
+                                                        viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="1.8"
+                                                            d="M16.862 3.487a2.1 2.1 0 013.111 2.828L8.5 17.788 4 19l1.212-4.5L16.862 3.487Z" />
+                                                    </svg>
+                                                </button>
+
+                                                <button type="button" title="Hapus"
+                                                    class="btn-delete-absensi flex h-8 w-8 items-center justify-center rounded-lg border border-red-200 text-red-500 transition hover:bg-red-50"
+                                                    data-id="{{ $absensi->id }}"
+                                                    data-nama="{{ $absensi->user->name ?? '-' }}"
+                                                    data-tanggal="{{ $absensi->tanggal->format('d F Y') }}">
+
+                                                    <svg class="h-4 w-4" fill="none" stroke="currentColor"
+                                                        viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                                            stroke-width="1.8"
+                                                            d="M6 7h12M9 7V5a1 1 0 011-1h4a1 1 0 011 1v2m2 0-.7 12.1a2 2 0 01-2 1.9H8.7a2 2 0 01-2-1.9L6 7h12Z" />
+                                                    </svg>
+                                                </button>
+
+                                            </div>
+                                        </td>
+
                                     </tr>
                                 @empty
 
                                     <tr>
-                                        <td colspan="7" class="px-5 py-16 text-center">
+                                        <td colspan="8" class="px-5 py-16 text-center">
                                             <div class="flex flex-col items-center">
                                                 <div
-                                                    class="w-16 h-16 rounded-2xl
-                        bg-slate-100
-                        flex items-center justify-center
-                        mb-4">
-
+                                                    class="w-16 h-16 rounded-2xl bg-slate-100 flex items-center justify-center mb-4">
                                                     <svg class="w-8 h-8 text-slate-300" fill="none"
                                                         stroke="currentColor" viewBox="0 0 24 24">
                                                         <path stroke-linecap="round" stroke-linejoin="round"
                                                             stroke-width="1.5"
                                                             d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                                     </svg>
-
                                                 </div>
 
                                                 <p class="text-sm font-semibold text-slate-600">
@@ -722,13 +729,117 @@
                                                 <p class="text-xs text-slate-400 mt-1">
                                                     Data absensi kamu akan muncul di halaman ini.
                                                 </p>
-
                                             </div>
                                         </td>
                                     </tr>
                                 @endforelse
                             </tbody>
                         </table>
+                    </div>
+
+                    <div id="modal-edit-status" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+
+                        <div id="modal-edit-status-overlay" class="absolute inset-0 bg-black/40 backdrop-blur-sm">
+                        </div>
+
+                        <div class="relative w-full max-w-sm overflow-hidden rounded-2xl bg-white shadow-xl">
+
+                            <div class="flex items-center justify-between border-b border-slate-100 px-6 py-4">
+                                <h3 class="font-serif text-lg text-slate-900">Edit Status Absensi</h3>
+
+                                <button type="button" id="btn-close-edit-status"
+                                    class="flex h-8 w-8 items-center justify-center rounded-lg text-slate-400 transition hover:bg-slate-100 hover:text-slate-600">
+                                    <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M6 6l12 12M6 18L18 6" />
+                                    </svg>
+                                </button>
+                            </div>
+
+                            <form id="form-edit-status" method="POST" class="px-6 py-5">
+                                @csrf
+                                @method('PATCH')
+
+                                <p class="mb-4 text-sm text-slate-500">
+                                    Ubah status untuk <span id="edit-status-nama"
+                                        class="font-semibold text-slate-800"></span>
+                                </p>
+
+                                <label
+                                    class="mb-1.5 block text-xs font-medium uppercase tracking-wider text-slate-400">
+                                    Status
+                                </label>
+
+                                <select name="status" id="edit-status-select"
+                                    class="w-full rounded-xl border border-slate-200 px-4 py-2.5 text-sm text-slate-800 focus:border-slate-400 focus:outline-none">
+                                    <option value="hadir">Hadir</option>
+                                    <option value="sakit">Sakit</option>
+                                    <option value="izin">Izin</option>
+                                    <option value="alfa">Alfa</option>
+                                </select>
+
+                                <div class="mt-6 flex justify-end gap-2">
+                                    <button type="button" id="btn-cancel-edit-status"
+                                        class="rounded-xl border border-slate-200 px-5 py-2.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-50">
+                                        Batal
+                                    </button>
+
+                                    <button type="submit"
+                                        class="rounded-xl bg-[#111827] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-slate-800">
+                                        Simpan
+                                    </button>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+
+                    <div id="modal-delete-absensi" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
+
+                        <div id="modal-delete-absensi-overlay" class="absolute inset-0 bg-black/40 backdrop-blur-sm">
+                        </div>
+
+                        <div class="relative w-full max-w-sm overflow-hidden rounded-2xl bg-white shadow-xl">
+
+                            <div class="px-6 py-6 text-center">
+
+                                <div
+                                    class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-red-50">
+                                    <svg class="h-6 w-6 text-red-500" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"
+                                            d="M12 9v4m0 4h.01M10.29 3.86 1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0Z" />
+                                    </svg>
+                                </div>
+
+                                <h3 class="font-serif text-lg text-slate-900">Hapus Data Absensi?</h3>
+
+                                <p class="mt-2 text-sm text-slate-500">
+                                    Data absensi <span id="delete-absensi-nama"
+                                        class="font-semibold text-slate-700"></span>
+                                    pada <span id="delete-absensi-tanggal"
+                                        class="font-semibold text-slate-700"></span>
+                                    akan dihapus permanen dan tidak bisa dikembalikan.
+                                </p>
+
+                            </div>
+
+                            <form id="form-delete-absensi" method="POST" class="flex border-t border-slate-100">
+                                @csrf
+                                @method('DELETE')
+
+                                <button type="button" id="btn-cancel-delete-absensi"
+                                    class="flex-1 px-5 py-3.5 text-sm font-semibold text-slate-600 transition hover:bg-slate-50">
+                                    Batal
+                                </button>
+
+                                <button type="submit"
+                                    class="flex-1 border-l border-slate-100 px-5 py-3.5 text-sm font-semibold text-red-600 transition hover:bg-red-50">
+                                    Ya, Hapus
+                                </button>
+                            </form>
+
+                        </div>
                     </div>
 
                     @if ($absensis->count() > 0)
@@ -778,6 +889,70 @@
 
         btnToggle.addEventListener('click', openSidebar);
         overlay.addEventListener('click', closeSidebar);
+    </script>
+
+    <script>
+        const modalEditStatus = document.getElementById('modal-edit-status');
+        const modalEditStatusOverlay = document.getElementById('modal-edit-status-overlay');
+        const formEditStatus = document.getElementById('form-edit-status');
+        const editStatusSelect = document.getElementById('edit-status-select');
+        const editStatusNama = document.getElementById('edit-status-nama');
+        const btnCloseEditStatus = document.getElementById('btn-close-edit-status');
+        const btnCancelEditStatus = document.getElementById('btn-cancel-edit-status');
+
+        document.querySelectorAll('.btn-edit-status').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                const id = btn.dataset.id;
+                const status = btn.dataset.status;
+                const nama = btn.dataset.nama;
+
+                formEditStatus.action = `/admin/absensi/${id}/status`;
+                editStatusSelect.value = status;
+                editStatusNama.textContent = nama;
+
+                modalEditStatus.classList.remove('hidden');
+                modalEditStatus.classList.add('flex');
+            });
+        });
+
+        function closeEditStatusModal() {
+            modalEditStatus.classList.add('hidden');
+            modalEditStatus.classList.remove('flex');
+        }
+
+        btnCloseEditStatus.addEventListener('click', closeEditStatusModal);
+        btnCancelEditStatus.addEventListener('click', closeEditStatusModal);
+        modalEditStatusOverlay.addEventListener('click', closeEditStatusModal);
+    </script>
+
+    <script>
+        const modalDeleteAbsensi = document.getElementById('modal-delete-absensi');
+        const modalDeleteAbsensiOverlay = document.getElementById('modal-delete-absensi-overlay');
+        const formDeleteAbsensi = document.getElementById('form-delete-absensi');
+        const deleteAbsensiNama = document.getElementById('delete-absensi-nama');
+        const deleteAbsensiTanggal = document.getElementById('delete-absensi-tanggal');
+        const btnCancelDeleteAbsensi = document.getElementById('btn-cancel-delete-absensi');
+
+        document.querySelectorAll('.btn-delete-absensi').forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                const id = btn.dataset.id;
+
+                formDeleteAbsensi.action = `/admin/absensi/${id}`;
+                deleteAbsensiNama.textContent = btn.dataset.nama;
+                deleteAbsensiTanggal.textContent = btn.dataset.tanggal;
+
+                modalDeleteAbsensi.classList.remove('hidden');
+                modalDeleteAbsensi.classList.add('flex');
+            });
+        });
+
+        function closeDeleteAbsensiModal() {
+            modalDeleteAbsensi.classList.add('hidden');
+            modalDeleteAbsensi.classList.remove('flex');
+        }
+
+        btnCancelDeleteAbsensi.addEventListener('click', closeDeleteAbsensiModal);
+        modalDeleteAbsensiOverlay.addEventListener('click', closeDeleteAbsensiModal);
     </script>
 
 </body>

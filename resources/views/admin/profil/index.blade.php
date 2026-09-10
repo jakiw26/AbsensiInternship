@@ -18,28 +18,18 @@
         {{-- ============================================================
             SIDEBAR
         ============================================================= --}}
-        <aside
-            id="sidebar"
-            class="fixed inset-y-0 left-0 z-40 flex w-64
-            -translate-x-full transform flex-col
-            bg-[#111827] text-white shadow-2xl
-            transition-transform duration-200
-            md:translate-x-0">
+        <aside id="sidebar"
+            class="fixed inset-y-0 left-0 z-40 w-64 bg-[#111827] text-white flex flex-col
+            transform -translate-x-full md:translate-x-0 transition-transform duration-200 shadow-2xl">
 
             {{-- Logo --}}
-            <div class="flex items-center gap-3 border-b border-white/10 px-6 py-5">
+            <div class="flex items-center gap-3 px-6 py-6 border-b border-white/10">
 
-                <div class="h-10 w-10 flex-shrink-0 overflow-hidden rounded-xl bg-white shadow-sm">
-
-                    <img
-                        src="{{ asset('images/bts.png') }}"
-                        alt="Logo BTS.id"
-                        class="h-full w-full object-contain">
-
+                <div class="w-10 h-10 rounded-xl overflow-hidden bg-white flex-shrink-0 shadow-sm">
+                    <img src="{{ asset('images/bts.png') }}" alt="Logo" class="w-full h-full object-contain">
                 </div>
 
                 <div>
-
                     <p class="font-serif text-lg leading-tight text-white">
                         Absensi
                     </p>
@@ -47,40 +37,27 @@
                     <p class="text-xs text-white/40">
                         Admin Panel
                     </p>
-
                 </div>
 
             </div>
 
 
             {{-- Navigation --}}
-            <nav class="flex-1 space-y-1.5 px-4 py-6">
+            <nav class="flex-1 px-4 py-6 space-y-1.5">
 
                 {{-- Dashboard --}}
-                <a
-                    href="/admin/dashboard"
-                    class="flex items-center gap-3 rounded-xl px-3 py-3 text-sm transition
+                <a href="/admin/dashboard"
+                    class="flex items-center gap-3 px-3 py-3 rounded-xl text-sm transition
                     {{ request()->is('admin/dashboard')
-                        ? 'bg-white font-semibold text-[#111827] shadow-sm'
+                        ? 'bg-white text-[#111827] font-semibold shadow-sm'
                         : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
 
-                    <svg
-                        class="h-5 w-5 flex-shrink-0"
-                        viewBox="0 0 20 20"
-                        fill="none">
+                    <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 20 20" fill="none">
 
-                        <path
-                            d="M3 10.5 10 4l7 6.5"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
+                        <path d="M3 10.5 10 4l7 6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                             stroke-linejoin="round" />
 
-                        <path
-                            d="M5 9v7h10V9"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
+                        <path d="M5 9v7h10V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                             stroke-linejoin="round" />
 
                     </svg>
@@ -91,35 +68,24 @@
 
 
                 {{-- Data Internship --}}
-                <a
-                    href="/admin/internship"
-                    class="flex items-center gap-3 rounded-xl px-3 py-3 text-sm transition
+                <a href="/admin/internship"
+                    class="flex items-center gap-3 px-3 py-3 rounded-xl text-sm transition
                     {{ request()->is('admin/internship*')
-                        ? 'bg-white font-semibold text-[#111827] shadow-sm'
+                        ? 'bg-white text-[#111827] font-semibold shadow-sm'
                         : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
 
-                    <svg
-                        class="h-5 w-5 flex-shrink-0"
-                        viewBox="0 0 20 20"
-                        fill="none">
+                    <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none">
 
-                        <path
-                            d="M3.5 16.5v-9h13v9"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                            stroke-linejoin="round" />
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round" />
 
-                        <path
-                            d="M6 7.5V5a2 2 0 012-2h4a2 2 0 012 2v2.5"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                            stroke-linejoin="round" />
+                        <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.5" />
 
-                        <path
-                            d="M3.5 11h13M8 11v2h4v-2"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                            stroke-linejoin="round" />
+                        <path d="M22 21v-2a4 4 0 0 0-3-3.87" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round" />
+
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round" />
 
                     </svg>
 
@@ -129,30 +95,17 @@
 
 
                 {{-- Absensi --}}
-                <a
-                    href="/admin/absensi"
-                    class="flex items-center gap-3 rounded-xl px-3 py-3 text-sm transition
+                <a href="/admin/absensi"
+                    class="flex items-center gap-3 px-3 py-3 rounded-xl text-sm transition
                     {{ request()->is('admin/absensi*')
-                        ? 'bg-white font-semibold text-[#111827] shadow-sm'
+                        ? 'bg-white text-[#111827] font-semibold shadow-sm'
                         : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
 
-                    <svg
-                        class="h-5 w-5 flex-shrink-0"
-                        viewBox="0 0 20 20"
-                        fill="none">
+                    <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 20 20" fill="none">
 
-                        <circle
-                            cx="10"
-                            cy="10"
-                            r="7"
-                            stroke="currentColor"
-                            stroke-width="1.5" />
+                        <circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5" />
 
-                        <path
-                            d="M10 6v4l2.5 1.5"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                            stroke-linecap="round" />
+                        <path d="M10 6v4l2.5 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
 
                     </svg>
 
@@ -161,29 +114,19 @@
                 </a>
 
 
-                {{-- Nilai --}}
-                <a
-                    href="/admin/nilai"
-                    class="flex items-center gap-3 rounded-xl px-3 py-3 text-sm transition
+                {{-- Penilaian --}}
+                <a href="/admin/nilai"
+                    class="flex items-center gap-3 px-3 py-3 rounded-xl text-sm transition
                     {{ request()->is('admin/nilai*')
-                        ? 'bg-white font-semibold text-[#111827] shadow-sm'
+                        ? 'bg-white text-[#111827] font-semibold shadow-sm'
                         : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
 
-                    <svg
-                        class="h-5 w-5 flex-shrink-0"
-                        viewBox="0 0 20 20"
-                        fill="none">
+                    <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none">
 
-                        <path
-                            d="M6 3h8l2 2v12H4V5l2-2Z"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                            stroke-linejoin="round" />
+                        <path d="M6 3h8l2 2v16H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" stroke="currentColor"
+                            stroke-width="1.5" stroke-linejoin="round" />
 
-                        <path
-                            d="M7 8h6M7 11h6M7 14h4"
-                            stroke="currentColor"
-                            stroke-width="1.5"
+                        <path d="M9 9h4M9 13h4M9 17h3" stroke="currentColor" stroke-width="1.5"
                             stroke-linecap="round" />
 
                     </svg>
@@ -194,28 +137,17 @@
 
 
                 {{-- Laporan --}}
-                <a
-                    href="/admin/laporan"
-                    class="flex items-center gap-3 rounded-xl px-3 py-3 text-sm transition
+                <a href="/admin/laporan"
+                    class="flex items-center gap-3 px-3 py-3 rounded-xl text-sm transition
                     {{ request()->is('admin/laporan*')
-                        ? 'bg-white font-semibold text-[#111827] shadow-sm'
+                        ? 'bg-white text-[#111827] font-semibold shadow-sm'
                         : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
 
-                    <svg
-                        class="h-5 w-5 flex-shrink-0"
-                        viewBox="0 0 20 20"
-                        fill="none">
+                    <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none">
 
-                        <path
-                            d="M4 4h12v13l-3-2-3 2-3-2-3 2V4Z"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                            stroke-linejoin="round" />
+                        <path d="M5 3h14v18H5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
 
-                        <path
-                            d="M7 8h6M7 11h6"
-                            stroke="currentColor"
-                            stroke-width="1.5"
+                        <path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.5"
                             stroke-linecap="round" />
 
                     </svg>
@@ -228,42 +160,26 @@
 
 
             {{-- User Sidebar --}}
-            <div class="border-t border-white/10 px-4 py-4">
+            <div class="px-4 py-4 border-t border-white/10">
 
                 <div class="flex items-center gap-3 px-2 py-2">
 
-                    {{-- Avatar --}}
                     <div
-                        class="flex h-10 w-10 flex-shrink-0
-                        items-center justify-center
-                        overflow-hidden rounded-full
-                        bg-gradient-to-br from-amber-400 to-yellow-600
-                        text-sm font-semibold text-white shadow-lg">
+                        class="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-yellow-600
+                        flex items-center justify-center text-white text-sm font-semibold
+                        flex-shrink-0 shadow-lg">
 
-                        @if (auth()->user()->profil?->foto)
-
-                            <img
-                                src="{{ asset('storage/' . auth()->user()->profil->foto) }}"
-                                alt="Foto Profil"
-                                class="h-full w-full object-cover">
-
-                        @else
-
-                            {{ strtoupper(substr(auth()->user()->name ?? 'A', 0, 1)) }}
-
-                        @endif
+                        {{ strtoupper(substr(auth()->user()->name ?? 'A', 0, 1)) }}
 
                     </div>
 
-
-                    {{-- User Information --}}
                     <div class="min-w-0">
 
-                        <p class="truncate text-sm font-medium text-white">
-                            {{ auth()->user()->name ?? 'Admin' }}
+                        <p class="text-sm font-medium text-white truncate">
+                            {{ auth()->user()->name ?? 'Administrator' }}
                         </p>
 
-                        <p class="truncate text-xs text-white/40">
+                        <p class="text-xs text-white/40 truncate">
                             {{ auth()->user()->email ?? '-' }}
                         </p>
 
@@ -279,9 +195,7 @@
         {{-- ============================================================
             MOBILE OVERLAY
         ============================================================= --}}
-        <div
-            id="overlay"
-            class="fixed inset-0 z-30 hidden bg-black/40 backdrop-blur-sm md:hidden">
+        <div id="overlay" class="fixed inset-0 z-30 hidden bg-black/40 backdrop-blur-sm md:hidden">
         </div>
 
 
@@ -302,23 +216,15 @@
                 <div class="flex items-center gap-4">
 
                     {{-- Mobile Sidebar --}}
-                    <button
-                        id="btn-toggle-sidebar"
-                        type="button"
+                    <button id="btn-toggle-sidebar" type="button"
                         class="flex h-10 w-10 items-center
                         justify-center rounded-xl bg-slate-100
                         text-slate-700 transition hover:bg-slate-200
                         md:hidden">
 
-                        <svg
-                            class="h-5 w-5"
-                            viewBox="0 0 24 24"
-                            fill="none">
+                        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none">
 
-                            <path
-                                d="M4 6h16M4 12h16M4 18h16"
-                                stroke="currentColor"
-                                stroke-width="1.5"
+                            <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.5"
                                 stroke-linecap="round" />
 
                         </svg>
@@ -355,34 +261,25 @@
                 {{-- Profile Dropdown --}}
                 <div class="relative">
 
-                    <button
-                        type="button"
-                        id="profile-menu-button"
+                    <button type="button" id="profile-menu-button"
                         class="flex h-10 w-10 items-center
                         justify-center overflow-hidden rounded-full
-                        bg-gradient-to-br from-amber-400 to-yellow-600
+                        bg-slate-700
                         text-sm font-semibold text-white shadow-sm
                         transition hover:scale-105">
 
                         @if (auth()->user()->profil?->foto)
-
-                            <img
-                                src="{{ asset('storage/' . auth()->user()->profil->foto) }}"
-                                alt="Foto Profil"
+                            <img src="{{ asset('storage/' . auth()->user()->profil->foto) }}" alt="Foto Profil"
                                 class="h-full w-full object-cover">
-
                         @else
-
                             {{ strtoupper(substr(auth()->user()->name ?? 'A', 0, 1)) }}
-
                         @endif
 
                     </button>
 
 
                     {{-- Dropdown --}}
-                    <div
-                        id="profile-menu"
+                    <div id="profile-menu"
                         class="absolute right-0 z-50 mt-3 hidden
                         w-60 overflow-hidden rounded-2xl
                         border border-slate-100 bg-white
@@ -403,8 +300,7 @@
 
 
                         {{-- Profile --}}
-                        <a
-                            href="/admin/profil"
+                        <a href="/admin/profil"
                             class="flex items-center gap-3
                             bg-slate-50 px-4 py-3
                             text-sm font-medium text-slate-700">
@@ -413,16 +309,10 @@
                                 class="flex h-8 w-8 items-center
                                 justify-center rounded-lg bg-white">
 
-                                <svg
-                                    class="h-4 w-4 text-slate-500"
-                                    fill="none"
-                                    stroke="currentColor"
+                                <svg class="h-4 w-4 text-slate-500" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
 
-                                    <path
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M5.121 17.804A9 9 0 0112 15a9 9 0 016.879 2.804M15 9a3 3 0 11-6 0 3 3 0 016 0zm6 3a9 9 0 11-18 0 9 9 0 0118 0z" />
 
                                 </svg>
@@ -439,8 +329,7 @@
 
                             @csrf
 
-                            <button
-                                type="submit"
+                            <button type="submit"
                                 class="flex w-full items-center gap-3
                                 px-4 py-3 text-sm text-red-500
                                 transition hover:bg-red-50">
@@ -449,16 +338,9 @@
                                     class="flex h-8 w-8 items-center
                                     justify-center rounded-lg bg-red-50">
 
-                                    <svg
-                                        class="h-4 w-4"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        viewBox="0 0 24 24">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
 
                                     </svg>
@@ -502,7 +384,7 @@
 
                                 <div class="mb-1.5 flex items-center gap-2">
 
-                                    <span class="h-2 w-2 rounded-full bg-amber-400">
+                                    <span class="h-2 w-2 rounded-full bg-slate-300">
                                     </span>
 
                                     <p
@@ -527,31 +409,31 @@
 
 
                             {{-- Edit Button --}}
-                            <a
+                            {{-- <a
                                 href="/admin/profil/edit"
                                 class="inline-flex w-fit items-center
                                 justify-center gap-2 rounded-xl
                                 bg-[#111827] px-5 py-2.5
                                 text-sm font-semibold text-white
                                 shadow-sm transition hover:bg-slate-800">
-
+ 
                                 <svg
                                     class="h-4 w-4"
                                     fill="none"
                                     stroke="currentColor"
                                     viewBox="0 0 24 24">
-
+ 
                                     <path
                                         stroke-linecap="round"
                                         stroke-linejoin="round"
                                         stroke-width="1.8"
                                         d="M16.862 3.487a2.1 2.1 0 013.111 2.828L8.5 17.788 4 19l1.212-4.5L16.862 3.487Z" />
-
+ 
                                 </svg>
-
+ 
                                 Edit Profil
-
-                            </a>
+ 
+                            </a> --}}
 
                         </div>
 
@@ -570,62 +452,35 @@
                         border border-slate-200 bg-white
                         shadow-sm">
 
-                        {{-- Profile Cover --}}
-                        <div
-                            class="relative h-24 overflow-hidden
-                            bg-[#111827] md:h-28">
-
-                            <div
-                                class="absolute -right-8 -top-14
-                                h-40 w-40 rounded-full
-                                bg-amber-400/10">
-                            </div>
-
-                            <div
-                                class="absolute -bottom-16 right-24
-                                h-32 w-32 rounded-full
-                                bg-amber-400/5">
-                            </div>
-
-                        </div>
-
-
                         {{-- Profile Information --}}
-                        <div class="px-5 pb-5 md:px-7 md:pb-6">
+                        <div class="px-5 pt-6 pb-5 md:px-7 md:pb-6">
 
                             <div
-                                class="-mt-12 flex flex-col gap-4
-                                sm:flex-row sm:items-end">
+                                class="flex flex-col gap-4
+                                sm:flex-row sm:items-center">
 
                                 {{-- Avatar --}}
                                 <div
-                                    class="flex h-24 w-24 flex-shrink-0
+                                    class="flex h-20 w-20 flex-shrink-0
                                     items-center justify-center
                                     overflow-hidden rounded-2xl
-                                    border-4 border-white
-                                    bg-gradient-to-br from-amber-400
-                                    to-yellow-600
-                                    text-2xl font-bold text-white
-                                    shadow-lg md:h-26 md:w-26">
+                                    border border-slate-200
+                                    bg-slate-100
+                                    text-2xl font-bold text-slate-500
+                                    md:h-24 md:w-24">
 
                                     @if (auth()->user()->profil?->foto)
-
-                                        <img
-                                            src="{{ asset('storage/' . auth()->user()->profil->foto) }}"
-                                            alt="Foto Profil"
-                                            class="h-full w-full object-cover">
-
+                                        <img src="{{ asset('storage/' . auth()->user()->profil->foto) }}"
+                                            alt="Foto Profil" class="h-full w-full object-cover">
                                     @else
-
                                         {{ strtoupper(substr(auth()->user()->name ?? 'A', 0, 1)) }}
-
                                     @endif
 
                                 </div>
 
 
                                 {{-- Identity --}}
-                                <div class="min-w-0 pb-1">
+                                <div class="min-w-0">
 
                                     <h2
                                         class="truncate text-xl font-bold
@@ -650,7 +505,6 @@
                             <div class="mt-4 flex flex-wrap items-center gap-2">
 
                                 @if (auth()->user()->is_active)
-
                                     <span
                                         class="inline-flex items-center gap-2
                                         rounded-full bg-emerald-50
@@ -665,9 +519,7 @@
                                         Akun Aktif
 
                                     </span>
-
                                 @else
-
                                     <span
                                         class="inline-flex items-center gap-2
                                         rounded-full bg-red-50
@@ -682,7 +534,6 @@
                                         Tidak Aktif
 
                                     </span>
-
                                 @endif
 
 
@@ -719,8 +570,7 @@
                             bg-white shadow-sm lg:col-span-2">
 
                             {{-- Header --}}
-                            <div
-                                class="border-b border-slate-100
+                            <div class="border-b border-slate-100
                                 px-5 py-4 md:px-6">
 
                                 <div class="flex items-center gap-3">
@@ -728,18 +578,12 @@
                                     <div
                                         class="flex h-10 w-10
                                         items-center justify-center
-                                        rounded-xl bg-amber-50">
+                                        rounded-xl bg-slate-100">
 
-                                        <svg
-                                            class="h-5 w-5 text-amber-500"
-                                            fill="none"
-                                            stroke="currentColor"
+                                        <svg class="h-5 w-5 text-slate-500" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
 
-                                            <path
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round"
-                                                stroke-width="1.5"
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                                 d="M15 19a6 6 0 00-12 0M9 10a4 4 0 110-8 4 4 0 010 8Zm7-6v6m3-3h-6" />
 
                                         </svg>
@@ -779,15 +623,10 @@
                                             items-center justify-center
                                             rounded-lg bg-slate-100">
 
-                                            <svg
-                                                class="h-4 w-4 text-slate-500"
-                                                fill="none"
-                                                stroke="currentColor"
+                                            <svg class="h-4 w-4 text-slate-500" fill="none" stroke="currentColor"
                                                 viewBox="0 0 24 24">
 
-                                                <path
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
+                                                <path stroke-linecap="round" stroke-linejoin="round"
                                                     stroke-width="1.5"
                                                     d="M15 19a6 6 0 00-12 0M9 10a4 4 0 110-8 4 4 0 010 8Z" />
 
@@ -825,15 +664,10 @@
                                             items-center justify-center
                                             rounded-lg bg-slate-100">
 
-                                            <svg
-                                                class="h-4 w-4 text-slate-500"
-                                                fill="none"
-                                                stroke="currentColor"
+                                            <svg class="h-4 w-4 text-slate-500" fill="none" stroke="currentColor"
                                                 viewBox="0 0 24 24">
 
-                                                <path
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
+                                                <path stroke-linecap="round" stroke-linejoin="round"
                                                     stroke-width="1.5"
                                                     d="M3 7l9 6 9-6M5 5h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2Z" />
 
@@ -871,15 +705,10 @@
                                             items-center justify-center
                                             rounded-lg bg-slate-100">
 
-                                            <svg
-                                                class="h-4 w-4 text-slate-500"
-                                                fill="none"
-                                                stroke="currentColor"
+                                            <svg class="h-4 w-4 text-slate-500" fill="none" stroke="currentColor"
                                                 viewBox="0 0 24 24">
 
-                                                <path
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
+                                                <path stroke-linecap="round" stroke-linejoin="round"
                                                     stroke-width="1.5"
                                                     d="M6.5 3h2l1.5 4-2 1.5a15 15 0 007.5 7.5l1.5-2 4 1.5v2a2 2 0 01-2 2C11.82 19.5 4.5 12.18 4.5 3.5A2 2 0 016.5 3Z" />
 
@@ -917,23 +746,14 @@
                                             items-center justify-center
                                             rounded-lg bg-slate-100">
 
-                                            <svg
-                                                class="h-4 w-4 text-slate-500"
-                                                fill="none"
-                                                stroke="currentColor"
+                                            <svg class="h-4 w-4 text-slate-500" fill="none" stroke="currentColor"
                                                 viewBox="0 0 24 24">
 
-                                                <path
-                                                    stroke-linecap="round"
-                                                    stroke-linejoin="round"
+                                                <path stroke-linecap="round" stroke-linejoin="round"
                                                     stroke-width="1.5"
                                                     d="M12 21s7-6.1 7-12a7 7 0 10-14 0c0 5.9 7 12 7 12Z" />
 
-                                                <circle
-                                                    cx="12"
-                                                    cy="9"
-                                                    r="2.5"
-                                                    stroke="currentColor"
+                                                <circle cx="12" cy="9" r="2.5" stroke="currentColor"
                                                     stroke-width="1.5" />
 
                                             </svg>
@@ -969,8 +789,7 @@
                             bg-white shadow-sm">
 
                             {{-- Header --}}
-                            <div
-                                class="border-b border-slate-100
+                            <div class="border-b border-slate-100
                                 px-5 py-4">
 
                                 <div class="flex items-center gap-3">
@@ -978,27 +797,17 @@
                                     <div
                                         class="flex h-10 w-10
                                         items-center justify-center
-                                        rounded-xl bg-emerald-50">
+                                        rounded-xl bg-slate-100">
 
-                                        <svg
-                                            class="h-5 w-5 text-emerald-500"
-                                            fill="none"
-                                            stroke="currentColor"
+                                        <svg class="h-5 w-5 text-slate-500" fill="none" stroke="currentColor"
                                             viewBox="0 0 24 24">
 
-                                            <path
-                                                stroke="currentColor"
-                                                stroke-width="1.5"
-                                                stroke-linecap="round"
+                                            <path stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                                                 stroke-linejoin="round"
                                                 d="M12 3l7 4v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V7l7-4Z" />
 
-                                            <path
-                                                d="m9 12 2 2 4-4"
-                                                stroke="currentColor"
-                                                stroke-width="1.5"
-                                                stroke-linecap="round"
-                                                stroke-linejoin="round" />
+                                            <path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.5"
+                                                stroke-linecap="round" stroke-linejoin="round" />
 
                                         </svg>
 
@@ -1038,7 +847,6 @@
                                     <div class="mt-2">
 
                                         @if (auth()->user()->is_active)
-
                                             <span
                                                 class="inline-flex items-center
                                                 gap-2 rounded-full
@@ -1054,9 +862,7 @@
                                                 Aktif
 
                                             </span>
-
                                         @else
-
                                             <span
                                                 class="inline-flex items-center
                                                 gap-2 rounded-full
@@ -1072,7 +878,6 @@
                                                 Tidak Aktif
 
                                             </span>
-
                                         @endif
 
                                     </div>
@@ -1167,8 +972,7 @@
                         Informasi akun administrator tersimpan dalam sistem.
                     </p>
 
-                    <div
-                        class="flex items-center gap-2
+                    <div class="flex items-center gap-2
                         text-xs text-slate-400">
 
                         <span class="h-2 w-2 rounded-full bg-emerald-500">

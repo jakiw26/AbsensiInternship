@@ -288,71 +288,49 @@
         .signature-table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 35px;
+            margin-top: 30px;
         }
 
-        .signature-table td {
-            width: 100%;
-            text-align: right;
+        .signature-left {
+            width: 60%;
+        }
+
+        .signature-right {
+            width: 40%;
+            text-align: center;
             vertical-align: top;
-            padding-right: 70px;
         }
 
         .signature-title {
-            margin-bottom: 4px;
+            margin-bottom: 8px;
             font-size: 11px;
-            color: #111827;
+            text-align: center;
         }
 
         .signature-space {
-            width: 180px;
-            height: 85px;
-            margin-left: auto;
-            position: relative;
+            width: 100%;
+            height: 80px;
+            text-align: center;
         }
 
         .signature-image {
-            position: absolute;
-            top: 5px;
-            left: 15px;
-            width: 105px;
+            width: 120px;
             height: auto;
-            z-index: 2;
-        }
-
-        .stamp-image {
-            position: absolute;
-            top: 5px;
-            left: 75px;
-            width: 75px;
-            height: auto;
-            opacity: 0.75;
-            z-index: 1;
+            display: inline-block;
+            margin-top: 5px;
         }
 
         .signature-name {
-            margin-top: 3px;
+            margin-top: 5px;
+            font-size: 11px;
             font-weight: bold;
-            text-decoration: underline;
+            text-align: center;
         }
 
         .signature-role {
-            margin-top: 2px;
+            margin-top: 3px;
             font-size: 10px;
-            color: #6b7280;
-        }
-
-        /* =====================================================
-            FOOTER
-        ====================================================== */
-
-        .footer {
-            margin-top: 25px;
-            padding-top: 8px;
-            border-top: 1px solid #d1d5db;
             text-align: center;
-            font-size: 9px;
-            color: #6b7280;
         }
 
         /* =====================================================
@@ -419,6 +397,17 @@
             color: #6b7280;
         }
 
+        .footer {
+            width: 100%;
+            margin-top: 30px;
+            padding-top: 8px;
+            border-top: 1px solid #d1d5db;
+            text-align: center;
+            font-size: 9px;
+            color: #6b7280;
+            line-height: 1.4;
+        }
+
         /* =====================================================
             PAGE BREAK
         ====================================================== */
@@ -440,9 +429,7 @@
     ====================================================== --}}
 
     @if (file_exists(public_path('images/bts.png')))
-        <img src="{{ public_path('images/bts.png') }}"
-            alt="Background BTS.id"
-            class="page-background">
+        <img src="{{ public_path('images/bts.png') }}" alt="Background BTS.id" class="page-background">
     @endif
 
 
@@ -457,32 +444,46 @@
             <div class="cover-content">
 
                 @if (file_exists(public_path('images/bts.png')))
-                    <img src="{{ public_path('images/bts.png') }}"
-                        alt="BTS.id"
-                        class="cover-logo">
+                    <img src="{{ public_path('images/bts.png') }}" alt="BTS.id" class="cover-logo">
                 @endif
+
 
                 <h1 class="cover-title">
                     LAPORAN INTERNSHIP
                 </h1>
 
+
                 <div class="cover-line"></div>
+
 
                 <div class="cover-subtitle">
                     Laporan Kegiatan dan Hasil Penilaian
                 </div>
 
+
                 <div class="cover-name">
                     {{ $user->name ?? '-' }}
                 </div>
 
+
                 <div class="cover-company">
+
                     Program Internship
+
                     <br>
+
                     BTS.id
+
+                    <div class="cover-address">
+                        Jl. Terusan Sutami I No.36,
+                        Sukagalih, Kec. Sukajadi,
+                        Kota Bandung, Jawa Barat 40163
+                    </div>
+
                 </div>
 
             </div>
+
 
             <div class="cover-footer">
                 {{ now()->translatedFormat('F Y') }}
@@ -504,8 +505,7 @@
                     <td class="header-logo">
 
                         @if (file_exists(public_path('images/bts.png')))
-                            <img src="{{ public_path('images/bts.png') }}"
-                                alt="BTS">
+                            <img src="{{ public_path('images/bts.png') }}" alt="BTS">
                         @endif
 
                     </td>
@@ -722,7 +722,6 @@
                 <tbody>
 
                     @forelse ($absensis as $index => $absensi)
-
                         <tr>
 
                             <td>
@@ -744,35 +743,25 @@
                             <td>
 
                                 @if ($absensi->status === 'hadir')
-
                                     <span class="status status-hadir">
                                         Hadir
                                     </span>
-
                                 @elseif ($absensi->status === 'sakit')
-
                                     <span class="status status-sakit">
                                         Sakit
                                     </span>
-
                                 @elseif ($absensi->status === 'izin')
-
                                     <span class="status status-izin">
                                         Izin
                                     </span>
-
                                 @elseif ($absensi->status === 'alfa')
-
                                     <span class="status status-alfa">
                                         Alfa
                                     </span>
-
                                 @else
-
                                     <span class="status">
                                         {{ ucfirst($absensi->status ?? '-') }}
                                     </span>
-
                                 @endif
 
                             </td>
@@ -788,7 +777,6 @@
                             </td>
 
                         </tr>
-
                     @endforelse
 
                 </tbody>
@@ -886,49 +874,20 @@
         ====================================================== --}}
 
         <table class="signature-table">
-
-            <tr>
-
-                <td>
-
-                    <div class="signature-title">
-                        Pembimbing
-                    </div>
-
+            <tr> {{-- KOLOM KOSONG --}} <td class="signature-left"></td> {{-- KOLOM TANDA TANGAN --}} <td
+                    class="signature-right">
+                    <div class="signature-title"> Pembimbing </div>
                     <div class="signature-space">
-
-                        @if (file_exists(public_path('images/ttd-vera.png')))
-
-                            <img src="{{ public_path('images/ttd-vera.png') }}"
-                                alt="Tanda Tangan Bu Vera"
+                        @if (file_exists(public_path('images/ttd.jpeg')))
+                            <img src="{{ public_path('images/ttd.jpeg') }}" alt="TTD Pembimbing"
                                 class="signature-image">
-
                         @endif
-
-                        @if (file_exists(public_path('images/cap-bts.png')))
-
-                            <img src="{{ public_path('images/cap-bts.png') }}"
-                                alt="Cap BTS.id"
-                                class="stamp-image">
-
-                        @endif
-
                     </div>
-
-                    <div class="signature-name">
-                        Pinpinan BTS.id
-                    </div>
-
-                    <div class="signature-role">
-                        Pembimbing Internship
-                    </div>
-
+                    <div class="signature-name"> Pimpinan BTS.id </div>
+                    <div class="signature-role"> Pembimbing Internship </div>
                 </td>
-
             </tr>
-
         </table>
-
 
         {{-- =====================================================
             FOOTER

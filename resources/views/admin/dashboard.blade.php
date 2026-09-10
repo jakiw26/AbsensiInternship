@@ -25,9 +25,7 @@
             <div class="flex items-center gap-3 px-6 py-6 border-b border-white/10">
 
                 <div class="w-10 h-10 rounded-xl overflow-hidden bg-white flex-shrink-0 shadow-sm">
-                    <img src="{{ asset('images/bts.png') }}"
-                        alt="Logo"
-                        class="w-full h-full object-contain">
+                    <img src="{{ asset('images/bts.png') }}" alt="Logo" class="w-full h-full object-contain">
                 </div>
 
                 <div>
@@ -53,20 +51,12 @@
                         ? 'bg-white text-[#111827] font-semibold shadow-sm'
                         : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
 
-                    <svg class="w-5 h-5 flex-shrink-0"
-                        viewBox="0 0 20 20"
-                        fill="none">
+                    <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 20 20" fill="none">
 
-                        <path d="M3 10.5 10 4l7 6.5"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
+                        <path d="M3 10.5 10 4l7 6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                             stroke-linejoin="round" />
 
-                        <path d="M5 9v7h10V9"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
+                        <path d="M5 9v7h10V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                             stroke-linejoin="round" />
 
                     </svg>
@@ -83,33 +73,18 @@
                         ? 'bg-white text-[#111827] font-semibold shadow-sm'
                         : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
 
-                    <svg class="w-5 h-5 flex-shrink-0"
-                        viewBox="0 0 24 24"
-                        fill="none">
+                    <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none">
 
-                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round" />
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round" />
 
-                        <circle cx="9"
-                            cy="7"
-                            r="4"
-                            stroke="currentColor"
-                            stroke-width="1.5" />
+                        <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.5" />
 
-                        <path d="M22 21v-2a4 4 0 0 0-3-3.87"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round" />
+                        <path d="M22 21v-2a4 4 0 0 0-3-3.87" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round" />
 
-                        <path d="M16 3.13a4 4 0 0 1 0 7.75"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round" />
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round" />
 
                     </svg>
 
@@ -125,20 +100,11 @@
                         ? 'bg-white text-[#111827] font-semibold shadow-sm'
                         : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
 
-                    <svg class="w-5 h-5 flex-shrink-0"
-                        viewBox="0 0 20 20"
-                        fill="none">
+                    <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 20 20" fill="none">
 
-                        <circle cx="10"
-                            cy="10"
-                            r="7"
-                            stroke="currentColor"
-                            stroke-width="1.5" />
+                        <circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5" />
 
-                        <path d="M10 6v4l2.5 1.5"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                            stroke-linecap="round" />
+                        <path d="M10 6v4l2.5 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
 
                     </svg>
 
@@ -154,18 +120,12 @@
                         ? 'bg-white text-[#111827] font-semibold shadow-sm'
                         : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
 
-                    <svg class="w-5 h-5 flex-shrink-0"
-                        viewBox="0 0 24 24"
-                        fill="none">
+                    <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none">
 
-                        <path d="M6 3h8l2 2v16H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                            stroke-linejoin="round" />
+                        <path d="M6 3h8l2 2v16H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" stroke="currentColor"
+                            stroke-width="1.5" stroke-linejoin="round" />
 
-                        <path d="M9 9h4M9 13h4M9 17h3"
-                            stroke="currentColor"
-                            stroke-width="1.5"
+                        <path d="M9 9h4M9 13h4M9 17h3" stroke="currentColor" stroke-width="1.5"
                             stroke-linecap="round" />
 
                     </svg>
@@ -182,18 +142,11 @@
                         ? 'bg-white text-[#111827] font-semibold shadow-sm'
                         : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
 
-                    <svg class="w-5 h-5 flex-shrink-0"
-                        viewBox="0 0 24 24"
-                        fill="none">
+                    <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none">
 
-                        <path d="M5 3h14v18H5z"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                            stroke-linejoin="round" />
+                        <path d="M5 3h14v18H5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
 
-                        <path d="M8 8h8M8 12h8M8 16h5"
-                            stroke="currentColor"
-                            stroke-width="1.5"
+                        <path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.5"
                             stroke-linecap="round" />
 
                     </svg>
@@ -241,8 +194,7 @@
         {{-- =====================================================
             MOBILE OVERLAY
         ====================================================== --}}
-        <div id="overlay"
-            class="fixed inset-0 bg-black/40 backdrop-blur-sm z-30 hidden md:hidden">
+        <div id="overlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-30 hidden md:hidden">
         </div>
 
 
@@ -266,13 +218,9 @@
                         flex items-center justify-center text-slate-700
                         hover:bg-slate-200 transition">
 
-                        <svg class="w-5 h-5"
-                            viewBox="0 0 24 24"
-                            fill="none">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none">
 
-                            <path d="M4 6h16M4 12h16M4 18h16"
-                                stroke="currentColor"
-                                stroke-width="1.5"
+                            <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.5"
                                 stroke-linecap="round" />
 
                         </svg>
@@ -303,8 +251,7 @@
                 {{-- Profile --}}
                 <div class="relative">
 
-                    <button type="button"
-                        id="profile-menu-button"
+                    <button type="button" id="profile-menu-button"
                         class="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-yellow-600
                         flex items-center justify-center text-white text-sm font-semibold
                         hover:scale-105 transition shadow-sm">
@@ -340,14 +287,10 @@
 
                             <div class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center">
 
-                                <svg class="w-4 h-4 text-slate-500"
-                                    fill="none"
-                                    stroke="currentColor"
+                                <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
 
-                                    <path stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                        stroke-width="2"
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M5.121 17.804A9 9 0 0112 15a9 9 0 016.879 2.804M15 9a3 3 0 11-6 0 3 3 0 016 0zm6 3a9 9 0 11-18 0 9 9 0 0118 0z" />
 
                                 </svg>
@@ -370,14 +313,9 @@
 
                                 <div class="w-8 h-8 rounded-lg bg-red-50 flex items-center justify-center">
 
-                                    <svg class="w-4 h-4"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        viewBox="0 0 24 24">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 
-                                        <path stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
 
                                     </svg>
@@ -397,6 +335,79 @@
             </header>
 
 
+            @if (session('success'))
+                <div id="success-alert"
+                    class="fixed top-6 right-6 z-50 w-[380px] max-w-[calc(100%-2rem)]
+                        rounded-2xl border border-emerald-100 bg-white
+                        p-4 shadow-2xl shadow-emerald-100/50
+                        transition-all duration-500 ease-in-out">
+
+                    <div class="flex items-start gap-4">
+                        <div
+                            class="flex h-11 w-11 shrink-0 items-center justify-center
+                                rounded-full bg-emerald-100">
+                            <svg class="h-6 w-6 text-emerald-600" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 13l4 4L19 7" />
+                            </svg>
+                        </div>
+
+
+                        <div class="flex-1">
+                            <h3 class="text-sm font-bold text-slate-900">
+                                Berhasil!
+                            </h3>
+                            <p class="mt-1 text-sm text-slate-500">
+                                {{ session('success') }}
+                            </p>
+                        </div>
+
+                        <button type="button" onclick="closeAlert()"
+                            class="text-slate-300 hover:text-slate-500 transition">
+                            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div class="mt-4 h-1 overflow-hidden rounded-full bg-slate-100">
+                        <div id="progress-bar" class="h-full rounded-full bg-emerald-500"
+                            style="width: 100%; transition: width 4s linear;">
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    const alertBox = document.getElementById('success-alert');
+                    const progressBar = document.getElementById('progress-bar');
+
+                    function closeAlert() {
+                        if (!alertBox) return;
+
+                        alertBox.classList.add(
+                            'translate-x-[120%]',
+                            'opacity-0'
+                        );
+
+                        setTimeout(() => {
+                            alertBox.remove();
+                        }, 500);
+                    }
+
+                    setTimeout(() => {
+                        if (progressBar) {
+                            progressBar.style.width = '0%';
+                        }
+                    }, 100);
+
+                    setTimeout(() => {
+                        closeAlert();
+                    }, 4000);
+                </script>
+            @endif
+
             {{-- =================================================
                 CONTENT
             ================================================== --}}
@@ -411,12 +422,10 @@
                     p-6 md:p-8 text-white shadow-xl shadow-slate-200">
 
                     {{-- Decorative Circle --}}
-                    <div
-                        class="absolute -right-16 -top-20 w-64 h-64 rounded-full bg-amber-400/10">
+                    <div class="absolute -right-16 -top-20 w-64 h-64 rounded-full bg-amber-400/10">
                     </div>
 
-                    <div
-                        class="absolute -right-5 -bottom-28 w-72 h-72 rounded-full bg-white/5">
+                    <div class="absolute -right-5 -bottom-28 w-72 h-72 rounded-full bg-white/5">
                     </div>
 
 
@@ -452,8 +461,7 @@
 
 
                         {{-- Date --}}
-                        <div
-                            class="bg-white/10 backdrop-blur rounded-2xl px-5 py-4 min-w-[190px]">
+                        <div class="bg-white/10 backdrop-blur rounded-2xl px-5 py-4 min-w-[190px]">
 
                             <p class="text-xs text-white/40">
                                 Hari ini
@@ -519,14 +527,10 @@
                                     class="flex h-11 w-11 items-center justify-center
                                     rounded-xl bg-slate-100">
 
-                                    <svg class="h-5 w-5 text-slate-500"
-                                        fill="none"
-                                        stroke="currentColor"
+                                    <svg class="h-5 w-5 text-slate-500" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
 
-                                        <path stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="1.5"
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                             d="M17 20h5v-2a4 4 0 00-4-4h-1M9 20H4v-2a4 4 0 014-4h1m4-9a4 4 0 110 8 4 4 0 010-8zm6 4a3 3 0 11-6 0" />
 
                                     </svg>
@@ -562,14 +566,10 @@
                                     class="flex h-11 w-11 items-center justify-center
                                     rounded-xl bg-emerald-50">
 
-                                    <svg class="h-5 w-5 text-emerald-500"
-                                        fill="none"
-                                        stroke="currentColor"
+                                    <svg class="h-5 w-5 text-emerald-500" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
 
-                                        <path stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M5 13l4 4L19 7" />
 
                                     </svg>
@@ -605,14 +605,10 @@
                                     class="flex h-11 w-11 items-center justify-center
                                     rounded-xl bg-blue-50">
 
-                                    <svg class="h-5 w-5 text-blue-500"
-                                        fill="none"
-                                        stroke="currentColor"
+                                    <svg class="h-5 w-5 text-blue-500" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
 
-                                        <path stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h7l5 5v11a2 2 0 01-2 2z" />
 
                                     </svg>
@@ -648,14 +644,10 @@
                                     class="flex h-11 w-11 items-center justify-center
                                     rounded-xl bg-red-50">
 
-                                    <svg class="h-5 w-5 text-red-500"
-                                        fill="none"
-                                        stroke="currentColor"
+                                    <svg class="h-5 w-5 text-red-500" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
 
-                                        <path stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M6 18L18 6M6 6l12 12" />
 
                                     </svg>
@@ -698,15 +690,10 @@
 
                             Lihat Semua
 
-                            <svg class="w-4 h-4"
-                                viewBox="0 0 20 20"
-                                fill="none">
+                            <svg class="w-4 h-4" viewBox="0 0 20 20" fill="none">
 
-                                <path d="M4 10h12M11 5l5 5-5 5"
-                                    stroke="currentColor"
-                                    stroke-width="1.5"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round" />
+                                <path d="M4 10h12M11 5l5 5-5 5" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
 
                             </svg>
 
@@ -760,7 +747,6 @@
                                 <tbody class="divide-y divide-slate-100">
 
                                     @forelse ($absensisHariIni as $absensi)
-
                                         <tr class="hover:bg-slate-50/70 transition">
 
                                             {{-- Nama --}}
@@ -798,25 +784,20 @@
                                             <td class="px-5 py-4 whitespace-nowrap">
 
                                                 @if ($absensi->jam_masuk)
-
                                                     <span
                                                         class="inline-flex items-center gap-2
                                                         font-medium text-emerald-600">
 
-                                                        <span
-                                                            class="w-2 h-2 rounded-full bg-emerald-500">
+                                                        <span class="w-2 h-2 rounded-full bg-emerald-500">
                                                         </span>
 
                                                         {{ $absensi->jam_masuk }}
 
                                                     </span>
-
                                                 @else
-
                                                     <span class="text-slate-300">
                                                         -
                                                     </span>
-
                                                 @endif
 
                                             </td>
@@ -826,17 +807,13 @@
                                             <td class="px-5 py-4 whitespace-nowrap">
 
                                                 @if ($absensi->jam_pulang)
-
                                                     <span class="font-medium text-slate-600">
                                                         {{ $absensi->jam_pulang }}
                                                     </span>
-
                                                 @else
-
                                                     <span class="text-slate-300">
                                                         -
                                                     </span>
-
                                                 @endif
 
                                             </td>
@@ -846,65 +823,53 @@
                                             <td class="px-5 py-4 whitespace-nowrap">
 
                                                 @if ($absensi->status === 'hadir')
-
                                                     <span
                                                         class="inline-flex items-center gap-1.5
                                                         px-3 py-1.5 rounded-full text-xs font-medium
                                                         bg-emerald-50 text-emerald-600">
 
-                                                        <span
-                                                            class="w-1.5 h-1.5 rounded-full bg-emerald-500">
+                                                        <span class="w-1.5 h-1.5 rounded-full bg-emerald-500">
                                                         </span>
 
                                                         Hadir
 
                                                     </span>
-
                                                 @elseif ($absensi->status === 'sakit')
-
                                                     <span
                                                         class="inline-flex items-center gap-1.5
                                                         px-3 py-1.5 rounded-full text-xs font-medium
                                                         bg-amber-50 text-amber-600">
 
-                                                        <span
-                                                            class="w-1.5 h-1.5 rounded-full bg-amber-500">
+                                                        <span class="w-1.5 h-1.5 rounded-full bg-amber-500">
                                                         </span>
 
                                                         Sakit
 
                                                     </span>
-
                                                 @elseif ($absensi->status === 'izin')
-
                                                     <span
                                                         class="inline-flex items-center gap-1.5
                                                         px-3 py-1.5 rounded-full text-xs font-medium
                                                         bg-blue-50 text-blue-600">
 
-                                                        <span
-                                                            class="w-1.5 h-1.5 rounded-full bg-blue-500">
+                                                        <span class="w-1.5 h-1.5 rounded-full bg-blue-500">
                                                         </span>
 
                                                         Izin
 
                                                     </span>
-
                                                 @elseif ($absensi->status === 'alfa')
-
                                                     <span
                                                         class="inline-flex items-center gap-1.5
                                                         px-3 py-1.5 rounded-full text-xs font-medium
                                                         bg-red-50 text-red-600">
 
-                                                        <span
-                                                            class="w-1.5 h-1.5 rounded-full bg-red-500">
+                                                        <span class="w-1.5 h-1.5 rounded-full bg-red-500">
                                                         </span>
 
                                                         Alfa
 
                                                     </span>
-
                                                 @endif
 
                                             </td>
@@ -915,8 +880,7 @@
 
                                         <tr>
 
-                                            <td colspan="4"
-                                                class="px-5 py-14 text-center">
+                                            <td colspan="4" class="px-5 py-14 text-center">
 
                                                 <div class="flex flex-col items-center">
 
@@ -924,14 +888,10 @@
                                                         class="w-14 h-14 rounded-2xl bg-slate-100
                                                         flex items-center justify-center mb-4">
 
-                                                        <svg class="w-7 h-7 text-slate-300"
-                                                            fill="none"
-                                                            stroke="currentColor"
-                                                            viewBox="0 0 24 24">
+                                                        <svg class="w-7 h-7 text-slate-300" fill="none"
+                                                            stroke="currentColor" viewBox="0 0 24 24">
 
-                                                            <path
-                                                                stroke-linecap="round"
-                                                                stroke-linejoin="round"
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
                                                                 stroke-width="1.5"
                                                                 d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
 
@@ -952,7 +912,6 @@
                                             </td>
 
                                         </tr>
-
                                     @endforelse
 
                                 </tbody>
@@ -1015,14 +974,10 @@
                                     class="flex h-11 w-11 items-center justify-center
                                     rounded-xl bg-emerald-50">
 
-                                    <svg class="h-5 w-5 text-emerald-500"
-                                        fill="none"
-                                        stroke="currentColor"
+                                    <svg class="h-5 w-5 text-emerald-500" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
 
-                                        <path stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M5 13l4 4L19 7" />
 
                                     </svg>
@@ -1062,14 +1017,10 @@
                                     class="flex h-11 w-11 items-center justify-center
                                     rounded-xl bg-red-50">
 
-                                    <svg class="h-5 w-5 text-red-500"
-                                        fill="none"
-                                        stroke="currentColor"
+                                    <svg class="h-5 w-5 text-red-500" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
 
-                                        <path stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M6 18L18 6M6 6l12 12" />
 
                                     </svg>

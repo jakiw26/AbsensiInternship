@@ -158,9 +158,16 @@
 
                     <button type="button" id="profile-menu-button"
                         class="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-yellow-600
-                        flex items-center justify-center text-white text-sm font-semibold
+                        flex items-center justify-center overflow-hidden text-white text-sm font-semibold
                         hover:scale-105 transition shadow-sm">
-                        {{ strtoupper(substr(auth()->user()->name ?? 'U', 0, 1)) }}
+
+                        @if (auth()->user()->profil?->foto)
+                            <img src="{{ asset('storage/' . auth()->user()->profil->foto) }}" alt="Foto Profil"
+                                class="h-full w-full object-cover">
+                        @else
+                            {{ strtoupper(substr(auth()->user()->name ?? 'U', 0, 1)) }}
+                        @endif
+
                     </button>
 
                     {{-- Dropdown --}}
@@ -664,49 +671,241 @@
                     </div>
                 </section>
 
-
                 {{-- ================= NILAI ================= --}}
                 <section>
 
                     <div class="mb-4">
+
                         <h3 class="text-lg font-semibold text-slate-800">
                             Nilai Kamu
                         </h3>
 
-                        <p class="text-sm text-slate-400 mt-1">
+                        <p class="mt-1 text-sm text-slate-400">
                             Perkembangan penilaian internship kamu.
                         </p>
+
                     </div>
 
 
-                    <div
-                        class="bg-white rounded-2xl border border-slate-200
-                        p-6 md:p-8 shadow-sm">
+                    @if ($nilai)
+                        {{-- ========================================================
+            NILAI SUDAH DIBERIKAN
+        ========================================================= --}}
+                        <div class="rounded-2xl border border-slate-200
+            bg-white p-6 shadow-sm md:p-8">
 
-                        <div class="flex flex-col md:flex-row md:items-center gap-5">
+                            <div class="grid gap-4 md:grid-cols-3">
+
+                                {{-- Kedisiplinan --}}
+                                <div class="rounded-xl border border-slate-100
+                    bg-slate-50 p-5">
+
+                                    <div class="flex items-center gap-3">
+
+                                        <div
+                                            class="flex h-11 w-11 flex-shrink-0
+                            items-center justify-center
+                            rounded-xl bg-amber-50">
+
+                                            <svg class="h-6 w-6 text-amber-500" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke-width="1.5"
+                                                    d="M9 12l2 2 4-4M7 4h10a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V6a2 2 0 012-2z" />
+
+                                            </svg>
+
+                                        </div>
+
+                                        <div>
+
+                                            <p class="text-xs font-medium text-slate-400">
+                                                Kedisiplinan
+                                            </p>
+
+                                            <p class="mt-1 text-2xl font-bold text-slate-800">
+                                                {{ $nilai->kedisiplinan ?? '-' }}
+                                            </p>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                {{-- Keterampilan --}}
+                                <div class="rounded-xl border border-slate-100
+                    bg-slate-50 p-5">
+
+                                    <div class="flex items-center gap-3">
+
+                                        <div
+                                            class="flex h-11 w-11 flex-shrink-0
+                            items-center justify-center
+                            rounded-xl bg-amber-50">
+
+                                            <svg class="h-6 w-6 text-amber-500" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke-width="1.5"
+                                                    d="M9 12l2 2 4-4M7 4h10a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V6a2 2 0 012-2z" />
+
+                                            </svg>
+
+                                        </div>
+
+                                        <div>
+
+                                            <p class="text-xs font-medium text-slate-400">
+                                                Keterampilan
+                                            </p>
+
+                                            <p class="mt-1 text-2xl font-bold text-slate-800">
+                                                {{ $nilai->keterampilan ?? '-' }}
+                                            </p>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                                {{-- Skill --}}
+                                <div class="rounded-xl border border-slate-100
+                    bg-slate-50 p-5">
+
+                                    <div class="flex items-center gap-3">
+
+                                        <div
+                                            class="flex h-11 w-11 flex-shrink-0
+                            items-center justify-center
+                            rounded-xl bg-amber-50">
+
+                                            <svg class="h-6 w-6 text-amber-500" fill="none" stroke="currentColor"
+                                                viewBox="0 0 24 24">
+
+                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                    stroke-width="1.5"
+                                                    d="M9 12l2 2 4-4M7 4h10a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V6a2 2 0 012-2z" />
+
+                                            </svg>
+
+                                        </div>
+
+                                        <div>
+
+                                            <p class="text-xs font-medium text-slate-400">
+                                                Skill
+                                            </p>
+
+                                            <p class="mt-1 text-2xl font-bold text-slate-800">
+                                                {{ $nilai->skill ?? '-' }}
+                                            </p>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
 
                             <div
-                                class="w-14 h-14 rounded-2xl bg-amber-50
-                                flex items-center justify-center flex-shrink-0">
-                                <svg class="w-7 h-7 text-amber-500" fill="none" stroke="currentColor"
-                                    viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                                        d="M9 12l2 2 4-4M7 4h10a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V6a2 2 0 012-2z" />
-                                </svg>
+                                class="mt-5 flex items-center gap-4
+    rounded-2xl border border-emerald-100
+    bg-gradient-to-r from-emerald-50 to-green-50
+    px-5 py-4 shadow-sm">
+
+                                {{-- Icon --}}
+                                <div
+                                    class="flex h-11 w-11 flex-shrink-0
+        items-center justify-center rounded-xl
+        bg-emerald-100">
+
+                                    <svg class="h-6 w-6 text-emerald-600" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5 13l4 4L19 7" />
+
+                                    </svg>
+
+                                </div>
+
+
+                                {{-- Text --}}
+                                <div class="flex-1">
+
+                                    <p class="text-sm font-semibold text-emerald-800">
+                                        Penilaian Berhasil Diberikan
+                                    </p>
+
+                                    <p class="mt-0.5 text-xs text-emerald-600">
+                                        Nilai kamu sudah diberikan dan dapat dilihat pada halaman ini.
+                                    </p>
+
+                                </div>
+
+
+                                {{-- Status --}}
+                                <div
+                                    class="hidden rounded-full bg-emerald-100
+        px-3 py-1 text-xs font-semibold
+        text-emerald-700 sm:block">
+
+                                    Selesai
+
+                                </div>
+
                             </div>
 
-                            <div>
-                                <p class="font-semibold text-slate-700">
-                                    Nilai belum diberikan oleh admin
-                                </p>
-
-                                <p class="text-sm text-slate-400 mt-1">
-                                    Nilai kedisiplinan, keterampilan, dan skill akan
-                                    tampil setelah admin memberikan penilaian.
-                                </p>
-                            </div>
                         </div>
-                    </div>
+                    @else
+                        {{-- ========================================================
+            NILAI BELUM DIBERIKAN
+        ========================================================= --}}
+                        <div class="rounded-2xl border border-slate-200
+            bg-white p-6 shadow-sm md:p-8">
+
+                            <div class="flex flex-col gap-5 md:flex-row md:items-center">
+
+                                <div
+                                    class="flex h-14 w-14 flex-shrink-0
+                    items-center justify-center
+                    rounded-2xl bg-amber-50">
+
+                                    <svg class="h-7 w-7 text-amber-500" fill="none" stroke="currentColor"
+                                        viewBox="0 0 24 24">
+
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                                            d="M9 12l2 2 4-4M7 4h10a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V6a2 2 0 012-2z" />
+
+                                    </svg>
+
+                                </div>
+
+                                <div>
+
+                                    <p class="font-semibold text-slate-700">
+                                        Nilai belum diberikan oleh admin
+                                    </p>
+
+                                    <p class="mt-1 text-sm text-slate-400">
+                                        Nilai kedisiplinan, keterampilan, dan skill akan
+                                        tampil setelah admin memberikan penilaian.
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    @endif
+
                 </section>
             </main>
         </div>

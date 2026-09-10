@@ -45,7 +45,9 @@ class DashboardController extends Controller
             ->whereDate('tanggal', today())
             ->exists();
 
-        return view('internship.dashboard', compact('absensis', 'jumlahHadir', 'jumlahSakit', 'jumlahIzin', 'jumlahAlfa', 'sudahAbsenHariIni', 'userId'));
+        $nilai = Nilai::where('user_id', $userId)->first();
+
+        return view('internship.dashboard', compact('absensis', 'jumlahHadir', 'jumlahSakit', 'jumlahIzin', 'jumlahAlfa', 'sudahAbsenHariIni', 'userId', 'nilai'));
     }
 
     public function admin()

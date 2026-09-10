@@ -25,6 +25,8 @@ Route::get('/internship/nilai', [NilaiController::class, 'index']);
 Route::get('/internship/laporan', [LaporanController::class, 'index']);
 
 Route::get('/internship/profil', [ProfilController::class, 'internship']);
+Route::put('/internship/profil/edit', [ProfilController::class, 'createOrUpdate']);
+
 Route::get('/internship/laporan/pdf', [LaporanController::class, 'PdfInternship']);
 
 
@@ -36,6 +38,8 @@ Route::delete('/admin/delete/internship/{id}', [InternshipController::class, 'de
 Route::put('/admin/status/internship/{id}', [InternshipController::class, 'update']);
 
 Route::get('/admin/absensi', [AbsensiController::class, 'admin']);
+Route::patch('/admin/absensi/{id}/status', [AbsensiController::class, 'updateStatus']);
+Route::delete('/admin/absensi/{id}', [AbsensiController::class, 'destroy']);
 
 Route::get('/admin/nilai', [NilaiController::class, 'admin']);
 Route::put('/admin/nilai/{id}', [NilaiController::class, 'update']);

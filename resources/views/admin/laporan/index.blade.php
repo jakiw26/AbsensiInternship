@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Admin Dashboard - Internship Panel</title>
+    <title>Admin Cetak Laporan</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
@@ -19,27 +19,17 @@
             SIDEBAR ADMIN
         ============================================================= --}}
         <aside id="sidebar"
-            class="fixed inset-y-0 left-0 z-40 flex w-64
-            -translate-x-full transform flex-col
-            bg-[#111827] text-white shadow-2xl
-            transition-transform duration-200
-            md:translate-x-0">
+            class="fixed inset-y-0 left-0 z-40 w-64 bg-[#111827] text-white flex flex-col
+            transform -translate-x-full md:translate-x-0 transition-transform duration-200 shadow-2xl">
 
-            {{-- ========================================================
-                LOGO
-            ========================================================= --}}
-            <div class="flex items-center gap-3
-                border-b border-white/10 px-6 py-6">
+            {{-- Logo --}}
+            <div class="flex items-center gap-3 px-6 py-6 border-b border-white/10">
 
-                <div class="h-10 w-10 flex-shrink-0 overflow-hidden
-                    rounded-xl bg-white shadow-sm">
-
-                    <img src="{{ asset('images/bts.png') }}" alt="Logo BTS.id" class="h-full w-full object-contain">
-
+                <div class="w-10 h-10 rounded-xl overflow-hidden bg-white flex-shrink-0 shadow-sm">
+                    <img src="{{ asset('images/bts.png') }}" alt="Logo" class="w-full h-full object-contain">
                 </div>
 
                 <div>
-
                     <p class="font-serif text-lg leading-tight text-white">
                         Absensi
                     </p>
@@ -47,38 +37,28 @@
                     <p class="text-xs text-white/40">
                         Admin Panel
                     </p>
-
                 </div>
 
             </div>
 
 
-            {{-- ========================================================
-                NAVIGATION
-            ========================================================= --}}
-            <nav class="flex-1 space-y-1.5 px-4 py-6">
+            {{-- Navigation --}}
+            <nav class="flex-1 px-4 py-6 space-y-1.5">
 
-                {{-- ====================================================
-                    DASHBOARD
-                ===================================================== --}}
+                {{-- Dashboard --}}
                 <a href="/admin/dashboard"
-                    class="flex items-center gap-3 rounded-xl px-3 py-3
-                    text-sm transition
-                    {{ request()->is('admin/dashboard') ? 'bg-white font-semibold text-[#111827] shadow-sm' : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
+                    class="flex items-center gap-3 px-3 py-3 rounded-xl text-sm transition
+                    {{ request()->is('admin/dashboard')
+                        ? 'bg-white text-[#111827] font-semibold shadow-sm'
+                        : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
 
-                    <svg class="h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="none">
+                    <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 20 20" fill="none">
 
-                        <rect x="3" y="3" width="5" height="5" rx="1" stroke="currentColor"
-                            stroke-width="1.5" />
+                        <path d="M3 10.5 10 4l7 6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
 
-                        <rect x="12" y="3" width="5" height="5" rx="1" stroke="currentColor"
-                            stroke-width="1.5" />
-
-                        <rect x="3" y="12" width="5" height="5" rx="1" stroke="currentColor"
-                            stroke-width="1.5" />
-
-                        <rect x="12" y="12" width="5" height="5" rx="1" stroke="currentColor"
-                            stroke-width="1.5" />
+                        <path d="M5 9v7h10V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
 
                     </svg>
 
@@ -87,22 +67,25 @@
                 </a>
 
 
-                {{-- ====================================================
-                    DATA INTERNSHIP
-                ===================================================== --}}
+                {{-- Data Internship --}}
                 <a href="/admin/internship"
-                    class="flex items-center gap-3 rounded-xl px-3 py-3
-                    text-sm transition
-                    {{ request()->is('admin/internship*') ? 'bg-white font-semibold text-[#111827] shadow-sm' : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
+                    class="flex items-center gap-3 px-3 py-3 rounded-xl text-sm transition
+                    {{ request()->is('admin/internship*')
+                        ? 'bg-white text-[#111827] font-semibold shadow-sm'
+                        : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
 
-                    <svg class="h-5 w-5 flex-shrink-0" fill="none" viewBox="0 0 24 24">
+                    <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none">
 
-                        <path stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
-                            d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2" />
+                        <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round" />
 
                         <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.5" />
 
-                        <path stroke="currentColor" stroke-width="1.5" stroke-linecap="round" d="M19 8v6M22 11h-6" />
+                        <path d="M22 21v-2a4 4 0 0 0-3-3.87" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round" />
+
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round" />
 
                     </svg>
 
@@ -111,15 +94,14 @@
                 </a>
 
 
-                {{-- ====================================================
-                    ABSENSI
-                ===================================================== --}}
+                {{-- Absensi --}}
                 <a href="/admin/absensi"
-                    class="flex items-center gap-3 rounded-xl px-3 py-3
-                    text-sm transition
-                    {{ request()->is('admin/absensi*') ? 'bg-white font-semibold text-[#111827] shadow-sm' : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
+                    class="flex items-center gap-3 px-3 py-3 rounded-xl text-sm transition
+                    {{ request()->is('admin/absensi*')
+                        ? 'bg-white text-[#111827] font-semibold shadow-sm'
+                        : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
 
-                    <svg class="h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="none">
+                    <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 20 20" fill="none">
 
                         <circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5" />
 
@@ -132,20 +114,19 @@
                 </a>
 
 
-                {{-- ====================================================
-                    PENILAIAN
-                ===================================================== --}}
+                {{-- Penilaian --}}
                 <a href="/admin/nilai"
-                    class="flex items-center gap-3 rounded-xl px-3 py-3
-                    text-sm transition
-                    {{ request()->is('admin/nilai*') ? 'bg-white font-semibold text-[#111827] shadow-sm' : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
+                    class="flex items-center gap-3 px-3 py-3 rounded-xl text-sm transition
+                    {{ request()->is('admin/nilai*')
+                        ? 'bg-white text-[#111827] font-semibold shadow-sm'
+                        : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
 
-                    <svg class="h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="none">
+                    <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none">
 
-                        <path d="M6 3h8l2 2v12H4V5l2-2Z" stroke="currentColor" stroke-width="1.5"
-                            stroke-linejoin="round" />
+                        <path d="M6 3h8l2 2v16H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" stroke="currentColor"
+                            stroke-width="1.5" stroke-linejoin="round" />
 
-                        <path d="M7 8h6M7 11h6M7 14h4" stroke="currentColor" stroke-width="1.5"
+                        <path d="M9 9h4M9 13h4M9 17h3" stroke="currentColor" stroke-width="1.5"
                             stroke-linecap="round" />
 
                     </svg>
@@ -155,20 +136,19 @@
                 </a>
 
 
-                {{-- ====================================================
-                    LAPORAN
-                ===================================================== --}}
+                {{-- Laporan --}}
                 <a href="/admin/laporan"
-                    class="flex items-center gap-3 rounded-xl px-3 py-3
-                    text-sm transition
-                    {{ request()->is('admin/laporan*') ? 'bg-white font-semibold text-[#111827] shadow-sm' : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
+                    class="flex items-center gap-3 px-3 py-3 rounded-xl text-sm transition
+                    {{ request()->is('admin/laporan*')
+                        ? 'bg-white text-[#111827] font-semibold shadow-sm'
+                        : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
 
-                    <svg class="h-5 w-5 flex-shrink-0" viewBox="0 0 20 20" fill="none">
+                    <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none">
 
-                        <path d="M4 4h12v13l-3-2-3 2-3-2-3 2V4Z" stroke="currentColor" stroke-width="1.5"
-                            stroke-linejoin="round" />
+                        <path d="M5 3h14v18H5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
 
-                        <path d="M7 8h6M7 11h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                        <path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" />
 
                     </svg>
 
@@ -179,18 +159,15 @@
             </nav>
 
 
-            {{-- ========================================================
-                ADMIN PROFILE SIDEBAR
-            ========================================================= --}}
-            <div class="border-t border-white/10 px-4 py-4">
+            {{-- User Sidebar --}}
+            <div class="px-4 py-4 border-t border-white/10">
 
                 <div class="flex items-center gap-3 px-2 py-2">
 
                     <div
-                        class="flex h-10 w-10 flex-shrink-0
-                        items-center justify-center rounded-full
-                        bg-gradient-to-br from-amber-400 to-yellow-600
-                        text-sm font-semibold text-white shadow-lg">
+                        class="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-yellow-600
+                        flex items-center justify-center text-white text-sm font-semibold
+                        flex-shrink-0 shadow-lg">
 
                         {{ strtoupper(substr(auth()->user()->name ?? 'A', 0, 1)) }}
 
@@ -198,16 +175,12 @@
 
                     <div class="min-w-0">
 
-                        <p class="truncate text-sm font-medium text-white">
-
+                        <p class="text-sm font-medium text-white truncate">
                             {{ auth()->user()->name ?? 'Administrator' }}
-
                         </p>
 
-                        <p class="truncate text-xs text-white/40">
-
-                            Administrator
-
+                        <p class="text-xs text-white/40 truncate">
+                            {{ auth()->user()->email ?? '-' }}
                         </p>
 
                     </div>

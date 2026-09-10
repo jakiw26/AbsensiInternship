@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Absensi;
-
+use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+
 
 class AbsensiController extends Controller
 {
@@ -19,16 +21,9 @@ class AbsensiController extends Controller
             ->whereDate('tanggal', $tanggalKemarin)
             ->exists();
 
-        if (
-            $user->role === 'internship' &&
-            !$sudahAbsenKemarin &&
-            !$tanggalKemarin->isWeekend()
-        ) {
-            Absensi::create([
-                'user_id' => $userId,
-                'tanggal' => $tanggalKemarin,
-                'status' => 'alfa',
-            ]);
+        $tanggalDaftar = $user->created_at ? $user->created_at->copy()->startOfDay() : null;
+        if ($user->role === 'internship' && !$sudahAbsenKemarin && !$tanggalKemarin->isWeekend() && $tanggalDaftar && $tanggalDaftar->lte($tanggalKemarin)) {
+            Absensi::create(['user_id' => $userId, 'tanggal' => $tanggalKemarin, 'status' => 'alfa',]);
         }
 
         $absensis = Absensi::where('user_id', $userId)
@@ -53,13 +48,13 @@ class AbsensiController extends Controller
             'jumlahAlfa'
         ));
     }
+
     public function store(Request $request)
     {
         $request->validate([
             'tanggal' => 'required|date',
-            'jam_masuk' => 'required|date_format:H:i',
-            'foto_masuk' => 'required|image|mimes:jpg,jpeg,png|max:2048',
-            'status' => 'required|in:hadir,sakit,izin,alfa',
+            'jam_masuk' => 'nullable|date_format:H:i',
+            'foto_masuk' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
         $sudahAbsen = Absensi::where('user_id', auth()->id())
@@ -71,8 +66,19 @@ class AbsensiController extends Controller
                 ->with('error', 'Anda sudah melakukan absensi hari ini.');
         }
 
-        $fotoMasuk = $request->file('foto_masuk')
-            ->store('absensi/masuk', 'public');
+        if ($request->status === 'hadir') {
+            if (!$request->jam_masuk) {
+                return redirect('/internship/absensi')->with('error', 'Jam masuk wajib diisi untuk status hadir.');
+            }
+            if (!$request->hasFile('foto_masuk')) {
+                return redirect('/internship/absensi')->with('error', 'Foto masuk wajib diambil untuk status hadir.');
+            }
+        }
+
+        $fotoMasuk = null;
+        if ($request->hasFile('foto_masuk')) {
+            $fotoMasuk = $request->file('foto_masuk')->store('absensi/masuk', 'public');
+        }
 
         Absensi::create([
             'user_id' => auth()->id(),
@@ -114,5 +120,42 @@ class AbsensiController extends Controller
     {
         $absensis = Absensi::all();
         return view('admin.absensi.index', compact('absensis'));
+    }
+
+    public function updateStatus(Request $request, $id)
+    {
+        $absensi = Absensi::findOrFail($id);
+
+        $validated = $request->validate([
+            'status' => ['required', Rule::in(['hadir', 'sakit', 'izin', 'alfa'])],
+        ]);
+
+        $absensi->update([
+            'status' => $validated['status'],
+        ]);
+
+        return redirect()
+            ->back()
+            ->with('success', 'Status absensi ' . $absensi->user->name . ' berhasil diperbarui.');
+    }
+
+    public function destroy($id)
+    {
+        $absensi = Absensi::findOrFail($id);
+        $nama = $absensi->user->name ?? '-';
+
+        if ($absensi->foto_masuk && Storage::disk('public')->exists($absensi->foto_masuk)) {
+            Storage::disk('public')->delete($absensi->foto_masuk);
+        }
+
+        if ($absensi->foto_pulang && Storage::disk('public')->exists($absensi->foto_pulang)) {
+            Storage::disk('public')->delete($absensi->foto_pulang);
+        }
+
+        $absensi->delete();
+
+        return redirect()
+            ->back()
+            ->with('success', 'Data absensi ' . $nama . ' berhasil dihapus.');
     }
 }

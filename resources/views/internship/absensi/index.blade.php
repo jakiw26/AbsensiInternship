@@ -147,13 +147,16 @@
                 <div class="relative">
 
                     <button type="button" id="profile-menu-button"
-                        class="w-10 h-10 rounded-full
-                        bg-gradient-to-br from-amber-400 to-yellow-600
-                        flex items-center justify-center
-                        text-white text-sm font-semibold
+                        class="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-yellow-600
+                        flex items-center justify-center overflow-hidden text-white text-sm font-semibold
                         hover:scale-105 transition shadow-sm">
 
-                        {{ strtoupper(substr(auth()->user()->name ?? 'U', 0, 1)) }}
+                        @if (auth()->user()->profil?->foto)
+                            <img src="{{ asset('storage/' . auth()->user()->profil->foto) }}" alt="Foto Profil"
+                                class="h-full w-full object-cover">
+                        @else
+                            {{ strtoupper(substr(auth()->user()->name ?? 'U', 0, 1)) }}
+                        @endif
 
                     </button>
 
@@ -622,40 +625,43 @@
                                         </td>
 
                                         <td class="px-5 py-4 text-center whitespace-nowrap">
-                                            @if ($absensi->jam_pulang)
-                                                <div
-                                                    class="inline-flex items-center gap-1.5 rounded-lg bg-slate-100 px-3 py-2 text-xs font-medium text-slate-500">
-
-                                                    <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor"
-                                                        viewBox="0 0 24 24">
-
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            stroke-width="2" d="M5 13l4 4L19 7" />
-
-                                                    </svg>
-
-                                                    Sudah Absen Pulang
-                                                </div>
-                                            @else
-                                                <button type="button"
-                                                    class="btn-detail-absensi inline-flex items-center gap-1.5 rounded-lg bg-[#111827] px-3 py-2 text-xs font-medium text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-slate-800"
-                                                    data-id="{{ $absensi->id }}"
-                                                    data-jam-pulang="{{ $absensi->jam_pulang ?? '' }}">
-
-                                                    <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor"
-                                                        viewBox="0 0 24 24">
-
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0Z" />
-
-                                                        <path stroke-linecap="round" stroke-linejoin="round"
-                                                            stroke-width="1.5"
-                                                            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7Z" />
-
-                                                    </svg>
-
-                                                    Absen Pulang
-                                                </button>
+                                            @if ($absensi->status === 'hadir')
+                                                @if ($absensi->jam_pulang)
+                                                    <div
+                                                        class="inline-flex items-center gap-1.5 rounded-lg bg-slate-100 px-3 py-2 text-xs font-medium text-slate-500">
+                                                        <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor"
+                                                            viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="2" d="M5 13l4 4L19 7" />
+                                                        </svg> Sudah Absen Pulang
+                                                    </div>
+                                                @else
+                                                    <button type="button"
+                                                        class="btn-detail-absensi inline-flex items-center gap-1.5 rounded-lg bg-[#111827] px-3 py-2 text-xs font-medium text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-slate-800"
+                                                        data-id="{{ $absensi->id }}"
+                                                        data-jam-pulang="{{ $absensi->jam_pulang ?? '' }}"> <svg
+                                                            class="h-3.5 w-3.5" fill="none" stroke="currentColor"
+                                                            viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="1.5"
+                                                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0Z" />
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="1.5"
+                                                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7Z" />
+                                                        </svg> Absen Pulang </button>
+                                                @endif
+                                            @elseif ($absensi->status === 'sakit')
+                                                <span
+                                                    class="inline-flex items-center rounded-lg bg-amber-100 px-3 py-2 text-xs font-medium text-amber-700">
+                                                    Sakit </span>
+                                            @elseif ($absensi->status === 'izin')
+                                                <span
+                                                    class="inline-flex items-center rounded-lg bg-blue-100 px-3 py-2 text-xs font-medium text-blue-700">
+                                                    Izin </span>
+                                            @elseif ($absensi->status === 'alfa')
+                                                <span
+                                                    class="inline-flex items-center rounded-lg bg-red-100 px-3 py-2 text-xs font-medium text-red-700">
+                                                    Alfa </span>
                                             @endif
                                         </td>
                                     </tr>

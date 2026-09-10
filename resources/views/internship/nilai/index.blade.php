@@ -214,15 +214,17 @@
                 ===================================================== --}}
                 <div class="relative">
 
-                    {{-- Avatar --}}
                     <button type="button" id="profile-menu-button"
-                        class="flex h-10 w-10 items-center
-                        justify-center rounded-full
-                        bg-gradient-to-br from-amber-400 to-yellow-600
-                        text-sm font-semibold text-white shadow-sm
-                        transition hover:scale-105">
+                        class="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-yellow-600
+                        flex items-center justify-center overflow-hidden text-white text-sm font-semibold
+                        hover:scale-105 transition shadow-sm">
 
-                        {{ strtoupper(substr(auth()->user()->name ?? 'U', 0, 1)) }}
+                        @if (auth()->user()->profil?->foto)
+                            <img src="{{ asset('storage/' . auth()->user()->profil->foto) }}" alt="Foto Profil"
+                                class="h-full w-full object-cover">
+                        @else
+                            {{ strtoupper(substr(auth()->user()->name ?? 'U', 0, 1)) }}
+                        @endif
 
                     </button>
 
