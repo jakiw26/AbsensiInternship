@@ -14,6 +14,8 @@ class Absensi extends Model
         'jam_pulang',
         'foto_pulang',
         'status',
+        'keterangan',
+        'surat_dokter',
     ];
 
     protected function casts(): array

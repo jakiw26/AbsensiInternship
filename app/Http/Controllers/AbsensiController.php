@@ -21,9 +21,24 @@ class AbsensiController extends Controller
             ->whereDate('tanggal', $tanggalKemarin)
             ->exists();
 
-        $tanggalDaftar = $user->created_at ? $user->created_at->copy()->startOfDay() : null;
-        if ($user->role === 'internship' && !$sudahAbsenKemarin && !$tanggalKemarin->isWeekend() && $tanggalDaftar && $tanggalDaftar->lte($tanggalKemarin)) {
-            Absensi::create(['user_id' => $userId, 'tanggal' => $tanggalKemarin, 'status' => 'alfa',]);
+        $tanggalDaftar = $user->created_at
+            ? $user->created_at->copy()->startOfDay()
+            : null;
+
+        if (
+            $user->role === 'internship' &&
+            !$sudahAbsenKemarin &&
+            !$tanggalKemarin->isWeekend() &&
+            $tanggalDaftar &&
+            $tanggalDaftar->lte($tanggalKemarin)
+        ) {
+            Absensi::create([
+                'user_id' => $userId,
+                'tanggal' => $tanggalKemarin,
+                'status' => 'alfa',
+                'keterangan' => null,
+                'surat_dokter' => null,
+            ]);
         }
 
         $absensis = Absensi::where('user_id', $userId)
@@ -34,10 +49,21 @@ class AbsensiController extends Controller
             ->whereDate('tanggal', today())
             ->exists();
 
-        $jumlahHadir = $absensis->where('status', 'hadir')->count();
-        $jumlahSakit = $absensis->where('status', 'sakit')->count();
-        $jumlahIzin = $absensis->where('status', 'izin')->count();
-        $jumlahAlfa = $absensis->where('status', 'alfa')->count();
+        $jumlahHadir = $absensis
+            ->where('status', 'hadir')
+            ->count();
+
+        $jumlahSakit = $absensis
+            ->where('status', 'sakit')
+            ->count();
+
+        $jumlahIzin = $absensis
+            ->where('status', 'izin')
+            ->count();
+
+        $jumlahAlfa = $absensis
+            ->where('status', 'alfa')
+            ->count();
 
         return view('internship.absensi.index', compact(
             'absensis',
@@ -55,6 +81,9 @@ class AbsensiController extends Controller
             'tanggal' => 'required|date',
             'jam_masuk' => 'nullable|date_format:H:i',
             'foto_masuk' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'status' => 'required|in:hadir,sakit,izin,alfa',
+            'keterangan' => 'nullable|string',
+            'surat_dokter' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
         ]);
 
         $sudahAbsen = Absensi::where('user_id', auth()->id())
@@ -67,28 +96,76 @@ class AbsensiController extends Controller
         }
 
         if ($request->status === 'hadir') {
+
             if (!$request->jam_masuk) {
-                return redirect('/internship/absensi')->with('error', 'Jam masuk wajib diisi untuk status hadir.');
+                return redirect('/internship/absensi')
+                    ->with('error', 'Jam masuk wajib diisi untuk status hadir.');
             }
+
             if (!$request->hasFile('foto_masuk')) {
-                return redirect('/internship/absensi')->with('error', 'Foto masuk wajib diambil untuk status hadir.');
+                return redirect('/internship/absensi')
+                    ->with('error', 'Foto masuk wajib diambil untuk status hadir.');
+            }
+        }
+
+        if ($request->status === 'izin') {
+
+            if (!$request->keterangan) {
+                return redirect('/internship/absensi')
+                    ->with('error', 'Keterangan wajib diisi untuk status izin.');
+            }
+        }
+
+        if ($request->status === 'sakit') {
+
+            if (!$request->hasFile('surat_dokter')) {
+                return redirect('/internship/absensi')
+                    ->with('error', 'Surat dokter wajib diupload untuk status sakit.');
             }
         }
 
         $fotoMasuk = null;
+
         if ($request->hasFile('foto_masuk')) {
-            $fotoMasuk = $request->file('foto_masuk')->store('absensi/masuk', 'public');
+            $fotoMasuk = $request->file('foto_masuk')
+                ->store('absensi/masuk', 'public');
+        }
+
+        $suratDokter = null;
+
+        if (
+            $request->status === 'sakit' &&
+            $request->hasFile('surat_dokter')
+        ) {
+            $suratDokter = $request->file('surat_dokter')
+                ->store('absensi/surat-dokter', 'public');
         }
 
         Absensi::create([
             'user_id' => auth()->id(),
             'tanggal' => $request->tanggal,
-            'jam_masuk' => $request->jam_masuk,
-            'foto_masuk' => $fotoMasuk,
+
+            'jam_masuk' => $request->status === 'hadir'
+                ? $request->jam_masuk
+                : null,
+
+            'foto_masuk' => $request->status === 'hadir'
+                ? $fotoMasuk
+                : null,
+
             'status' => $request->status,
+
+            'keterangan' => $request->status === 'izin'
+                ? $request->keterangan
+                : null,
+
+            'surat_dokter' => $request->status === 'sakit'
+                ? $suratDokter
+                : null,
         ]);
 
-        return redirect('/internship/absensi')->with('success', 'Absensi masuk berhasil disimpan.');
+        return redirect('/internship/absensi')
+            ->with('success', 'Absensi berhasil disimpan.');
     }
 
     public function pulang(Request $request, $id)
@@ -118,7 +195,7 @@ class AbsensiController extends Controller
 
     public function admin()
     {
-        $absensis = Absensi::all();
+        $absensis = Absensi::orderBy('tanggal', 'desc')->paginate(10);
         return view('admin.absensi.index', compact('absensis'));
     }
 

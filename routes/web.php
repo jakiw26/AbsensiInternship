@@ -14,40 +14,42 @@ use App\Http\Controllers\InternshipController;
 //     return view('welcome');
 // });
 
-Route::get('/internship/dashboard', [DashboardController::class, 'internship']);
+Route::middleware(['auth', 'role:internship'])->group(function () {
+    Route::get('/internship/dashboard', [DashboardController::class, 'internship']);
 
-Route::get('/internship/absensi', [AbsensiController::class, 'index']);
-Route::post('/internship/tambah/absensi', [AbsensiController::class, 'store']);
-Route::put('/internship/absensi/{id}/pulang', [AbsensiController::class, 'pulang']);
+    Route::get('/internship/absensi', [AbsensiController::class, 'index']);
+    Route::post('/internship/tambah/absensi', [AbsensiController::class, 'store']);
+    Route::put('/internship/absensi/{id}/pulang', [AbsensiController::class, 'pulang']);
 
-Route::get('/internship/nilai', [NilaiController::class, 'index']);
+    Route::get('/internship/nilai', [NilaiController::class, 'index']);
 
-Route::get('/internship/laporan', [LaporanController::class, 'index']);
+    Route::get('/internship/laporan', [LaporanController::class, 'index']);
 
-Route::get('/internship/profil', [ProfilController::class, 'internship']);
-Route::put('/internship/profil/edit', [ProfilController::class, 'createOrUpdate']);
+    Route::get('/internship/profil', [ProfilController::class, 'internship']);
+    Route::put('/internship/profil/edit', [ProfilController::class, 'createOrUpdate']);
 
-Route::get('/internship/laporan/pdf', [LaporanController::class, 'PdfInternship']);
+    Route::get('/internship/laporan/pdf', [LaporanController::class, 'PdfInternship']);
+});
 
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/admin/dashboard', [DashboardController::class, 'admin']);
 
+    Route::get('/admin/internship', [InternshipController::class, 'index']);
+    Route::delete('/admin/delete/internship/{id}', [InternshipController::class, 'destroy']);
+    Route::put('/admin/status/internship/{id}', [InternshipController::class, 'update']);
 
-Route::get('/admin/dashboard', [DashboardController::class, 'admin']);
+    Route::get('/admin/absensi', [AbsensiController::class, 'admin']);
+    Route::patch('/admin/absensi/{id}/status', [AbsensiController::class, 'updateStatus']);
+    Route::delete('/admin/absensi/{id}', [AbsensiController::class, 'destroy']);
 
-Route::get('/admin/internship', [InternshipController::class, 'index']);
-Route::delete('/admin/delete/internship/{id}', [InternshipController::class, 'destroy']);
-Route::put('/admin/status/internship/{id}', [InternshipController::class, 'update']);
+    Route::get('/admin/nilai', [NilaiController::class, 'admin']);
+    Route::put('/admin/nilai/{id}', [NilaiController::class, 'update']);
 
-Route::get('/admin/absensi', [AbsensiController::class, 'admin']);
-Route::patch('/admin/absensi/{id}/status', [AbsensiController::class, 'updateStatus']);
-Route::delete('/admin/absensi/{id}', [AbsensiController::class, 'destroy']);
+    Route::get('/admin/laporan', [LaporanController::class, 'admin']);
+    Route::get('/admin/laporan/{id}/pdf', [LaporanController::class, 'PdfAdmin'])->name('admin.laporan.pdf');
 
-Route::get('/admin/nilai', [NilaiController::class, 'admin']);
-Route::put('/admin/nilai/{id}', [NilaiController::class, 'update']);
-
-Route::get('/admin/laporan', [LaporanController::class, 'admin']);
-Route::get('/admin/laporan/{id}/pdf', [LaporanController::class, 'PdfAdmin'])->name('admin.laporan.pdf');
-
-Route::get('/admin/profil', [ProfilController::class, 'admin']);
+    Route::get('/admin/profil', [ProfilController::class, 'admin']);
+});
 
 Route::get('/', [AuthController::class, 'login']);
 Route::post('/login', [AuthController::class, 'authenticate']);
@@ -61,3 +63,7 @@ Route::get('/password-request', function () {
 });
 
 Route::post('/register', [AuthController::class, 'register']);
+Route::get('/forgot-password', [AuthController::class, 'showForgotPassword'])->name('password.request');
+Route::post('/password-request', [AuthController::class, 'sendResetLink'])->name('password.email');
+Route::get('/reset-password/{token}', [AuthController::class, 'showResetPassword'])->name('password.reset');
+Route::post('/reset-password', [AuthController::class, 'resetPassword'])->name('password.update');

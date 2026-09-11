@@ -820,253 +820,136 @@
 
                 </section>
 
-
-                {{-- ====================================================
-    DAFTAR PESERTA INTERNSHIP
-===================================================== --}}
                 <section class="overflow-hidden rounded-2xl
-    border border-slate-200 bg-white shadow-sm">
+                    border border-slate-200 bg-white shadow-sm">
 
-                    {{-- ========================================================
-        HEADER TABLE
-    ========================================================= --}}
-                    <div class="border-b border-slate-100
-        px-5 py-5 md:px-6">
-
-                        <div
-                            class="flex flex-col gap-3
-            md:flex-row md:items-center
-            md:justify-between">
+                    <div class="border-b border-slate-100 px-5 py-5 md:px-6">
+                        <div class="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
 
                             <div>
-
-                                <h2 class="text-base font-semibold
-                    text-slate-800">
-
+                                <h2 class="text-base font-semibold text-slate-800">
                                     Daftar Peserta Internship
-
                                 </h2>
-
                                 <p class="mt-1 text-xs text-slate-400">
-
                                     Pilih peserta untuk mencetak laporan internship.
-
                                 </p>
-
                             </div>
 
-                            <div class="rounded-lg bg-slate-100
-                px-3 py-2">
+                            <div class="flex items-center gap-3">
 
-                                <p class="text-xs font-medium text-slate-500">
-
-                                    Total Peserta:
-                                    <span class="font-semibold text-slate-800">
-                                        {{ $totalInternship ?? 0 }}
-                                    </span>
-
-                                </p>
-
+                                {{-- Search Input --}}
+                                <div class="relative">
+                                    <svg class="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400"
+                                        fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M21 21l-4.35-4.35M17 10.5A6.5 6.5 0 114 10.5a6.5 6.5 0 0113 0Z" />
+                                    </svg>
+                                    <input type="text" id="search-internship" placeholder="Cari nama peserta..."
+                                        class="w-120 rounded-lg border border-slate-200 bg-slate-50 py-2 pl-9 pr-3
+                               text-sm text-slate-700 placeholder:text-slate-400
+                               focus:outline-none focus:ring-2 focus:ring-slate-300 focus:border-slate-300
+                               transition">
+                                </div>
                             </div>
 
                         </div>
-
                     </div>
 
 
-                    {{-- ========================================================
-        TABLE
-    ========================================================= --}}
                     <div class="overflow-x-auto">
-
                         <table class="w-full text-sm">
-
                             <thead>
-
                                 <tr class="bg-[#111827]">
-
                                     <th
-                                        class="w-16 px-5 py-4 text-center
-                        text-xs font-semibold uppercase
-                        tracking-wider text-white">
-
-                                        No
-
-                                    </th>
-
+                                        class="w-16 px-5 py-4 text-center text-xs font-semibold uppercase tracking-wider text-white">
+                                        No</th>
                                     <th
-                                        class="px-5 py-4 text-left
-                        text-xs font-semibold uppercase
-                        tracking-wider text-white">
-
-                                        Nama Peserta
-
-                                    </th>
-
+                                        class="px-5 py-4 text-left text-xs font-semibold uppercase tracking-wider text-white">
+                                        Nama Peserta</th>
                                     <th
-                                        class="w-48 px-5 py-4 text-center
-                        text-xs font-semibold uppercase
-                        tracking-wider text-white">
-
-                                        Aksi
-
-                                    </th>
-
+                                        class="w-48 px-5 py-4 text-center text-xs font-semibold uppercase tracking-wider text-white">
+                                        Aksi</th>
                                 </tr>
-
                             </thead>
 
-
-                            <tbody class="divide-y divide-slate-100">
+                            <tbody id="internship-table-body" class="divide-y divide-slate-100">
 
                                 @forelse ($internships ?? [] as $index => $internship)
-                                    <tr class="transition hover:bg-slate-50">
+                                    <tr class="internship-row transition hover:bg-slate-50"
+                                        data-name="{{ strtolower($internship->name ?? '') }}">
 
-                                        {{-- ====================================================
-                            NOMOR
-                        ===================================================== --}}
-                                        <td class="px-5 py-4 text-center
-                            text-slate-500">
-
+                                        <td class="px-5 py-4 text-center text-slate-500">
                                             {{ $index + 1 }}
-
                                         </td>
 
-
-                                        {{-- ====================================================
-                            NAMA PESERTA
-                        ===================================================== --}}
                                         <td class="px-5 py-4">
-
                                             <div class="flex items-center gap-3">
-
-                                                {{-- Avatar --}}
                                                 <div
-                                                    class="flex h-10 w-10 flex-shrink-0
-                                    items-center justify-center
-                                    rounded-full
-                                    bg-gradient-to-br
-                                    from-blue-500 to-indigo-600
-                                    text-sm font-semibold
-                                    text-white shadow-sm">
-
+                                                    class="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full
+                                        bg-gradient-to-br from-blue-500 to-indigo-600
+                                        text-sm font-semibold text-white shadow-sm">
                                                     {{ strtoupper(substr($internship->name ?? 'I', 0, 1)) }}
-
                                                 </div>
-
-
-                                                {{-- Nama --}}
                                                 <div class="min-w-0">
-
-                                                    <p
-                                                        class="truncate font-semibold
-                                        text-slate-700">
-
+                                                    <p class="truncate font-semibold text-slate-700">
                                                         {{ $internship->name ?? '-' }}
-
                                                     </p>
-
-                                                    <p
-                                                        class="mt-0.5 truncate text-xs
-                                        text-slate-400">
-
+                                                    <p class="mt-0.5 truncate text-xs text-slate-400">
                                                         Peserta Internship
-
                                                     </p>
-
                                                 </div>
-
                                             </div>
-
                                         </td>
 
-
-                                        {{-- ====================================================
-                            AKSI
-                        ===================================================== --}}
                                         <td class="px-5 py-4 text-center">
-
                                             <a href="{{ route('admin.laporan.pdf', $internship->id) }}"
                                                 target="_blank" rel="noopener noreferrer"
-                                                class="inline-flex items-center
-                                                justify-center gap-2 rounded-xl
-                                             bg-[#111827] px-4 py-2.5
-                                                text-xs font-semibold text-white
-                                             shadow-sm transition
-                                                hover:bg-slate-800">
-
+                                                class="inline-flex items-center justify-center gap-2 rounded-xl
+                                   bg-[#111827] px-4 py-2.5 text-xs font-semibold text-white
+                                   shadow-sm transition hover:bg-slate-800">
                                                 <svg class="h-4 w-4" fill="none" stroke="currentColor"
                                                     viewBox="0 0 24 24">
-
                                                     <path stroke-linecap="round" stroke-linejoin="round"
                                                         stroke-width="1.5"
                                                         d="M6 9V3h12v6M6 18H4a2 2 0 01-2-2v-5a2 2 0 012-2h16a2 2 0 012 2v5a2 2 0 01-2 2h-2M6 14h12v7H6v-7Z" />
-
                                                 </svg>
-
                                                 Cetak PDF
-
                                             </a>
-
                                         </td>
-
                                     </tr>
-
                                 @empty
-
-                                    {{-- ========================================================
-                        DATA KOSONG
-                    ========================================================= --}}
                                     <tr>
-
                                         <td colspan="3" class="px-5 py-12 text-center">
-
-                                            <div class="flex flex-col
-                                items-center">
-
+                                            <div class="flex flex-col items-center">
                                                 <div
-                                                    class="mb-4 flex h-14 w-14
-                                    items-center justify-center
-                                    rounded-2xl bg-slate-100">
-
+                                                    class="mb-4 flex h-14 w-14 items-center justify-center rounded-2xl bg-slate-100">
                                                     <svg class="h-7 w-7 text-slate-300" fill="none"
                                                         stroke="currentColor" viewBox="0 0 24 24">
-
                                                         <path stroke-linecap="round" stroke-linejoin="round"
                                                             stroke-width="1.5"
                                                             d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8Zm7-5v6m3-3h-6" />
-
                                                     </svg>
-
                                                 </div>
-
-                                                <p
-                                                    class="text-sm font-semibold
-                                                     text-slate-600">
-
-                                                    Belum ada peserta internship
-
-                                                </p>
-
-                                                <p class="mt-1 text-xs text-slate-400">
-
-                                                    Data peserta internship akan muncul di sini.
-
-                                                </p>
-
+                                                <p class="text-sm font-semibold text-slate-600">Belum ada peserta
+                                                    internship</p>
+                                                <p class="mt-1 text-xs text-slate-400">Data peserta internship akan
+                                                    muncul di sini.</p>
                                             </div>
-
                                         </td>
-
                                     </tr>
                                 @endforelse
 
                             </tbody>
-
                         </table>
 
-                    </div>
+                        {{-- Pesan saat hasil pencarian kosong --}}
+                        <div id="no-search-result" class="hidden px-5 py-12 text-center">
+                            <p class="text-sm font-semibold text-slate-600">Tidak ditemukan peserta dengan nama
+                                tersebut</p>
+                            <p class="mt-1 text-xs text-slate-400">Coba kata kunci lain.</p>
+                        </div>
 
+                    </div>
                 </section>
 
 
@@ -1307,6 +1190,33 @@
             overlay.addEventListener('click', closeSidebar);
 
         }
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('search-internship');
+            const rows = document.querySelectorAll('.internship-row');
+            const noResult = document.getElementById('no-search-result');
+            const totalCount = document.getElementById('total-count');
+
+            if (!searchInput) return;
+
+            searchInput.addEventListener('input', function() {
+                const keyword = this.value.toLowerCase().trim();
+                let visibleCount = 0;
+
+                rows.forEach(function(row) {
+                    const name = row.getAttribute('data-name') || '';
+                    const isMatch = name.includes(keyword);
+
+                    row.style.display = isMatch ? '' : 'none';
+                    if (isMatch) visibleCount++;
+                });
+
+                noResult.classList.toggle('hidden', visibleCount > 0);
+                totalCount.textContent = visibleCount;
+            });
+        });
     </script>
 
 </body>

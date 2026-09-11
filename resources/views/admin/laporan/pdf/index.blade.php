@@ -436,63 +436,6 @@
     <div class="container">
 
         {{-- =====================================================
-            COVER
-        ====================================================== --}}
-
-        <div class="cover">
-
-            <div class="cover-content">
-
-                @if (file_exists(public_path('images/bts.png')))
-                    <img src="{{ public_path('images/bts.png') }}" alt="BTS.id" class="cover-logo">
-                @endif
-
-
-                <h1 class="cover-title">
-                    LAPORAN INTERNSHIP
-                </h1>
-
-
-                <div class="cover-line"></div>
-
-
-                <div class="cover-subtitle">
-                    Laporan Kegiatan dan Hasil Penilaian
-                </div>
-
-
-                <div class="cover-name">
-                    {{ $user->name ?? '-' }}
-                </div>
-
-
-                <div class="cover-company">
-
-                    Program Internship
-
-                    <br>
-
-                    BTS.id
-
-                    <div class="cover-address">
-                        Jl. Terusan Sutami I No.36,
-                        Sukagalih, Kec. Sukajadi,
-                        Kota Bandung, Jawa Barat 40163
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <div class="cover-footer">
-                {{ now()->translatedFormat('F Y') }}
-            </div>
-
-        </div>
-
-
-        {{-- =====================================================
             HEADER
         ====================================================== --}}
 

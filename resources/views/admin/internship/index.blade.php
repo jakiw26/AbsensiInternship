@@ -501,47 +501,34 @@
                     <div class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
 
                         {{-- Toolbar: search + filter + tambah --}}
+
                         <div
-                            class="flex flex-col md:flex-row md:items-center md:justify-between gap-3 px-5 py-4 border-b border-slate-100">
+                            class="flex flex-col gap-3 border-b border-slate-100 px-5 py-4
+    md:flex-row md:items-center md:justify-between">
 
-                            <form method="GET" action="/admin/internship"
-                                class="flex flex-1 flex-col sm:flex-row gap-3">
+                            {{-- Search & Filter --}}
+                            <div class="flex flex-1 flex-col gap-3 sm:flex-row">
 
-                                <div class="relative flex-1 max-w-sm">
+                                {{-- Search --}}
+                                <div class="relative w-full max-w-sm">
 
-                                    <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400"
+                                    <svg class="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400"
                                         fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
+
                                     </svg>
 
-                                    <input type="text" id="search-input" value="{{ request('search') }}"
-                                        placeholder="Cari nama atau email..." autocomplete="off"
-                                        class="w-full pl-9 pr-3 py-2.5 text-sm rounded-xl border border-slate-200
-                                        focus:outline-none focus:ring-2 focus:ring-slate-800/10 focus:border-slate-400">
+                                    <input type="text" id="search-input" placeholder="Cari nama atau email..."
+                                        autocomplete="off"
+                                        class="w-full rounded-xl border border-slate-200 py-2.5 pl-9 pr-3
+           text-sm focus:border-slate-400 focus:outline-none
+           focus:ring-2 focus:ring-slate-800/10">
 
                                 </div>
 
-                                <select name="status"
-                                    class="px-3 py-2.5 text-sm rounded-xl border border-slate-200
-                                    focus:outline-none focus:ring-2 focus:ring-slate-800/10 focus:border-slate-400">
-
-                                    <option value="">Semua Status</option>
-                                    <option value="aktif" {{ request('status') === 'aktif' ? 'selected' : '' }}>Aktif
-                                    </option>
-                                    <option value="tidak_aktif"
-                                        {{ request('status') === 'tidak_aktif' ? 'selected' : '' }}>Tidak Aktif
-                                    </option>
-
-                                </select>
-
-                                <button type="submit"
-                                    class="px-4 py-2.5 rounded-xl bg-slate-900 text-white text-sm font-medium
-                                    hover:bg-slate-800 transition">
-                                    Cari
-                                </button>
-
-                            </form>
+                            </div>
 
                         </div>
 
@@ -579,7 +566,7 @@
                                 </thead>
 
 
-                                <tbody class="divide-y divide-slate-100">
+                                <tbody id="internship-table" class="divide-y divide-slate-100">
 
                                     @forelse ($internships as $index => $user)
                                         <tr class="hover:bg-slate-50/70 transition">
@@ -941,40 +928,7 @@
         overlay.addEventListener('click', closeSidebar);
     </script>
 
-    <script>
-        const searchInput = document.getElementById('search-input');
-        const tableContainer = document.getElementById('table-container');
-        let debounceTimer;
-
-        searchInput.addEventListener('input', function() {
-            clearTimeout(debounceTimer);
-
-            debounceTimer = setTimeout(() => {
-                const keyword = searchInput.value.trim();
-                const url = `/admin/internship?search=${encodeURIComponent(keyword)}`;
-
-                fetch(url)
-                    .then(res => res.text()) // ambil HTML mentah, bukan JSON
-                    .then(html => {
-                        // Parse HTML hasil fetch jadi dokumen sementara
-                        const parser = new DOMParser();
-                        const doc = parser.parseFromString(html, 'text/html');
-
-                        // Ambil elemen #table-container dari halaman hasil fetch
-                        const newTable = doc.getElementById('table-container');
-
-                        if (newTable) {
-                            tableContainer.innerHTML = newTable.innerHTML;
-                        }
-
-                        // opsional: update URL browser tanpa reload
-                        window.history.replaceState({}, '', url);
-                    })
-                    .catch(err => console.error('Live search gagal:', err));
-
-            }, 50);
-        });
-    </script>
+    
 
     <script>
         let currentDeleteFormId = null;
@@ -1026,6 +980,63 @@
 
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape') closeStatusModal();
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const searchInput = document.getElementById('search-input');
+            const tableBody = document.getElementById('internship-table');
+            const searchEmpty = document.getElementById('search-empty');
+
+            if (!searchInput || !tableBody) {
+                return;
+            }
+
+            searchInput.addEventListener('input', function() {
+
+                const keyword = this.value.toLowerCase().trim();
+
+                const rows = tableBody.querySelectorAll(
+                    'tr:not(#search-empty)'
+                );
+
+                let visibleRows = 0;
+
+                rows.forEach(function(row) {
+
+                    const rowText = row.textContent.toLowerCase();
+
+                    if (rowText.includes(keyword)) {
+
+                        row.style.display = '';
+                        visibleRows++;
+
+                    } else {
+
+                        row.style.display = 'none';
+
+                    }
+
+                });
+
+                if (searchEmpty) {
+
+                    if (keyword !== '' && visibleRows === 0) {
+
+                        searchEmpty.classList.remove('hidden');
+
+                    } else {
+
+                        searchEmpty.classList.add('hidden');
+
+                    }
+
+                }
+
+            });
+
         });
     </script>
 

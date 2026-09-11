@@ -476,6 +476,11 @@
                                     </th>
 
                                     <th
+                                        class="px-5 py-4 text-left text-xs font-semibold text-white uppercase tracking-wider whitespace-nowrap">
+                                        Keterangan / Dokumen
+                                    </th>
+
+                                    <th
                                         class="rounded-tr-xl px-5 py-4 text-center text-xs font-semibold text-white uppercase tracking-wider whitespace-nowrap">
                                         Aksi
                                     </th>
@@ -624,45 +629,156 @@
                                             @endif
                                         </td>
 
-                                        <td class="px-5 py-4 text-center whitespace-nowrap">
-                                            @if ($absensi->status === 'hadir')
-                                                @if ($absensi->jam_pulang)
-                                                    <div
-                                                        class="inline-flex items-center gap-1.5 rounded-lg bg-slate-100 px-3 py-2 text-xs font-medium text-slate-500">
-                                                        <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor"
-                                                            viewBox="0 0 24 24">
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                stroke-width="2" d="M5 13l4 4L19 7" />
-                                                        </svg> Sudah Absen Pulang
+                                        {{-- Keterangan / Dokumen --}}
+                                        <td class="px-5 py-4 align-middle">
+
+                                            @if ($absensi->status === 'izin')
+                                                @if ($absensi->keterangan)
+                                                    <div class="max-w-[220px]">
+                                                        <p class="text-sm font-medium leading-relaxed text-slate-600">
+                                                            {{ $absensi->keterangan }}
+                                                        </p>
                                                     </div>
                                                 @else
-                                                    <button type="button"
-                                                        class="btn-detail-absensi inline-flex items-center gap-1.5 rounded-lg bg-[#111827] px-3 py-2 text-xs font-medium text-white transition-all duration-200 hover:-translate-y-0.5 hover:bg-slate-800"
-                                                        data-id="{{ $absensi->id }}"
-                                                        data-jam-pulang="{{ $absensi->jam_pulang ?? '' }}"> <svg
-                                                            class="h-3.5 w-3.5" fill="none" stroke="currentColor"
+                                                    <span class="text-slate-300">
+                                                        -
+                                                    </span>
+                                                @endif
+                                            @elseif ($absensi->status === 'sakit')
+                                                @if ($absensi->surat_dokter)
+                                                    <a href="{{ asset('storage/' . $absensi->surat_dokter) }}"
+                                                        target="_blank" rel="noopener noreferrer"
+                                                        class="inline-flex items-center gap-2 rounded-lg
+                       bg-amber-50 px-3 py-2 text-xs font-semibold
+                       text-amber-700 transition
+                       hover:bg-amber-100">
+
+                                                        <svg class="h-4 w-4 shrink-0" fill="none"
+                                                            stroke="currentColor" viewBox="0 0 24 24">
+
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="1.8"
+                                                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h6l4 4v12a2 2 0 01-2 2Z" />
+
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="1.8" d="M13 3v4h4" />
+
+                                                        </svg>
+
+                                                        <span>
+                                                            Lihat Surat Dokter
+                                                        </span>
+
+                                                    </a>
+                                                @else
+                                                    <span class="text-slate-300">
+                                                        -
+                                                    </span>
+                                                @endif
+                                            @else
+                                                <span class="text-slate-300">
+                                                    -
+                                                </span>
+                                            @endif
+
+                                        </td>
+
+                                        <td class="px-5 py-4 text-center whitespace-nowrap">
+
+                                            @if ($absensi->status === 'hadir')
+                                                {{-- Sudah Absen Pulang --}}
+                                                @if ($absensi->jam_pulang)
+                                                    <div
+                                                        class="inline-flex items-center gap-1.5 rounded-lg bg-slate-100 px-3 py-2
+                text-xs font-medium text-slate-500">
+
+                                                        <svg class="h-3.5 w-3.5" fill="none" stroke="currentColor"
                                                             viewBox="0 0 24 24">
+
                                                             <path stroke-linecap="round" stroke-linejoin="round"
-                                                                stroke-width="1.5"
-                                                                d="M15 12a3 3 0 11-6 0 3 3 0 016 0Z" />
-                                                            <path stroke-linecap="round" stroke-linejoin="round"
-                                                                stroke-width="1.5"
-                                                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7Z" />
-                                                        </svg> Absen Pulang </button>
+                                                                stroke-width="2" d="M5 13l4 4L19 7" />
+
+                                                        </svg>
+
+                                                        Sudah Absen Pulang
+
+                                                    </div>
+
+                                                    {{-- Belum Absen Pulang --}}
+                                                @else
+                                                    {{-- Jika Absensi Hari Ini --}}
+                                                    @if ($absensi->tanggal->isToday())
+                                                        <button type="button"
+                                                            class="btn-detail-absensi inline-flex items-center gap-1.5 rounded-lg
+                    bg-[#111827] px-3 py-2 text-xs font-medium text-white
+                    transition-all duration-200 hover:-translate-y-0.5 hover:bg-slate-800"
+                                                            data-id="{{ $absensi->id }}"
+                                                            data-jam-pulang="{{ $absensi->jam_pulang ?? '' }}">
+
+                                                            <svg class="h-3.5 w-3.5" fill="none"
+                                                                stroke="currentColor" viewBox="0 0 24 24">
+
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                    stroke-width="1.5"
+                                                                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0Z" />
+
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                    stroke-width="1.5" d="M2.458 12C3.732 7.943 7.523 5 12 5
+                            c4.478 0 8.268 2.943 9.542 7
+                            -1.274 4.057-5.064 7-9.542 7Z" />
+
+                                                            </svg>
+
+                                                            Absen Pulang
+
+                                                        </button>
+
+                                                        {{-- Jika Sudah Lewat Hari --}}
+                                                    @else
+                                                        <div
+                                                            class="inline-flex items-center gap-1.5 rounded-lg bg-red-50 px-3 py-2
+                    text-xs font-medium text-red-600">
+
+                                                            <svg class="h-3.5 w-3.5" fill="none"
+                                                                stroke="currentColor" viewBox="0 0 24 24">
+
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                    stroke-width="2" d="M12 8v4l3 2m6-2a9 9 0 11-18 0
+                            9 9 0 0118 0Z" />
+
+                                                            </svg>
+
+                                                            Absen Pulang Kedaluwarsa
+
+                                                        </div>
+                                                    @endif
                                                 @endif
                                             @elseif ($absensi->status === 'sakit')
                                                 <span
-                                                    class="inline-flex items-center rounded-lg bg-amber-100 px-3 py-2 text-xs font-medium text-amber-700">
-                                                    Sakit </span>
+                                                    class="inline-flex items-center rounded-lg bg-amber-100 px-3 py-2
+            text-xs font-medium text-amber-700">
+
+                                                    Sakit
+
+                                                </span>
                                             @elseif ($absensi->status === 'izin')
                                                 <span
-                                                    class="inline-flex items-center rounded-lg bg-blue-100 px-3 py-2 text-xs font-medium text-blue-700">
-                                                    Izin </span>
+                                                    class="inline-flex items-center rounded-lg bg-blue-100 px-3 py-2
+            text-xs font-medium text-blue-700">
+
+                                                    Izin
+
+                                                </span>
                                             @elseif ($absensi->status === 'alfa')
                                                 <span
-                                                    class="inline-flex items-center rounded-lg bg-red-100 px-3 py-2 text-xs font-medium text-red-700">
-                                                    Alfa </span>
+                                                    class="inline-flex items-center rounded-lg bg-red-100 px-3 py-2
+            text-xs font-medium text-red-700">
+
+                                                    Alfa
+
+                                                </span>
                                             @endif
+
                                         </td>
                                     </tr>
                                 @empty
@@ -851,13 +967,17 @@
                                     </div>
                                 </div>
 
+                                {{-- Status Kehadiran --}}
                                 <div>
                                     <label for="status" class="mb-2 block text-sm font-semibold text-slate-700">
                                         Status Kehadiran
                                     </label>
 
                                     <select id="status" name="status"
-                                        class="w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-700 outline-none transition focus:border-slate-400 focus:ring-2 focus:ring-slate-100">
+                                        class="w-full rounded-xl border border-slate-200 bg-white px-4 py-2.5
+               text-sm text-slate-700 outline-none transition focus:border-slate-400
+               focus:ring-2 focus:ring-slate-100">
+
                                         <option value="hadir">
                                             Hadir
                                         </option>
@@ -874,6 +994,38 @@
                                             Alfa
                                         </option>
                                     </select>
+                                </div>
+
+                                {{-- Keterangan --}}
+                                <div id="keterangan-wrapper" class="hidden">
+                                    <label for="keterangan" class="mb-2 block text-sm font-semibold text-slate-700">
+                                        Keterangan
+                                    </label>
+
+                                    <textarea id="keterangan" name="keterangan" rows="3" placeholder="Masukkan alasan izin..."
+                                        class="w-full resize-none rounded-xl border border-slate-200 bg-white
+               px-4 py-2.5 text-sm text-slate-700 outline-none transition
+               placeholder:text-slate-400 focus:border-slate-400
+               focus:ring-2 focus:ring-slate-100"></textarea>
+                                </div>
+
+                                {{-- Surat Dokter --}}
+                                <div id="surat-dokter-wrapper" class="hidden">
+                                    <label for="surat_dokter" class="mb-2 block text-sm font-semibold text-slate-700">
+                                        Surat Dokter
+                                    </label>
+
+                                    <input type="file" id="surat_dokter" name="surat_dokter"
+                                        accept=".jpg,.jpeg,.png,.pdf"
+                                        class="w-full rounded-xl border border-slate-200 bg-white
+               px-4 py-2.5 text-sm text-slate-700 outline-none transition
+               file:mr-3 file:rounded-lg file:border-0 file:bg-slate-100
+               file:px-3 file:py-2 file:text-xs file:font-medium
+               file:text-slate-600 hover:file:bg-slate-200">
+
+                                    <p class="mt-1.5 text-xs text-slate-400">
+                                        Upload surat dokter dalam format JPG, PNG, atau PDF.
+                                    </p>
                                 </div>
 
                             </div>
@@ -1382,6 +1534,64 @@
                 }
 
             });
+
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const status = document.getElementById('status');
+
+            const keteranganWrapper =
+                document.getElementById('keterangan-wrapper');
+
+            const keterangan =
+                document.getElementById('keterangan');
+
+            const suratDokterWrapper =
+                document.getElementById('surat-dokter-wrapper');
+
+            const suratDokter =
+                document.getElementById('surat_dokter');
+
+
+            function updateStatusForm() {
+
+                const selectedStatus = status.value;
+
+                // Sembunyikan semua field terlebih dahulu
+                keteranganWrapper.classList.add('hidden');
+                suratDokterWrapper.classList.add('hidden');
+
+                // Reset nilai field
+                keterangan.value = '';
+                suratDokter.value = '';
+
+
+                // Jika status IZIN
+                if (selectedStatus === 'izin') {
+
+                    keteranganWrapper.classList.remove('hidden');
+
+                }
+
+
+                // Jika status SAKIT
+                if (selectedStatus === 'sakit') {
+
+                    suratDokterWrapper.classList.remove('hidden');
+
+                }
+            }
+
+
+            // Jalankan ketika status berubah
+            status.addEventListener('change', updateStatusForm);
+
+
+            // Jalankan saat halaman pertama kali dibuka
+            updateStatusForm();
 
         });
     </script>

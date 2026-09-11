@@ -20,6 +20,8 @@ return new class extends Migration
             $table->time('jam_pulang')->nullable();
             $table->string('foto_pulang')->nullable();
             $table->enum('status', ['hadir','sakit','izin','alfa'])->default('hadir');
+            $table->text('keterangan')->nullable();
+            $table->string('surat_dokter')->nullable();
             $table->timestamps();
             $table->unique(['user_id', 'tanggal']);
         });

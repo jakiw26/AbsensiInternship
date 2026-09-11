@@ -474,17 +474,39 @@
 
                 <section class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
                     <div
-                        class="px-5 md:px-6 py-5  border-b border-slate-100  flex flex-col md:flex-row  md:items-center md:justify-between gap-3">
+                        class="flex flex-col gap-3 border-b border-slate-100 px-5 py-5 md:flex-row md:items-center md:justify-between md:px-6">
+
+                        {{-- Judul --}}
                         <div>
                             <h2 class="text-base font-semibold text-slate-800">
                                 Data Kehadiran
                             </h2>
 
-                            <p class="text-xs text-slate-400 mt-1">
+                            <p class="mt-1 text-xs text-slate-400">
                                 Informasi jam masuk, jam pulang, foto, dan status kehadiran.
                             </p>
+                        </div>
+
+                        {{-- Search --}}
+                        <div class="relative w-full md:w-72">
+
+                            <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
+                                <svg class="h-4 w-4 text-slate-400" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="m21 21-4.35-4.35m2.35-5.65a8 8 0 1 1-16 0 8 8 0 0 1 16 0Z" />
+                                </svg>
+                            </div>
+
+                            <input type="text" id="search-absensi" placeholder="Cari nama, email, status..."
+                                autocomplete="off"
+                                class="w-full rounded-xl border border-slate-200 bg-white py-2.5 pl-9 pr-4
+                   text-sm text-slate-700 outline-none transition
+                   placeholder:text-slate-400
+                   focus:border-slate-400 focus:ring-2 focus:ring-slate-100">
 
                         </div>
+
                     </div>
 
                     <div class="overflow-x-auto">
@@ -528,6 +550,11 @@
                                     </th>
 
                                     <th
+                                        class="px-5 py-4 text-left text-xs font-semibold text-white uppercase tracking-wider whitespace-nowrap">
+                                        Keterangan / Dokumen
+                                    </th>
+
+                                    <th
                                         class="rounded-tr-xl px-5 py-4 text-left text-xs font-semibold text-white uppercase tracking-wider whitespace-nowrap">
                                         Aksi
                                     </th>
@@ -535,7 +562,7 @@
                                 </tr>
                             </thead>
 
-                            <tbody class="divide-y divide-slate-100">
+                            <tbody id="absensi-table" class="divide-y divide-slate-100">
 
                                 @forelse ($absensis as $absensi)
                                     <tr class="group hover:bg-slate-50 transition">
@@ -671,6 +698,60 @@
                                             @endif
                                         </td>
 
+                                        {{-- Keterangan / Dokumen --}}
+                                        <td class="px-5 py-4 align-middle">
+
+                                            @if ($absensi->status === 'izin')
+                                                @if ($absensi->keterangan)
+                                                    <div class="max-w-[220px]">
+                                                        <p class="text-sm font-medium leading-relaxed text-slate-600">
+                                                            {{ $absensi->keterangan }}
+                                                        </p>
+                                                    </div>
+                                                @else
+                                                    <span class="text-slate-300">
+                                                        -
+                                                    </span>
+                                                @endif
+                                            @elseif ($absensi->status === 'sakit')
+                                                @if ($absensi->surat_dokter)
+                                                    <a href="{{ asset('storage/' . $absensi->surat_dokter) }}"
+                                                        target="_blank" rel="noopener noreferrer"
+                                                        class="inline-flex items-center gap-2 rounded-lg
+                       bg-amber-50 px-3 py-2 text-xs font-semibold
+                       text-amber-700 transition
+                       hover:bg-amber-100">
+
+                                                        <svg class="h-4 w-4 shrink-0" fill="none"
+                                                            stroke="currentColor" viewBox="0 0 24 24">
+
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="1.8"
+                                                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h6l4 4v12a2 2 0 01-2 2Z" />
+
+                                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                                stroke-width="1.8" d="M13 3v4h4" />
+
+                                                        </svg>
+
+                                                        <span>
+                                                            Lihat Surat Dokter
+                                                        </span>
+
+                                                    </a>
+                                                @else
+                                                    <span class="text-slate-300">
+                                                        -
+                                                    </span>
+                                                @endif
+                                            @else
+                                                <span class="text-slate-300">
+                                                    -
+                                                </span>
+                                            @endif
+
+                                        </td>
+
                                         {{-- Aksi --}}
                                         <td class="px-5 py-4 whitespace-nowrap">
                                             <div class="flex items-center gap-2">
@@ -735,6 +816,10 @@
                                 @endforelse
                             </tbody>
                         </table>
+                    </div>
+
+                    <div class="mt-6 bg-white rounded-xl border border-navy/10 px-5 py-4">
+                        {{ $absensis->links() }}
                     </div>
 
                     <div id="modal-edit-status" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
@@ -953,6 +1038,38 @@
 
         btnCancelDeleteAbsensi.addEventListener('click', closeDeleteAbsensiModal);
         modalDeleteAbsensiOverlay.addEventListener('click', closeDeleteAbsensiModal);
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const searchInput = document.getElementById('search-absensi');
+            const tableBody = document.getElementById('absensi-table');
+
+            if (!searchInput || !tableBody) {
+                return;
+            }
+
+            searchInput.addEventListener('input', function() {
+
+                const keyword = this.value.toLowerCase().trim();
+                const rows = tableBody.querySelectorAll('tr');
+
+                rows.forEach(function(row) {
+
+                    const rowText = row.textContent.toLowerCase();
+
+                    if (rowText.includes(keyword)) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+
+                });
+
+            });
+
+        });
     </script>
 
 </body>
