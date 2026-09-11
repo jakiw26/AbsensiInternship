@@ -152,9 +152,7 @@
                     </svg>
 
                     Laporan
-
                 </a>
-
             </nav>
 
 
