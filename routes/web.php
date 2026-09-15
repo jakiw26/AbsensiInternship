@@ -9,6 +9,7 @@ use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\ProfilController;
 use App\Http\Controllers\InternshipController;
+use App\Http\Controllers\SertifikasiController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -29,6 +30,9 @@ Route::middleware(['auth', 'role:internship'])->group(function () {
     Route::put('/internship/profil/edit', [ProfilController::class, 'createOrUpdate']);
 
     Route::get('/internship/laporan/pdf', [LaporanController::class, 'PdfInternship']);
+
+    Route::get('/internship/sertifikasi', [SertifikasiController::class, 'internship']);
+    Route::get('/internship/sertifikasi/pdf/{id}', [SertifikasiController::class, 'pdfInternship']);
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
@@ -49,6 +53,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/laporan/{id}/pdf', [LaporanController::class, 'PdfAdmin'])->name('admin.laporan.pdf');
 
     Route::get('/admin/profil', [ProfilController::class, 'admin']);
+
+    Route::get('/admin/sertifikasi', [SertifikasiController::class, 'admin']);
+    Route::post('/admin/sertifikasi/{id}', [SertifikasiController::class, 'store']);
+    Route::get('/admin/sertifikasi/pdf/{id}', [SertifikasiController::class, 'AdminPdf']);
 });
 
 Route::get('/', [AuthController::class, 'login']);

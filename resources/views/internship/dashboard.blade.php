@@ -96,6 +96,25 @@
                     </svg>
                     Cetak Laporan
                 </a>
+
+                {{-- Sertifikat --}}
+                <a href="/internship/sertifikasi"
+                    class="flex items-center gap-3 px-3 py-3 rounded-xl text-sm transition
+                    {{ request()->is('internship/sertifikasi*')
+                        ? 'bg-white text-[#111827] font-semibold shadow-sm'
+                        : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
+
+                    <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none">
+                        <path
+                            d="M12 3l2.1 2.1 3-.2.8 2.9 2.6 1.5-1.5 2.6.8 2.9-3 .8-1.8 2.4-3-1.1-3 1.1-1.8-2.4-3-.8.8-2.9-1.5-2.6 2.6-1.5.8-2.9 3 .2L12 3Z"
+                            stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+
+                        <path d="M9 11.5l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+
+                    Sertifikasi
+                </a>
             </nav>
 
             {{-- User Sidebar --}}
@@ -809,55 +828,6 @@
                                         </div>
 
                                     </div>
-
-                                </div>
-
-                            </div>
-
-                            <div
-                                class="mt-5 flex items-center gap-4
-    rounded-2xl border border-emerald-100
-    bg-gradient-to-r from-emerald-50 to-green-50
-    px-5 py-4 shadow-sm">
-
-                                {{-- Icon --}}
-                                <div
-                                    class="flex h-11 w-11 flex-shrink-0
-        items-center justify-center rounded-xl
-        bg-emerald-100">
-
-                                    <svg class="h-6 w-6 text-emerald-600" fill="none" stroke="currentColor"
-                                        viewBox="0 0 24 24">
-
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                            d="M5 13l4 4L19 7" />
-
-                                    </svg>
-
-                                </div>
-
-
-                                {{-- Text --}}
-                                <div class="flex-1">
-
-                                    <p class="text-sm font-semibold text-emerald-800">
-                                        Penilaian Berhasil Diberikan
-                                    </p>
-
-                                    <p class="mt-0.5 text-xs text-emerald-600">
-                                        Nilai kamu sudah diberikan dan dapat dilihat pada halaman ini.
-                                    </p>
-
-                                </div>
-
-
-                                {{-- Status --}}
-                                <div
-                                    class="hidden rounded-full bg-emerald-100
-        px-3 py-1 text-xs font-semibold
-        text-emerald-700 sm:block">
-
-                                    Selesai
 
                                 </div>
 

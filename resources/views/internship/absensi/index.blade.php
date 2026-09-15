@@ -15,7 +15,9 @@
             class="fixed inset-y-0 left-0 z-40 w-64 bg-[#111827] text-white flex flex-col
             transform -translate-x-full md:translate-x-0 transition-transform duration-200 shadow-2xl">
 
+            {{-- Logo --}}
             <div class="flex items-center gap-3 px-6 py-6 border-b border-white/10">
+
                 <div class="w-10 h-10 rounded-xl overflow-hidden bg-white flex-shrink-0 shadow-sm">
                     <img src="{{ asset('images/bts.png') }}" alt="Logo" class="w-full h-full object-contain">
                 </div>
@@ -30,25 +32,32 @@
                 </div>
             </div>
 
+            {{-- Navigation --}}
             <nav class="flex-1 px-4 py-6 space-y-1.5">
 
+                {{-- Dashboard --}}
                 <a href="/internship/dashboard"
                     class="flex items-center gap-3 px-3 py-3 rounded-xl text-sm transition
                     {{ request()->is('internship/dashboard')
                         ? 'bg-white text-[#111827] font-semibold shadow-sm'
                         : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
+
                     <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 20 20" fill="none">
-                        <path d="M3 10.5 10 4l7 6.5" stroke="currentColor" stroke-width="1.5"
-                            stroke-linecap="round"stroke-linejoin="round" />
+                        <path d="M3 10.5 10 4l7 6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+
                         <path d="M5 9v7h10V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                             stroke-linejoin="round" />
                     </svg>
                     Dashboard
                 </a>
 
+                {{-- Absensi --}}
                 <a href="/internship/absensi"
                     class="flex items-center gap-3 px-3 py-3 rounded-xl text-sm transition
-                    {{ request()->is('internship/absensi*') ? 'bg-white text-[#111827] font-semibold shadow-sm' : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
+                    {{ request()->is('internship/absensi*')
+                        ? 'bg-white text-[#111827] font-semibold shadow-sm'
+                        : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
                     <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 20 20" fill="none">
                         <circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5" />
                         <path d="M10 6v4l2.5 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
@@ -56,22 +65,28 @@
                     Absensi
                 </a>
 
+                {{-- Nilai --}}
                 <a href="/internship/nilai"
                     class="flex items-center gap-3 px-3 py-3 rounded-xl text-sm transition
-                    {{ request()->is('internship/nilai*') ? 'bg-white text-[#111827] font-semibold shadow-sm' : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
+                    {{ request()->is('internship/nilai*')
+                        ? 'bg-white text-[#111827] font-semibold shadow-sm'
+                        : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
                     <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 20 20" fill="none">
                         <path d="M6 3h8l2 2v12H4V5l2-2Z" stroke="currentColor" stroke-width="1.5"
                             stroke-linejoin="round" />
+
                         <path d="M7 8h6M7 11h6M7 14h4" stroke="currentColor" stroke-width="1.5"
                             stroke-linecap="round" />
                     </svg>
                     Nilai Saya
                 </a>
 
+                {{-- Laporan --}}
                 <a href="/internship/laporan"
                     class="flex items-center gap-3 px-3 py-3 rounded-xl text-sm transition
-                    {{ request()->is('internship/laporan*') ? 'bg-white text-[#111827] font-semibold shadow-sm' : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
-
+                    {{ request()->is('internship/laporan*')
+                        ? 'bg-white text-[#111827] font-semibold shadow-sm'
+                        : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
                     <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 20 20" fill="none">
                         <path d="M4 4h12v13l-3-2-3 2-3-2-3 2V4Z" stroke="currentColor" stroke-width="1.5"
                             stroke-linejoin="round" />
@@ -79,30 +94,47 @@
                     </svg>
                     Cetak Laporan
                 </a>
+
+                {{-- Sertifikat --}}
+                <a href="/internship/sertifikasi"
+                    class="flex items-center gap-3 px-3 py-3 rounded-xl text-sm transition
+                    {{ request()->is('internship/sertifikasi*')
+                        ? 'bg-white text-[#111827] font-semibold shadow-sm'
+                        : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
+
+                    <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none">
+                        <path
+                            d="M12 3l2.1 2.1 3-.2.8 2.9 2.6 1.5-1.5 2.6.8 2.9-3 .8-1.8 2.4-3-1.1-3 1.1-1.8-2.4-3-.8.8-2.9-1.5-2.6 2.6-1.5.8-2.9 3 .2L12 3Z"
+                            stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+
+                        <path d="M9 11.5l2 2 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+
+                    Sertifikasi
+                </a>
             </nav>
 
+            {{-- User Sidebar --}}
             <div class="px-4 py-4 border-t border-white/10">
                 <div class="flex items-center gap-3 px-2 py-2">
                     <div
                         class="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-yellow-600
-                        flex items-center justify-center text-white text-sm font-semibold
-                        flex-shrink-0 shadow-lg">
+                        flex items-center justify-center text-white text-sm font-semibold flex-shrink-0 shadow-lg">
                         {{ strtoupper(substr(auth()->user()->name ?? 'U', 0, 1)) }}
                     </div>
-
                     <div class="min-w-0">
                         <p class="text-sm font-medium text-white truncate">
                             {{ auth()->user()->name ?? 'User' }}
                         </p>
-
                         <p class="text-xs text-white/40 truncate">
                             {{ auth()->user()->email ?? '-' }}
                         </p>
-
                     </div>
                 </div>
             </div>
         </aside>
+
 
         <div id="overlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-30 hidden md:hidden"></div>
 

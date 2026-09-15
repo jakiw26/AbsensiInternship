@@ -153,9 +153,29 @@
                     </svg>
 
                     Laporan
-
                 </a>
 
+                {{-- Sertifikasi --}}
+                <a href="/admin/sertifikasi"
+                    class="flex items-center gap-3 px-3 py-3 rounded-xl text-sm transition
+                    {{ request()->is('admin/sertifikasi*')
+                        ? 'bg-white text-[#111827] font-semibold shadow-sm'
+                        : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
+
+                    <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none">
+
+                        <path
+                            d="M12 3l2.5 2.5L18 6l-.5 3.5L19 12l-1.5 2.5L18 18l-3.5.5L12 21l-2.5-2.5L6 18l.5-3.5L5 12l1.5-2.5L6 6l3.5-.5L12 3Z"
+                            stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
+
+                        <path d="M9.5 12l1.7 1.7L14.5 10" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round" />
+
+                    </svg>
+
+                    Sertifikasi
+
+                </a>
             </nav>
 
 

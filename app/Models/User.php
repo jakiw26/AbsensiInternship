@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 
 #[Fillable(['name', 'email', 'password', 'role', 'is_active'])]
@@ -44,5 +45,10 @@ class User extends Authenticatable
     public function nilai()
     {
         return $this->hasOne(Nilai::class);
+    }
+
+    public function sertifikasis(): HasMany
+    {
+        return $this->hasMany(Sertifikasi::class);
     }
 }
