@@ -14,14 +14,10 @@
         <aside id="sidebar"
             class="fixed inset-y-0 left-0 z-40 w-64 bg-[#111827] text-white flex flex-col
             transform -translate-x-full md:translate-x-0 transition-transform duration-200 shadow-2xl">
-
-            {{-- Logo --}}
             <div class="flex items-center gap-3 px-6 py-6 border-b border-white/10">
-
                 <div class="w-10 h-10 rounded-xl overflow-hidden bg-white flex-shrink-0 shadow-sm">
                     <img src="{{ asset('images/bts.png') }}" alt="Logo" class="w-full h-full object-contain">
                 </div>
-
                 <div>
                     <p class="font-serif text-lg leading-tight text-white">
                         Absensi
@@ -31,36 +27,23 @@
                         Admin Panel
                     </p>
                 </div>
-
             </div>
 
-
-            {{-- Navigation --}}
             <nav class="flex-1 px-4 py-6 space-y-1.5">
-
-                {{-- Dashboard --}}
                 <a href="/admin/dashboard"
                     class="flex items-center gap-3 px-3 py-3 rounded-xl text-sm transition
                     {{ request()->is('admin/dashboard')
                         ? 'bg-white text-[#111827] font-semibold shadow-sm'
                         : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
-
                     <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 20 20" fill="none">
-
                         <path d="M3 10.5 10 4l7 6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                             stroke-linejoin="round" />
-
                         <path d="M5 9v7h10V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                             stroke-linejoin="round" />
-
                     </svg>
-
                     Dashboard
-
                 </a>
 
-
-                {{-- Data Internship --}}
                 <a href="/admin/internship"
                     class="flex items-center gap-3 px-3 py-3 rounded-xl text-sm transition
                     {{ request()->is('admin/internship*')
@@ -68,122 +51,77 @@
                         : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
 
                     <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none">
-
                         <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.5"
                             stroke-linecap="round" stroke-linejoin="round" />
-
                         <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.5" />
-
                         <path d="M22 21v-2a4 4 0 0 0-3-3.87" stroke="currentColor" stroke-width="1.5"
                             stroke-linecap="round" stroke-linejoin="round" />
-
                         <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="1.5"
                             stroke-linecap="round" stroke-linejoin="round" />
-
                     </svg>
-
                     Data Internship
-
                 </a>
 
-
-                {{-- Absensi --}}
                 <a href="/admin/absensi"
                     class="flex items-center gap-3 px-3 py-3 rounded-xl text-sm transition
                     {{ request()->is('admin/absensi*')
                         ? 'bg-white text-[#111827] font-semibold shadow-sm'
                         : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
-
                     <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 20 20" fill="none">
-
                         <circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5" />
-
                         <path d="M10 6v4l2.5 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-
                     </svg>
-
                     Absensi
-
                 </a>
 
-
-                {{-- Penilaian --}}
                 <a href="/admin/nilai"
                     class="flex items-center gap-3 px-3 py-3 rounded-xl text-sm transition
                     {{ request()->is('admin/nilai*')
                         ? 'bg-white text-[#111827] font-semibold shadow-sm'
                         : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
-
                     <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none">
-
                         <path d="M6 3h8l2 2v16H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" stroke="currentColor"
                             stroke-width="1.5" stroke-linejoin="round" />
-
                         <path d="M9 9h4M9 13h4M9 17h3" stroke="currentColor" stroke-width="1.5"
                             stroke-linecap="round" />
-
                     </svg>
-
                     Penilaian
-
                 </a>
 
-
-                {{-- Laporan --}}
                 <a href="/admin/laporan"
                     class="flex items-center gap-3 px-3 py-3 rounded-xl text-sm transition
                     {{ request()->is('admin/laporan*')
                         ? 'bg-white text-[#111827] font-semibold shadow-sm'
                         : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
-
                     <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none">
-
                         <path d="M5 3h14v18H5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
-
                         <path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.5"
                             stroke-linecap="round" />
-
                     </svg>
-
                     Laporan
                 </a>
 
-                {{-- Sertifikasi --}}
                 <a href="/admin/sertifikasi"
                     class="flex items-center gap-3 px-3 py-3 rounded-xl text-sm transition
                     {{ request()->is('admin/sertifikasi*')
                         ? 'bg-white text-[#111827] font-semibold shadow-sm'
                         : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
-
                     <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none">
-
                         <path
                             d="M12 3l2.5 2.5L18 6l-.5 3.5L19 12l-1.5 2.5L18 18l-3.5.5L12 21l-2.5-2.5L6 18l.5-3.5L5 12l1.5-2.5L6 6l3.5-.5L12 3Z"
                             stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
-
                         <path d="M9.5 12l1.7 1.7L14.5 10" stroke="currentColor" stroke-width="1.5"
                             stroke-linecap="round" stroke-linejoin="round" />
-
                     </svg>
-
                     Sertifikasi
-
                 </a>
             </nav>
 
-
-            {{-- User Sidebar --}}
             <div class="px-4 py-4 border-t border-white/10">
-
                 <div class="flex items-center gap-3 px-2 py-2">
-
                     <div
-                        class="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-yellow-600
-                        flex items-center justify-center text-white text-sm font-semibold
-                        flex-shrink-0 shadow-lg">
-
+                        class="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-yellow-600 flex items-center justify-center text-white text-sm font-semibold flex-shrink-0 shadow-lg">
                         {{ strtoupper(substr(auth()->user()->name ?? 'A', 0, 1)) }}
-
                     </div>
 
                     <div class="min-w-0">
@@ -197,30 +135,18 @@
                         </p>
 
                     </div>
-
                 </div>
-
             </div>
-
         </aside>
 
         <div id="overlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-30 hidden md:hidden"></div>
-
         <div class="flex-1 md:ml-64 min-w-0">
 
             <header
-                class="sticky top-0 z-20 bg-white/95 backdrop-blur
-                border-b border-slate-200
-                px-4 md:px-8 py-4
-                flex items-center justify-between">
-
+                class="sticky top-0 z-20 bg-white/95 backdrop-blur border-b border-slate-200 px-4 md:px-8 py-4 flex items-center justify-between">
                 <div class="flex items-center gap-4">
-
                     <button id="btn-toggle-sidebar"
-                        class="md:hidden w-10 h-10 rounded-xl bg-slate-100
-                        flex items-center justify-center text-slate-700
-                        hover:bg-slate-200 transition">
-
+                        class="md:hidden w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-700 hover:bg-slate-200 transition">
                         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none">
                             <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.5"
                                 stroke-linecap="round" />
@@ -228,7 +154,6 @@
                     </button>
 
                     <div>
-
                         <p class="text-xs font-medium text-slate-400 uppercase tracking-wider">
                             Internship Panel
                         </p>
@@ -245,22 +170,13 @@
                 </div>
 
                 <div class="relative">
-
                     <button type="button" id="profile-menu-button"
-                        class="w-10 h-10 rounded-full
-                        bg-gradient-to-br from-amber-400 to-yellow-600
-                        flex items-center justify-center
-                        text-white text-sm font-semibold
-                        hover:scale-105 transition shadow-sm">
-
+                        class="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-yellow-600 flex items-center justify-center text-white text-sm font-semibold hover:scale-105 transition shadow-sm">
                         {{ strtoupper(substr(auth()->user()->name ?? 'U', 0, 1)) }}
-
                     </button>
 
                     <div id="profile-menu"
-                        class="hidden absolute right-0 mt-3 w-60 rounded-2xl
-                        bg-white shadow-xl shadow-slate-200/70
-                        border border-slate-100 overflow-hidden z-50">
+                        class="hidden absolute right-0 mt-3 w-60 rounded-2xl bg-white shadow-xl shadow-slate-200/70 border border-slate-100 overflow-hidden z-50">
 
                         <div class="px-4 py-4 bg-slate-50 border-b border-slate-100">
 
@@ -274,14 +190,10 @@
 
                         </div>
 
-                        <a href="/internship/profil"
-                            class="flex items-center gap-3 px-4 py-3
-                            text-sm text-slate-600
-                            hover:bg-slate-50 transition">
+                        <a href="/admin/profil"
+                            class="flex items-center gap-3 px-4 py-3 text-sm text-slate-600 hover:bg-slate-50 transition">
 
-                            <div
-                                class="w-8 h-8 rounded-lg bg-slate-100
-                                flex items-center justify-center">
+                            <div class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center">
 
                                 <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
@@ -301,13 +213,9 @@
                             @csrf
 
                             <button type="submit"
-                                class="w-full flex items-center gap-3 px-4 py-3
-                                text-sm text-red-500
-                                hover:bg-red-50 transition">
+                                class="w-full flex items-center gap-3 px-4 py-3 text-sm text-red-500 hover:bg-red-50 transition">
 
-                                <div
-                                    class="w-8 h-8 rounded-lg bg-red-50
-                                    flex items-center justify-center">
+                                <div class="w-8 h-8 rounded-lg bg-red-50 flex items-center justify-center">
 
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -350,30 +258,18 @@
 
                 @if (session('success'))
                     <div id="success-alert"
-                        class="fixed top-6 right-6 z-50 w-[380px]
-                        max-w-[calc(100%-2rem)]
-                        rounded-2xl border border-emerald-100
-                        bg-white p-4
-                        shadow-2xl shadow-emerald-100/50
-                        transition-all duration-500 ease-in-out">
-
+                        class="fixed top-6 right-6 z-50 w-[380px] max-w-[calc(100%-2rem)] rounded-2xl border border-emerald-100 bg-white p-4 shadow-2xl shadow-emerald-100/50 transition-all duration-500 ease-in-out">
                         <div class="flex items-start gap-4">
-
                             <div
-                                class="flex h-11 w-11 shrink-0 items-center
-                                justify-center rounded-full bg-emerald-100">
-
+                                class="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-emerald-100">
                                 <svg class="h-6 w-6 text-emerald-600" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M5 13l4 4L19 7" />
                                 </svg>
-
                             </div>
 
-
                             <div class="flex-1">
-
                                 <h3 class="text-sm font-bold text-slate-900">
                                     Berhasil!
                                 </h3>
@@ -381,9 +277,7 @@
                                 <p class="mt-1 text-sm text-slate-500">
                                     {{ session('success') }}
                                 </p>
-
                             </div>
-
 
                             <button type="button" onclick="closeAlert()"
                                 class="text-slate-300 hover:text-slate-500 transition">
@@ -392,7 +286,6 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M6 18L18 6M6 6l12 12" />
                                 </svg>
-
                             </button>
                         </div>
 
@@ -402,7 +295,6 @@
                             <div id="progress-bar" class="h-full rounded-full bg-emerald-500"
                                 style="width: 100%; transition: width 4s linear;">
                             </div>
-
                         </div>
                     </div>
 
@@ -439,11 +331,9 @@
                         }, 4000);
                     </script>
                 @endif
-
             </header>
 
             <main class="p-4 md:p-8 space-y-6">
-
                 <section>
                     <div class="bg-white rounded-2xl border border-slate-200 shadow-sm p-5 md:p-6">
                         <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-5">
@@ -466,15 +356,12 @@
 
                             <div
                                 class="inline-flex items-center gap-3 px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 w-fit">
-
                                 <div
                                     class="w-9 h-9 rounded-lg bg-white border border-slate-200 flex items-center justify-center">
-
                                     <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor"
                                         viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                                             d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-
                                     </svg>
                                 </div>
 
@@ -495,8 +382,6 @@
                 <section class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
                     <div
                         class="flex flex-col gap-3 border-b border-slate-100 px-5 py-5 md:flex-row md:items-center md:justify-between md:px-6">
-
-                        {{-- Judul --}}
                         <div>
                             <h2 class="text-base font-semibold text-slate-800">
                                 Data Kehadiran
@@ -507,9 +392,7 @@
                             </p>
                         </div>
 
-                        {{-- Search --}}
                         <div class="relative w-full md:w-72">
-
                             <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
                                 <svg class="h-4 w-4 text-slate-400" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
@@ -520,13 +403,8 @@
 
                             <input type="text" id="search-absensi" placeholder="Cari nama, email, status..."
                                 autocomplete="off"
-                                class="w-full rounded-xl border border-slate-200 bg-white py-2.5 pl-9 pr-4
-                   text-sm text-slate-700 outline-none transition
-                   placeholder:text-slate-400
-                   focus:border-slate-400 focus:ring-2 focus:ring-slate-100">
-
+                                class="w-full rounded-xl border border-slate-200 bg-white py-2.5 pl-9 pr-4 text-sm text-slate-700 outline-none transition placeholder:text-slate-400 focus:border-slate-400 focus:ring-2 focus:ring-slate-100">
                         </div>
-
                     </div>
 
                     <div class="overflow-x-auto">
@@ -586,13 +464,11 @@
 
                                 @forelse ($absensis as $absensi)
                                     <tr class="group hover:bg-slate-50 transition">
-
-                                        {{-- Nama --}}
                                         <td class="px-5 py-4 whitespace-nowrap">
                                             <div class="flex items-center gap-3">
                                                 <div
                                                     class="w-9 h-9 rounded-full bg-slate-100 flex items-center justify-center
-                                flex-shrink-0 text-xs font-semibold text-slate-500 group-hover:bg-slate-200 transition">
+                                                    flex-shrink-0 text-xs font-semibold text-slate-500 group-hover:bg-slate-200 transition">
                                                     {{ strtoupper(substr($absensi->user->name ?? 'U', 0, 1)) }}
                                                 </div>
 
@@ -607,7 +483,6 @@
                                             </div>
                                         </td>
 
-                                        {{-- Tanggal --}}
                                         <td class="px-5 py-4 whitespace-nowrap">
                                             <div class="flex items-center gap-3">
                                                 <div
@@ -631,7 +506,6 @@
                                             </div>
                                         </td>
 
-                                        {{-- Jam Masuk --}}
                                         <td class="px-5 py-4 whitespace-nowrap">
                                             @if ($absensi->jam_masuk)
                                                 <div class="flex items-center gap-2">
@@ -645,7 +519,6 @@
                                             @endif
                                         </td>
 
-                                        {{-- Foto Masuk --}}
                                         <td class="px-5 py-4 whitespace-nowrap">
                                             @if ($absensi->foto_masuk)
                                                 <a href="{{ asset('storage/' . $absensi->foto_masuk) }}"
@@ -653,14 +526,13 @@
                                                     <img src="{{ asset('storage/' . $absensi->foto_masuk) }}"
                                                         alt="Foto Masuk"
                                                         class="w-12 h-12 rounded-lg object-cover border border-slate-200
-                                    hover:scale-105 transition duration-200 cursor-pointer">
+                                                        hover:scale-105 transition duration-200 cursor-pointer">
                                                 </a>
                                             @else
                                                 <span class="text-slate-300">-</span>
                                             @endif
                                         </td>
 
-                                        {{-- Jam Pulang --}}
                                         <td class="px-5 py-4 whitespace-nowrap">
                                             @if ($absensi->jam_pulang)
                                                 <div class="flex items-center gap-2">
@@ -674,7 +546,6 @@
                                             @endif
                                         </td>
 
-                                        {{-- Foto Pulang --}}
                                         <td class="px-5 py-4 whitespace-nowrap">
                                             @if ($absensi->foto_pulang)
                                                 <a href="{{ asset('storage/' . $absensi->foto_pulang) }}"
@@ -682,14 +553,13 @@
                                                     <img src="{{ asset('storage/' . $absensi->foto_pulang) }}"
                                                         alt="Foto Pulang"
                                                         class="w-12 h-12 rounded-lg object-cover border border-slate-200
-                                    hover:scale-105 transition duration-200 cursor-pointer">
+                                                        hover:scale-105 transition duration-200 cursor-pointer">
                                                 </a>
                                             @else
                                                 <span class="text-slate-300">-</span>
                                             @endif
                                         </td>
 
-                                        {{-- Status --}}
                                         <td class="px-5 py-4 whitespace-nowrap">
                                             @if ($absensi->status === 'hadir')
                                                 <span
@@ -718,9 +588,7 @@
                                             @endif
                                         </td>
 
-                                        {{-- Keterangan / Dokumen --}}
                                         <td class="px-5 py-4 align-middle">
-
                                             @if ($absensi->status === 'izin')
                                                 @if ($absensi->keterangan)
                                                     <div class="max-w-[220px]">
@@ -738,20 +606,17 @@
                                                     <a href="{{ asset('storage/' . $absensi->surat_dokter) }}"
                                                         target="_blank" rel="noopener noreferrer"
                                                         class="inline-flex items-center gap-2 rounded-lg
-                       bg-amber-50 px-3 py-2 text-xs font-semibold
-                       text-amber-700 transition
-                       hover:bg-amber-100">
-
+                                                        bg-amber-50 px-3 py-2 text-xs font-semibold
+                                                        text-amber-700 transition
+                                                        hover:bg-amber-100">
                                                         <svg class="h-4 w-4 shrink-0" fill="none"
                                                             stroke="currentColor" viewBox="0 0 24 24">
-
                                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                                 stroke-width="1.8"
                                                                 d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h6l4 4v12a2 2 0 01-2 2Z" />
 
                                                             <path stroke-linecap="round" stroke-linejoin="round"
                                                                 stroke-width="1.8" d="M13 3v4h4" />
-
                                                         </svg>
 
                                                         <span>
@@ -772,10 +637,8 @@
 
                                         </td>
 
-                                        {{-- Aksi --}}
                                         <td class="px-5 py-4 whitespace-nowrap">
                                             <div class="flex items-center gap-2">
-
                                                 <button type="button" title="Edit Status"
                                                     class="btn-edit-status flex h-8 w-8 items-center justify-center rounded-lg border border-slate-200 text-slate-500 transition hover:bg-slate-50"
                                                     data-id="{{ $absensi->id }}"
@@ -803,10 +666,8 @@
                                                             d="M6 7h12M9 7V5a1 1 0 011-1h4a1 1 0 011 1v2m2 0-.7 12.1a2 2 0 01-2 1.9H8.7a2 2 0 01-2-1.9L6 7h12Z" />
                                                     </svg>
                                                 </button>
-
                                             </div>
                                         </td>
-
                                     </tr>
                                 @empty
 
@@ -843,15 +704,11 @@
                     </div>
 
                     <div id="modal-edit-status" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
-
                         <div id="modal-edit-status-overlay" class="absolute inset-0 bg-black/40 backdrop-blur-sm">
                         </div>
-
                         <div class="relative w-full max-w-sm overflow-hidden rounded-2xl bg-white shadow-xl">
-
                             <div class="flex items-center justify-between border-b border-slate-100 px-6 py-4">
                                 <h3 class="font-serif text-lg text-slate-900">Edit Status Absensi</h3>
-
                                 <button type="button" id="btn-close-edit-status"
                                     class="flex h-8 w-8 items-center justify-center rounded-lg text-slate-400 transition hover:bg-slate-100 hover:text-slate-600">
                                     <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -900,14 +757,10 @@
                     </div>
 
                     <div id="modal-delete-absensi" class="fixed inset-0 z-50 hidden items-center justify-center p-4">
-
                         <div id="modal-delete-absensi-overlay" class="absolute inset-0 bg-black/40 backdrop-blur-sm">
                         </div>
-
                         <div class="relative w-full max-w-sm overflow-hidden rounded-2xl bg-white shadow-xl">
-
                             <div class="px-6 py-6 text-center">
-
                                 <div
                                     class="mx-auto mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-red-50">
                                     <svg class="h-6 w-6 text-red-500" fill="none" stroke="currentColor"
@@ -973,8 +826,6 @@
         </div>
     </div>
 
-
-    {{-- ================= MOBILE SIDEBAR SCRIPT ================= --}}
     <script>
         const sidebar = document.getElementById('sidebar');
         const overlay = document.getElementById('overlay');

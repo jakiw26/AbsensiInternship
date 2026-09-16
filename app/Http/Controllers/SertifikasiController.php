@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Sertifikasi;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\User;
 
@@ -12,16 +13,11 @@ class SertifikasiController extends Controller
 {
     public function admin()
     {
-        $internships = User::where('role', 'internship')
-            ->with('sertifikasis')
-            ->orderBy('name', 'asc')
-            ->get();
+        $internships = User::where('role', 'internship')->with('sertifikasis')->orderBy('name', 'asc')->get();
 
         $totalInternship = $internships->count();
 
-        $sudahBersertifikat = $internships
-            ->filter(fn($user) => $user->sertifikasis->isNotEmpty())
-            ->count();
+        $sudahBersertifikat = $internships->filter(fn($user) => $user->sertifikasis->isNotEmpty())->count();
 
         $belumBersertifikat = $totalInternship - $sudahBersertifikat;
 
@@ -71,16 +67,14 @@ class SertifikasiController extends Controller
 
     public function internship()
     {
-        $sertifikasi = Sertifikasi::where('user_id', auth()->id())->first();
+        $sertifikasi = Sertifikasi::where('user_id', Auth::id())->first();
 
         return view('internship.sertifikasi.index', compact('sertifikasi'));
     }
 
     public function pdfInternship($id)
     {
-        $sertifikasi = Sertifikasi::where('id', $id)
-            ->where('user_id', auth()->id())
-            ->firstOrFail();
+        $sertifikasi = Sertifikasi::where('id', $id)->where('user_id', Auth::id())->firstOrFail();
 
         $pdf = Pdf::loadView(
             'internship.sertifikasi.pdf.index',

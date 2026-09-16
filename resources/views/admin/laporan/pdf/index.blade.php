@@ -29,10 +29,6 @@
             position: relative;
         }
 
-        /* =====================================================
-            BACKGROUND KERTAS BTS.ID
-        ====================================================== */
-
         .page-background {
             position: fixed;
             top: 50%;
@@ -43,10 +39,6 @@
             opacity: 0.05;
             z-index: -1;
         }
-
-        /* =====================================================
-            HEADER
-        ====================================================== */
 
         .header {
             width: 100%;
@@ -88,10 +80,6 @@
             color: #6b7280;
         }
 
-        /* =====================================================
-            SECTION
-        ====================================================== */
-
         .section {
             margin-bottom: 18px;
         }
@@ -104,10 +92,6 @@
             color: #111827;
             border-bottom: 1px solid #d1d5db;
         }
-
-        /* =====================================================
-            IDENTITAS
-        ====================================================== */
 
         .identity-table {
             width: 100%;
@@ -133,10 +117,6 @@
             width: 72%;
         }
 
-        /* =====================================================
-            REKAP KEHADIRAN
-        ====================================================== */
-
         .summary-table {
             width: 100%;
             border-collapse: collapse;
@@ -160,10 +140,6 @@
             font-size: 10px;
             color: #6b7280;
         }
-
-        /* =====================================================
-            DETAIL ABSENSI
-        ====================================================== */
 
         .attendance-table {
             width: 100%;
@@ -195,10 +171,6 @@
             page-break-inside: avoid;
         }
 
-        /* =====================================================
-            STATUS ABSENSI
-        ====================================================== */
-
         .status {
             display: inline-block;
             padding: 2px 7px;
@@ -227,10 +199,6 @@
             background: #fee2e2;
         }
 
-        /* =====================================================
-            PENILAIAN
-        ====================================================== */
-
         .score-table {
             width: 100%;
             border-collapse: collapse;
@@ -257,10 +225,6 @@
             color: #111827;
         }
 
-        /* =====================================================
-            CATATAN
-        ====================================================== */
-
         .note-box {
             padding: 12px;
             border: 1px solid #d1d5db;
@@ -280,10 +244,6 @@
             margin: 0;
             color: #6b7280;
         }
-
-        /* =====================================================
-            TANDA TANGAN
-        ====================================================== */
 
         .signature-table {
             width: 100%;
@@ -332,10 +292,6 @@
             font-size: 10px;
             text-align: center;
         }
-
-        /* =====================================================
-            COVER
-        ====================================================== */
 
         .cover {
             height: 700px;
@@ -408,10 +364,6 @@
             line-height: 1.4;
         }
 
-        /* =====================================================
-            PAGE BREAK
-        ====================================================== */
-
         .page-break {
             page-break-before: always;
         }
@@ -424,37 +376,21 @@
 
 <body>
 
-    {{-- =====================================================
-        BACKGROUND KERTAS BTS.ID
-    ====================================================== --}}
-
     @if (file_exists(public_path('images/bts.png')))
         <img src="{{ public_path('images/bts.png') }}" alt="Background BTS.id" class="page-background">
     @endif
 
 
     <div class="container">
-
-        {{-- =====================================================
-            HEADER
-        ====================================================== --}}
-
         <div class="header">
-
             <table class="header-table">
-
                 <tr>
-
                     <td class="header-logo">
-
                         @if (file_exists(public_path('images/bts.png')))
                             <img src="{{ public_path('images/bts.png') }}" alt="BTS">
                         @endif
-
                     </td>
-
                     <td class="header-title">
-
                         <h1>
                             LAPORAN INTERNSHIP
                         </h1>
@@ -464,28 +400,15 @@
                         </p>
 
                     </td>
-
                 </tr>
-
             </table>
-
         </div>
-
-
-        {{-- =====================================================
-            IDENTITAS PESERTA
-        ====================================================== --}}
-
         <div class="section">
-
             <h2 class="section-title">
                 Identitas Peserta
             </h2>
-
             <table class="identity-table">
-
                 <tr>
-
                     <td class="identity-label">
                         Nama
                     </td>
@@ -547,26 +470,16 @@
                     </td>
 
                 </tr>
-
             </table>
-
         </div>
 
-
-        {{-- =====================================================
-            REKAP KEHADIRAN
-        ====================================================== --}}
-
         <div class="section">
-
             <h2 class="section-title">
                 Rekap Kehadiran
             </h2>
 
             <table class="summary-table">
-
                 <tr>
-
                     <td class="summary-card">
 
                         <span class="summary-number">
@@ -592,7 +505,6 @@
                     </td>
 
                     <td class="summary-card">
-
                         <span class="summary-number">
                             {{ $jumlahIzin }}
                         </span>
@@ -600,11 +512,9 @@
                         <span class="summary-label">
                             Izin
                         </span>
-
                     </td>
 
                     <td class="summary-card">
-
                         <span class="summary-number">
                             {{ $jumlahAlfa }}
                         </span>
@@ -612,32 +522,20 @@
                         <span class="summary-label">
                             Alfa
                         </span>
-
                     </td>
 
                 </tr>
-
             </table>
-
         </div>
 
-
-        {{-- =====================================================
-            DETAIL KEHADIRAN
-        ====================================================== --}}
-
         <div class="section">
-
             <h2 class="section-title">
                 Detail Kehadiran
             </h2>
 
             <table class="attendance-table">
-
                 <thead>
-
                     <tr>
-
                         <th width="7%">
                             No
                         </th>
@@ -659,11 +557,9 @@
                         </th>
 
                     </tr>
-
                 </thead>
 
                 <tbody>
-
                     @forelse ($absensis as $index => $absensi)
                         <tr>
 
@@ -723,15 +619,8 @@
                     @endforelse
 
                 </tbody>
-
             </table>
-
         </div>
-
-
-        {{-- =====================================================
-            HASIL PENILAIAN
-        ====================================================== --}}
 
         <div class="section">
 
@@ -740,11 +629,8 @@
             </h2>
 
             <table class="score-table">
-
                 <tr>
-
                     <td>
-
                         <span class="score-label">
                             Kedisiplinan
                         </span>
@@ -752,11 +638,9 @@
                         <span class="score-value">
                             {{ $nilai->kedisiplinan ?? '-' }}
                         </span>
-
                     </td>
 
                     <td>
-
                         <span class="score-label">
                             Keterampilan
                         </span>
@@ -764,11 +648,9 @@
                         <span class="score-value">
                             {{ $nilai->keterampilan ?? '-' }}
                         </span>
-
                     </td>
 
                     <td>
-
                         <span class="score-label">
                             Skill
                         </span>
@@ -778,20 +660,11 @@
                         </span>
 
                     </td>
-
                 </tr>
-
             </table>
-
         </div>
 
-
-        {{-- =====================================================
-            CATATAN
-        ====================================================== --}}
-
         <div class="section avoid-break">
-
             <div class="note-box">
 
                 <h2 class="note-title">
@@ -806,18 +679,11 @@
                     absensi dan penilaian internship.
 
                 </p>
-
             </div>
-
         </div>
 
-
-        {{-- =====================================================
-            TANDA TANGAN
-        ====================================================== --}}
-
         <table class="signature-table">
-            <tr> {{-- KOLOM KOSONG --}} <td class="signature-left"></td> {{-- KOLOM TANDA TANGAN --}} <td
+            <tr> <td class="signature-left"></td><td
                     class="signature-right">
                     <div class="signature-title"> Pembimbing </div>
                     <div class="signature-space">
@@ -831,11 +697,6 @@
                 </td>
             </tr>
         </table>
-
-        {{-- =====================================================
-            FOOTER
-        ====================================================== --}}
-
         <div class="footer">
 
             Laporan Internship &bull;

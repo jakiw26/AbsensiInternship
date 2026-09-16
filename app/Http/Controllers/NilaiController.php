@@ -6,12 +6,13 @@ use App\Models\Nilai;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class NilaiController extends Controller
 {
     public function index()
     {
-        $nilai = Nilai::where('user_id', auth()->id())->first();
+        $nilai = Nilai::where('user_id', Auth::id())->first();
         return view('internship.nilai.index', compact('nilai'));
     }
 
@@ -27,9 +28,7 @@ class NilaiController extends Controller
             });
         }
 
-        $internships = $query->orderBy('name', 'asc')
-            ->paginate(10)
-            ->withQueryString();
+        $internships = $query->orderBy('name', 'asc')->paginate(10)->withQueryString();
 
         $totalInternship = User::where('role', 'internship')->count();
         $sudahDinilai = User::where('role', 'internship')->whereHas('nilai')->count();

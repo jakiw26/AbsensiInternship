@@ -40,11 +40,6 @@
             overflow: hidden;
             background: #ffffff;
         }
-
-        /* ========================================
-           BACKGROUND
-        ======================================== */
-
         .background {
             position: absolute;
             inset: 0;
@@ -52,7 +47,6 @@
             height: 100%;
         }
 
-        /* Pita pojok kiri-atas & kanan-bawah */
         .corner-tl,
         .corner-br {
             position: absolute;
@@ -105,10 +99,6 @@
             background: #ffffff;
         }
 
-        /* ========================================
-           CONTENT
-        ======================================== */
-
         .content {
             position: absolute;
             top: 14mm;
@@ -117,10 +107,6 @@
             left: 20mm;
             text-align: center;
         }
-
-        /* ========================================
-           LOGO
-        ======================================== */
 
         .logo {
             margin-top: 2mm;
@@ -136,21 +122,12 @@
             width: auto;
         }
 
-        /* ========================================
-           RED LINE
-        ======================================== */
-
         .red-line {
             width: 250mm;
             height: 1.2mm;
             margin: 4mm auto 0;
             background: #9e2734;
         }
-
-        /* ========================================
-           TITLE
-        ======================================== */
-
         .title {
             margin-top: 7mm;
             font-size: 25px;
@@ -164,10 +141,6 @@
             font-size: 12px;
             color: #3f3f46;
         }
-
-        /* ========================================
-           NAME
-        ======================================== */
 
         .name {
             margin-top: 4mm;
@@ -183,20 +156,12 @@
             background: #777777;
         }
 
-        /* ========================================
-           NIM
-        ======================================== */
-
         .nim {
             margin-top: 2mm;
             font-size: 13px;
             font-weight: bold;
             color: #333333;
         }
-
-        /* ========================================
-           DESCRIPTION
-        ======================================== */
 
         .description {
             margin-top: 5mm;
@@ -220,20 +185,12 @@
             color: #444444;
         }
 
-        /* ========================================
-           DATE
-        ======================================== */
-
         .city-date {
             margin-top: 4mm;
             font-size: 11px;
             font-weight: bold;
             color: #333333;
         }
-
-        /* ========================================
-           SIGNATURE
-        ======================================== */
 
         .signature-table {
             width: 100%;
@@ -283,11 +240,6 @@
 <body>
 
     <div class="certificate">
-
-        {{-- ========================================
-            BACKGROUND
-        ======================================== --}}
-
         <div class="background">
 
             <div class="corner-tl">
@@ -304,115 +256,64 @@
 
         </div>
 
-
-        {{-- ========================================
-            CONTENT
-        ======================================== --}}
-
         <div class="content">
-
-            {{-- Logo --}}
             <div class="logo">
-
                 @if (file_exists(public_path('images/bts.png')))
                     <img src="{{ public_path('images/bts.png') }}" alt="BTS.id">
                 @endif
-
             </div>
 
-
-            {{-- Garis merah --}}
             <div class="red-line"></div>
 
-
-            {{-- Judul --}}
             <div class="title">
                 CERTIFICATE OF COMPLETION
             </div>
 
-
-            {{-- This certifies that --}}
             <div class="subtitle">
                 THIS CERTIFIES THAT
             </div>
 
-
-            {{-- Nama --}}
             <div class="name">
                 {{ $sertifikasi->nama }}
             </div>
 
             <div class="name-line"></div>
 
-
-            {{-- NIM --}}
             <div class="nim">
                 2488871012
             </div>
 
-
-            {{-- Deskripsi --}}
             <div class="description">
-
                 has completed Internship at PT Intersolusi Teknologi Asia
                 as Internship Developer
-
             </div>
 
-
-            {{-- Periode --}}
             <div class="period">
-
                 from
                 {{ \Carbon\Carbon::parse($sertifikasi->tanggal_mulai)->translatedFormat('d F Y') }}
-
                 to
-
                 {{ \Carbon\Carbon::parse($sertifikasi->tanggal_selesai)->translatedFormat('d F Y') }}
-
             </div>
 
-
-            {{-- Pesan --}}
             <div class="message">
-
                 We found him sincere, hardworking, dedicated and result oriented.<br>
-
                 He worked well as part of the team during his tenure.<br>
-
                 We take this opportunity to thank you and wish the knowledge gained during this internship<br>
-
                 period will be useful in the future.
-
             </div>
 
-
-            {{-- Tanggal --}}
             <div class="city-date">
-
                 Bandung,
                 {{ now()->translatedFormat('d F Y') }}
-
             </div>
 
-
-            {{-- ========================================
-                SIGNATURE
-            ======================================== --}}
-
             <table class="signature-table">
-
                 <tr>
-
-                    {{-- Signature kiri --}}
                     <td>
-
                         <div class="signature-image">
-
                             @if (file_exists(public_path('images/ttd_kiri.png')))
                                 <img src="{{ public_path('images/ttd_kiri.png') }}" alt="Tanda tangan">
                             @endif
-
                         </div>
 
                         <div class="signature-line"></div>
@@ -427,16 +328,11 @@
 
                     </td>
 
-
-                    {{-- Signature kanan --}}
                     <td>
-
                         <div class="signature-image">
-
                             @if (file_exists(public_path('images/ttd_kanan.png')))
                                 <img src="{{ public_path('images/ttd_kanan.png') }}" alt="Tanda tangan">
                             @endif
-
                         </div>
 
                         <div class="signature-line"></div>
@@ -450,15 +346,10 @@
                         </div>
 
                     </td>
-
                 </tr>
-
             </table>
-
         </div>
-
     </div>
-
 </body>
 
 </html>

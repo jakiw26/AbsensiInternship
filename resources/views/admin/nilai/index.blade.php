@@ -11,23 +11,12 @@
 </head>
 
 <body class="font-sans bg-slate-50 min-h-screen text-slate-800">
-
     <div class="flex min-h-screen">
-
-        {{-- =====================================================
-            SIDEBAR
-        ====================================================== --}}
-        <aside id="sidebar"
-            class="fixed inset-y-0 left-0 z-40 w-64 bg-[#111827] text-white flex flex-col
-            transform -translate-x-full md:translate-x-0 transition-transform duration-200 shadow-2xl">
-
-            {{-- Logo --}}
+        <aside id="sidebar" class="fixed inset-y-0 left-0 z-40 w-64 bg-[#111827] text-white flex flex-col transform -translate-x-full md:translate-x-0 transition-transform duration-200 shadow-2xl">
             <div class="flex items-center gap-3 px-6 py-6 border-b border-white/10">
-
                 <div class="w-10 h-10 rounded-xl overflow-hidden bg-white flex-shrink-0 shadow-sm">
                     <img src="{{ asset('images/bts.png') }}" alt="Logo" class="w-full h-full object-contain">
                 </div>
-
                 <div>
                     <p class="font-serif text-lg leading-tight text-white">
                         Absensi
@@ -37,36 +26,23 @@
                         Admin Panel
                     </p>
                 </div>
-
             </div>
 
-
-            {{-- Navigation --}}
             <nav class="flex-1 px-4 py-6 space-y-1.5">
-
-                {{-- Dashboard --}}
                 <a href="/admin/dashboard"
                     class="flex items-center gap-3 px-3 py-3 rounded-xl text-sm transition
                     {{ request()->is('admin/dashboard')
                         ? 'bg-white text-[#111827] font-semibold shadow-sm'
                         : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
-
                     <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 20 20" fill="none">
-
                         <path d="M3 10.5 10 4l7 6.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                             stroke-linejoin="round" />
-
                         <path d="M5 9v7h10V9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                             stroke-linejoin="round" />
-
                     </svg>
-
                     Dashboard
-
                 </a>
 
-
-                {{-- Data Internship --}}
                 <a href="/admin/internship"
                     class="flex items-center gap-3 px-3 py-3 rounded-xl text-sm transition
                     {{ request()->is('admin/internship*')
@@ -74,122 +50,77 @@
                         : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
 
                     <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none">
-
                         <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" stroke="currentColor" stroke-width="1.5"
                             stroke-linecap="round" stroke-linejoin="round" />
-
                         <circle cx="9" cy="7" r="4" stroke="currentColor" stroke-width="1.5" />
-
                         <path d="M22 21v-2a4 4 0 0 0-3-3.87" stroke="currentColor" stroke-width="1.5"
                             stroke-linecap="round" stroke-linejoin="round" />
-
                         <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="1.5"
                             stroke-linecap="round" stroke-linejoin="round" />
-
                     </svg>
-
                     Data Internship
-
                 </a>
 
-
-                {{-- Absensi --}}
                 <a href="/admin/absensi"
                     class="flex items-center gap-3 px-3 py-3 rounded-xl text-sm transition
                     {{ request()->is('admin/absensi*')
                         ? 'bg-white text-[#111827] font-semibold shadow-sm'
                         : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
-
                     <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 20 20" fill="none">
-
                         <circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5" />
-
                         <path d="M10 6v4l2.5 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
-
                     </svg>
-
                     Absensi
-
                 </a>
 
-
-                {{-- Penilaian --}}
                 <a href="/admin/nilai"
                     class="flex items-center gap-3 px-3 py-3 rounded-xl text-sm transition
                     {{ request()->is('admin/nilai*')
                         ? 'bg-white text-[#111827] font-semibold shadow-sm'
                         : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
-
                     <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none">
-
                         <path d="M6 3h8l2 2v16H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2Z" stroke="currentColor"
                             stroke-width="1.5" stroke-linejoin="round" />
-
                         <path d="M9 9h4M9 13h4M9 17h3" stroke="currentColor" stroke-width="1.5"
                             stroke-linecap="round" />
-
                     </svg>
-
                     Penilaian
-
                 </a>
 
-
-                {{-- Laporan --}}
                 <a href="/admin/laporan"
                     class="flex items-center gap-3 px-3 py-3 rounded-xl text-sm transition
                     {{ request()->is('admin/laporan*')
                         ? 'bg-white text-[#111827] font-semibold shadow-sm'
                         : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
-
                     <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none">
-
                         <path d="M5 3h14v18H5z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
-
                         <path d="M8 8h8M8 12h8M8 16h5" stroke="currentColor" stroke-width="1.5"
                             stroke-linecap="round" />
-
                     </svg>
-
                     Laporan
                 </a>
 
-                {{-- Sertifikasi --}}
                 <a href="/admin/sertifikasi"
                     class="flex items-center gap-3 px-3 py-3 rounded-xl text-sm transition
                     {{ request()->is('admin/sertifikasi*')
                         ? 'bg-white text-[#111827] font-semibold shadow-sm'
                         : 'text-white/55 hover:bg-white/5 hover:text-white' }}">
-
                     <svg class="w-5 h-5 flex-shrink-0" viewBox="0 0 24 24" fill="none">
-
                         <path
                             d="M12 3l2.5 2.5L18 6l-.5 3.5L19 12l-1.5 2.5L18 18l-3.5.5L12 21l-2.5-2.5L6 18l.5-3.5L5 12l1.5-2.5L6 6l3.5-.5L12 3Z"
                             stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" />
-
                         <path d="M9.5 12l1.7 1.7L14.5 10" stroke="currentColor" stroke-width="1.5"
                             stroke-linecap="round" stroke-linejoin="round" />
-
                     </svg>
-
                     Sertifikasi
-
                 </a>
             </nav>
 
-
-            {{-- User Sidebar --}}
             <div class="px-4 py-4 border-t border-white/10">
-
                 <div class="flex items-center gap-3 px-2 py-2">
-
                     <div
-                        class="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-yellow-600
-                        flex items-center justify-center text-white text-sm font-semibold
-                        flex-shrink-0 shadow-lg">
-
+                        class="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-yellow-600 flex items-center justify-center text-white text-sm font-semibold flex-shrink-0 shadow-lg">
                         {{ strtoupper(substr(auth()->user()->name ?? 'A', 0, 1)) }}
-
                     </div>
 
                     <div class="min-w-0">
@@ -203,29 +134,16 @@
                         </p>
 
                     </div>
-
                 </div>
-
             </div>
-
         </aside>
 
-
         <div id="overlay" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-30 hidden md:hidden"></div>
-
-
-        {{-- =====================================================
-            MAIN
-        ====================================================== --}}
         <div class="flex-1 md:ml-64 min-w-0">
 
-            {{-- HEADER --}}
             <header
-                class="sticky top-0 z-20 bg-white/95 backdrop-blur border-b border-slate-200
-                px-4 md:px-8 py-4 flex items-center justify-between">
-
+                class="sticky top-0 z-20 bg-white/95 backdrop-blur border-b border-slate-200 px-4 md:px-8 py-4 flex items-center justify-between">
                 <div class="flex items-center gap-4">
-
                     <button id="btn-toggle-sidebar"
                         class="md:hidden w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-700 hover:bg-slate-200 transition">
                         <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none">
@@ -235,69 +153,90 @@
                     </button>
 
                     <div>
-                        <p class="text-xs font-medium text-slate-400 uppercase tracking-wider">Manajemen Internship</p>
-                        <h2 class="font-serif text-xl md:text-2xl text-slate-900 mt-0.5">Kelola Nilai</h2>
-                        <p class="text-xs md:text-sm text-slate-400 mt-1">Beri dan pantau penilaian seluruh peserta
-                            internship.</p>
-                    </div>
+                        <p class="text-xs font-medium text-slate-400 uppercase tracking-wider">
+                            Internship Panel
+                        </p>
 
+                        <h2 class="font-serif text-xl md:text-2xl text-slate-900 mt-0.5">
+                            Penilaian
+                        </h2>
+
+                        <p class="text-xs md:text-sm text-slate-400 mt-1">
+                            {{ \Carbon\Carbon::now()->translatedFormat('l, d F Y') }}
+                        </p>
+
+                    </div>
                 </div>
 
-
                 <div class="relative">
-
                     <button type="button" id="profile-menu-button"
-                        class="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-yellow-600
-                        flex items-center justify-center text-white text-sm font-semibold hover:scale-105 transition shadow-sm">
-                        {{ strtoupper(substr(auth()->user()->name ?? 'A', 0, 1)) }}
+                        class="w-10 h-10 rounded-full bg-gradient-to-br from-amber-400 to-yellow-600 flex items-center justify-center text-white text-sm font-semibold hover:scale-105 transition shadow-sm">
+                        {{ strtoupper(substr(auth()->user()->name ?? 'U', 0, 1)) }}
                     </button>
 
                     <div id="profile-menu"
-                        class="hidden absolute right-0 mt-3 w-60 rounded-2xl bg-white shadow-xl shadow-slate-200/70
-                        border border-slate-100 overflow-hidden z-50">
+                        class="hidden absolute right-0 mt-3 w-60 rounded-2xl bg-white shadow-xl shadow-slate-200/70 border border-slate-100 overflow-hidden z-50">
 
                         <div class="px-4 py-4 bg-slate-50 border-b border-slate-100">
+
                             <p class="text-sm font-semibold text-slate-800">
-                                {{ auth()->user()->name ?? 'Administrator' }}</p>
-                            <p class="text-xs text-slate-400 truncate mt-1">{{ auth()->user()->email ?? '-' }}</p>
+                                {{ auth()->user()->name ?? 'User' }}
+                            </p>
+
+                            <p class="text-xs text-slate-400 truncate mt-1">
+                                {{ auth()->user()->email ?? '-' }}
+                            </p>
+
                         </div>
 
                         <a href="/admin/profil"
                             class="flex items-center gap-3 px-4 py-3 text-sm text-slate-600 hover:bg-slate-50 transition">
+
                             <div class="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center">
+
                                 <svg class="w-4 h-4 text-slate-500" fill="none" stroke="currentColor"
                                     viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M5.121 17.804A9 9 0 0112 15a9 9 0 016.879 2.804M15 9a3 3 0 11-6 0 3 3 0 016 0zm6 3a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
                             </div>
-                            <span>Profil Saya</span>
+
+                            <span>
+                                Profil Saya
+                            </span>
+
                         </a>
 
                         <form method="POST" action="/logout">
+
                             @csrf
+
                             <button type="submit"
                                 class="w-full flex items-center gap-3 px-4 py-3 text-sm text-red-500 hover:bg-red-50 transition">
+
                                 <div class="w-8 h-8 rounded-lg bg-red-50 flex items-center justify-center">
+
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+
                                     </svg>
+
                                 </div>
-                                <span>Logout</span>
+
+                                <span>
+                                    Logout
+                                </span>
+
                             </button>
                         </form>
-
                     </div>
-
                 </div>
 
             </header>
 
 
-            {{-- CONTENT --}}
             <main class="p-4 md:p-8 space-y-8">
-
                 @if (session('success'))
                     <div id="success-alert"
                         class="fixed top-6 right-6 z-50 w-[380px] max-w-[calc(100%-2rem)]
@@ -371,14 +310,8 @@
                     </script>
                 @endif
 
-
-                {{-- =================================================
-                    RINGKASAN
-                ================================================== --}}
                 <section>
-
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-
                         <div class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
                             <div class="flex items-center justify-between">
                                 <div>
@@ -426,19 +359,11 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
-
                 </section>
 
-
-                {{-- =================================================
-                    TABEL NILAI INTERNSHIP
-                ================================================== --}}
                 <section class="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden">
-
-                    <div
-                        class="px-5 md:px-6 py-5 border-b border-slate-100 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
+                    <div class="px-5 md:px-6 py-5 border-b border-slate-100 flex flex-col md:flex-row md:items-center md:justify-between gap-3">
 
                         <div>
                             <h2 class="text-base font-semibold text-slate-800">Daftar Penilaian</h2>
@@ -447,9 +372,7 @@
                         </div>
 
                         <form method="GET" action="/admin/nilai" class="w-full md:w-64">
-
                             <div class="relative">
-
                                 <svg class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400"
                                     fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -460,22 +383,14 @@
                                     placeholder="Cari nama atau email..."
                                     class="w-full pl-9 pr-3 py-2.5 text-sm rounded-xl border border-slate-200
                                     focus:outline-none focus:ring-2 focus:ring-slate-800/10 focus:border-slate-400">
-
                             </div>
-
                         </form>
-
                     </div>
 
-
                     <div class="overflow-x-auto">
-
                         <table class="w-full text-sm">
-
                             <thead>
-
                                 <tr class="bg-[#111827]">
-
                                     <th
                                         class="rounded-tl-xl px-5 py-4 text-left text-xs font-semibold text-white uppercase tracking-wider whitespace-nowrap">
                                         Nama
@@ -507,19 +422,13 @@
                                     </th>
 
                                 </tr>
-
                             </thead>
 
-
                             <tbody class="divide-y divide-slate-100">
-
                                 @forelse ($internships as $user)
                                     <tr class="hover:bg-slate-50/70 transition">
-
                                         <td class="px-5 py-4 whitespace-nowrap">
-
                                             <div class="flex items-center gap-3">
-
                                                 <div
                                                     class="w-9 h-9 rounded-full bg-slate-100
                                                     flex items-center justify-center text-xs font-semibold text-slate-500">
@@ -530,9 +439,7 @@
                                                     <p class="font-medium text-slate-700">{{ $user->name }}</p>
                                                     <p class="text-xs text-slate-400">{{ $user->email }}</p>
                                                 </div>
-
                                             </div>
-
                                         </td>
 
                                         <td class="px-5 py-4 text-center">
@@ -656,18 +563,10 @@
 
     </div>
 
-
-    {{-- =====================================================
-        MODAL BERI / EDIT NILAI
-    ====================================================== --}}
     <div id="nilai-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4">
-
         <div id="nilai-modal-backdrop" class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
-
         <div class="relative bg-white rounded-2xl shadow-xl w-full max-w-md p-6">
-
             <div class="flex items-center gap-3 mb-6">
-
                 <div class="w-11 h-11 rounded-xl bg-slate-100 flex items-center justify-center">
                     <svg class="w-5 h-5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
@@ -679,18 +578,13 @@
                     <h3 class="text-base font-semibold text-slate-800">Beri Penilaian</h3>
                     <p id="nilai-modal-name" class="text-xs text-slate-400">-</p>
                 </div>
-
             </div>
 
-
             <form id="nilai-modal-form" method="POST" action="">
-
                 @csrf
                 @method('PUT')
 
                 <div class="space-y-4 mb-6">
-
-                    {{-- Kedisiplinan --}}
                     <div>
                         <label class="flex items-center justify-between text-sm font-medium text-slate-700 mb-2">
                             <span>Kedisiplinan</span>
@@ -703,7 +597,6 @@
                             focus:outline-none focus:ring-2 focus:ring-amber-400/20 focus:border-amber-400">
                     </div>
 
-                    {{-- Keterampilan --}}
                     <div>
                         <label class="flex items-center justify-between text-sm font-medium text-slate-700 mb-2">
                             <span>Keterampilan</span>
@@ -716,7 +609,6 @@
                             focus:outline-none focus:ring-2 focus:ring-blue-400/20 focus:border-blue-400">
                     </div>
 
-                    {{-- Skill --}}
                     <div>
                         <label class="flex items-center justify-between text-sm font-medium text-slate-700 mb-2">
                             <span>Skill</span>
@@ -728,12 +620,9 @@
                             class="w-full px-4 py-2.5 text-sm rounded-xl border border-slate-200
                             focus:outline-none focus:ring-2 focus:ring-emerald-400/20 focus:border-emerald-400">
                     </div>
-
                 </div>
 
-
                 <div class="flex gap-3">
-
                     <button type="button" onclick="closeNilaiModal()"
                         class="flex-1 px-4 py-2.5 rounded-xl border border-slate-200 text-slate-600
                         text-sm font-medium hover:bg-slate-50 transition">
@@ -747,17 +636,10 @@
                     </button>
 
                 </div>
-
             </form>
-
         </div>
-
     </div>
 
-
-    {{-- =====================================================
-        SCRIPTS
-    ====================================================== --}}
     <script>
         const profileButton = document.getElementById('profile-menu-button');
         const profileMenu = document.getElementById('profile-menu');

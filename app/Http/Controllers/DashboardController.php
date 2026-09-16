@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Nilai;
 use App\Models\Laporan;
 use App\Models\Profil;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 
@@ -14,11 +15,9 @@ class DashboardController extends Controller
 {
     public function internship()
     {
+        $userId = Auth::id();
 
-        $userId = auth()->id();
-
-        $absensis = Absensi::where('user_id', $userId)
-            ->whereDate('tanggal', today())
+        $absensis = Absensi::where('user_id', $userId)->whereDate('tanggal', today())
             ->orderBy('tanggal', 'desc')
             ->get();
 

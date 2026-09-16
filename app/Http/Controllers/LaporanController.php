@@ -7,17 +7,16 @@ use App\Models\Absensi;
 use App\Models\Nilai;
 use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 
 class LaporanController extends Controller
 {
     public function index()
     {
-        $userId = auth()->id();
+        $userId = Auth::id();
 
-        $absensis = Absensi::where('user_id', $userId)
-            ->orderBy('tanggal', 'asc')
-            ->get();
+        $absensis = Absensi::where('user_id', $userId)->orderBy('tanggal', 'asc')->get();
 
         $jumlahHadir = $absensis->where('status', 'hadir')->count();
         $jumlahSakit = $absensis->where('status', 'sakit')->count();
@@ -38,11 +37,9 @@ class LaporanController extends Controller
 
     public function PdfInternship()
     {
-        $user = auth()->user();
+        $user = Auth::user();
 
-        $absensis = Absensi::where('user_id', $user->id)
-            ->orderBy('tanggal', 'desc')
-            ->get();
+        $absensis = Absensi::where('user_id', $user->id)->orderBy('tanggal', 'desc')->get();
 
         $jumlahHadir = $absensis->where('status', 'hadir')->count();
         $jumlahSakit = $absensis->where('status', 'sakit')->count();
@@ -69,19 +66,13 @@ class LaporanController extends Controller
     public function admin()
     {
 
-        $internships = User::where('role', 'internship')
-            ->orderBy('name', 'asc')
-            ->get();
+        $internships = User::where('role', 'internship')->orderBy('name', 'asc')->get();
 
         $totalInternship = $internships->count();
 
-        $internshipAktif = $internships
-            ->where('is_active', true)
-            ->count();
+        $internshipAktif = $internships->where('is_active', true)->count();
 
-        $hadirHariIni = Absensi::whereDate('tanggal', now())
-            ->where('status', 'hadir')
-            ->count();
+        $hadirHariIni = Absensi::whereDate('tanggal', now())->where('status', 'hadir')->count();
 
         $belumAbsen = max($internshipAktif - $hadirHariIni, 0);
 

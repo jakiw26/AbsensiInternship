@@ -6,13 +6,15 @@ use App\Models\Absensi;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 
 class AbsensiController extends Controller
 {
     public function index()
     {
-        $user = auth()->user();
+        $user = Auth::user();
         $userId = $user->id;
 
         $tanggalKemarin = today()->subDay();
@@ -86,7 +88,7 @@ class AbsensiController extends Controller
             'surat_dokter' => 'nullable|file|mimes:jpg,jpeg,png,pdf|max:2048',
         ]);
 
-        $sudahAbsen = Absensi::where('user_id', auth()->id())
+        $sudahAbsen = Absensi::where('user_id', Auth::id())
             ->whereDate('tanggal', $request->tanggal)
             ->exists();
 
@@ -142,7 +144,7 @@ class AbsensiController extends Controller
         }
 
         Absensi::create([
-            'user_id' => auth()->id(),
+            'user_id' => Auth::id(),
             'tanggal' => $request->tanggal,
 
             'jam_masuk' => $request->status === 'hadir'
@@ -175,15 +177,11 @@ class AbsensiController extends Controller
             'foto_pulang' => 'required|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
-        $absensi = Absensi::where('id', $id)
-            ->where('user_id', auth()->id())
-            ->firstOrFail();
+        $absensi = Absensi::where('id', $id)->where('user_id', Auth::id())->firstOrFail();
         if ($absensi->jam_pulang !== null) {
-            return redirect('/internship/absensi')
-                ->with('error', 'Anda sudah melakukan absensi pulang hari ini.');
+            return redirect('/internship/absensi')->with('error', 'Anda sudah melakukan absensi pulang hari ini.');
         }
-        $fotoPulang = $request->file('foto_pulang')
-            ->store('absensi/pulang', 'public');
+        $fotoPulang = $request->file('foto_pulang')->store('absensi/pulang', 'public');
 
         $absensi->update([
             'jam_pulang' => $request->jam_pulang,
